@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 
 import deepFreeze from 'deep-freeze';
 import { expect } from 'chai'
-import TodoReducer from '../reducers/TodoReducer'
+import todoReducer from '../reducers/todoReducers'
 
 
 import Todo from '../components/Todo';
@@ -28,9 +28,9 @@ describe("The todoReducer items", () => {
 	let action2 = addTodo(item2, rank );
 		// console.log("action2 => ",action2)
 		
-	let list01 = TodoReducer(state_start, action )
+	let list01 = todoReducer(state_start, action )
 		// console.log("list01 => ", list01);
-	let list02 = TodoReducer(list01, action2)
+	let list02 = todoReducer(list01, action2)
 		console.log("list02 => ", list02);
 
 	it('renders without crashing', () => {
@@ -58,19 +58,8 @@ describe("The todoReducer items", () => {
 	}); // descr ADD_TODO
 
 	describe('The REMOVE_TODO action', () => {
-		it('...removes an item from an array', () => {
-			let _id = list01[0].id;
-
-			let action03 = removeTodo(_id);
-			let updated = TodoReducer(list02,action03);
-			console.log("item removed => ", updated);
-
-			expect(_id).to.equal("todo_1");
-			expect(action).to.be.an('object');
-			expect(updated.length).to.equal(1);
-		});
 	}); // descr Remove
-	
-	
+
+
 }); //master describe
 

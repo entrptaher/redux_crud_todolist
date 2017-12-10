@@ -11,3 +11,4 @@ Basic todo application in React with Redux
 - write action tests
 - build add item, remove and toggle action in action module
 - add lodash for #uniqueid function
+- add redux
