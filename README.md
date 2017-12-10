@@ -16,4 +16,7 @@ Basic todo application in React with Redux
   "redux-logger": "^3.0.6",
     "redux-promise-middleware": "^4.4.1",
 "redux-thunk": "^2.2.0"
+
+# Set up the Store
 - add react-redux for easier store methods
+- use react-redux and setup Provider index.js

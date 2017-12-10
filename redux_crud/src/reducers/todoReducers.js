@@ -8,7 +8,7 @@ const TodoReducer = (state = initialState, action) => {
 	let payload  = action.payload;
 	let type = action.type;
 
-	switch (action.type) {
+	switch (type) {
 
 		case "ADD_TODO":
 			action.payload.id = _.uniqueId("todo_");
@@ -18,6 +18,7 @@ const TodoReducer = (state = initialState, action) => {
 
 			// good: doesn't mutate
 			return [...state, payload];
+
 			break;
 
 		case "REMOVE_TODO":
@@ -25,7 +26,7 @@ const TodoReducer = (state = initialState, action) => {
 			let id = payload.id
 
 			let matchId = (todo) => {
-				if(todo.id == id) {
+				if(todo.id === id) {
 					return true;
 				}
 					return false;
