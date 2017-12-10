@@ -8,3 +8,6 @@ Basic todo application in React with Redux
 - make test directory
 - make component directly
 - make Todo component
+- write action tests
+- build add item, remove and toggle action in action module
+- add lodash for #uniqueid function
