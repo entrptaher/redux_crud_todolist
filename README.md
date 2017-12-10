@@ -16,3 +16,4 @@ Basic todo application in React with Redux
   "redux-logger": "^3.0.6",
     "redux-promise-middleware": "^4.4.1",
 "redux-thunk": "^2.2.0"
+- add react-redux for easier store methods
