@@ -12,3 +12,7 @@ Basic todo application in React with Redux
 - build add item, remove and toggle action in action module
 - add lodash for #uniqueid function
 - add redux
+- add store middle ware:
+  "redux-logger": "^3.0.6",
+    "redux-promise-middleware": "^4.4.1",
+"redux-thunk": "^2.2.0"
