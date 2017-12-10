@@ -1,6 +1,4 @@
-import React from 'react';
-
-const addTodo = (item, rank) => {
+export const addTodo = (item, rank) => {
 	return {
 		type: "ADD_TODO",
 		payload: {
@@ -10,29 +8,27 @@ const addTodo = (item, rank) => {
 			complete: false
 		}
 	}
-}
+};
 
-const removeTodo = (id) => {
+export const removeTodo = (id) => {
 	return {
 		type: "REMOVE_TODO",
 		payload: {
 			id: id
 		}
 	}
-}
+};
 
-const toggleTodo = (id) => {
+export const toggleTodo = (id) => {
 	return {
 		type: "TOGGLE_TODO",
 		payload: {
-			item: item,
-			rank: rank
 		}
 	}
-}
+};
 
-module.exports = {
+/*module.exports = {
 	addTodo, 
 	removeTodo,
 	toggleTodo
-}
+}*/

@@ -1,7 +1,11 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+
 import logo from './logo.svg';
 import './App.css';
+
 import Todo from './components/Todo';
+import * as todoAction from './actions/todoActions'
 
 class App extends Component {
   render() {
@@ -17,4 +21,17 @@ class App extends Component {
   }
 }
 
-export default App;
+const mapStateToProps =(state) => {
+  return {
+    todo: state
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+
+  return {
+    todoAction
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);

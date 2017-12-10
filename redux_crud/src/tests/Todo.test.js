@@ -1,10 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
+import { Provider } from 'react-redux';
+import store from '../store/store';
+
 import deepFreeze from 'deep-freeze';
 import { expect } from 'chai'
 import todoReducer from '../reducers/todoReducers'
-
 
 import Todo from '../components/Todo';
 import { 
@@ -36,7 +38,11 @@ describe("The todoReducer items", () => {
 
 	it('renders without crashing', () => {
 	  const div = document.createElement('div');
-	  ReactDOM.render(<Todo />, div);
+	  ReactDOM.render(
+		<Provider store={ store } >
+	  	<Todo />
+	 	</Provider>,
+	  	div);
 	});
 
 	describe('The ADD_TODO action ', () => {

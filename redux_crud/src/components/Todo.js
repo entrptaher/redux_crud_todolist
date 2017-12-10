@@ -1,10 +1,18 @@
 import React from 'react';
-import { connect } from 'react-redux';
 
 import { Button } from 'react-bootstrap';
 
+const List =  [1,2,3,4,5]
 
-const list =  [1,2,3,4,5]
+/*const appendList = (todo) => {
+	List.push(todo)
+}
+*/
+/*const handleClick = (event) => {
+	event.preventDefault();
+	appendList("howdy")
+}*/
+
 const Todo = () => {
 
 return (
@@ -17,15 +25,14 @@ return (
 		<Button> Del </Button>
 
 		<ul> 
-		{ list.map((num)=>
-			<li key = {list.indexOf(num)}> {num} </li>
+		{ List.map((num)=>
+			<li key = {List.indexOf(num)}> {num} </li>
 			)}
 			
 		</ul>
 		
 	</div>
-
 	)
 }
-
-export default Todo
+ 
+export default Todo 
