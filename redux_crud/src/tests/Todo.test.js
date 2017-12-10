@@ -13,54 +13,64 @@ import {
 	toggleTodo 
 } from '../actions/todoActions'
 
-
-it('renders without crashing', () => {
-  const div = document.createElement('div');
-  ReactDOM.render(<Todo />, div);
-});
-
-describe('The ADD_TODO  list actions ',() => {
+describe("The todoReducer items", () => {
 
 	let state_start =[ ];
 		// freeze object to ensure immutable result
 		deepFreeze (state_start)
-	let state_end = [ ]
 		
 	let item = "Get groceries";
+	let item2 = "Add a second item";
 	let rank = "High";
+
 	let action = addTodo(item, rank );
-	let action2 = addTodo("test 2nd item ", rank );
 		console.log(action)
-	
-
-	it('...returns a redux action object', () => {
+	let action2 = addTodo(item2, rank );
+		console.log(action2)
 		
-	let newList = TodoReducer(state_start, action )
-	let lastList = TodoReducer(newList, action2)
-		expect(action).to.be.an('object');
-		expect(action.payload.item).to.equal(item);
-		expect(action.payload.rank).to.equal(rank);
-		console.log(newList);
-		console.log(lastList);
+	let list01 = TodoReducer(state_start, action )
+		console.log(list01);
+	let list02 = TodoReducer(list01, action2)
+		console.log(list02);
 
-	})
+	it('renders without crashing', () => {
+	  const div = document.createElement('div');
+	  ReactDOM.render(<Todo />, div);
+	});
 
-	xit('Adds a new item throught the reducer', () => {
-		console.log(newList);
-		expect(newList).to.be.an('array');
-		expect(newList.length).to.equal(1);
-	})
+	describe('The ADD_TODO action ', () => {
 
-	xit('Adds a second item', () => {
-		expect(list2.length).to.equal(2);
-	})
-})
+		it('...returns a redux action object', () => {
+			expect(action).to.be.an('object');
+			expect(action.payload.item).to.equal(item);
+			expect(action.payload.rank).to.equal(rank);
+		})
 
-xit('REMOVE_TODO', () => {
-		let index = 0;
-		let action = removeTodo(index)
-		console.log(action);
+		it('...Adds a new item through the reducer', () => {
+			expect(list01).to.be.an('array');
+			expect(list01.length).to.equal(1);
+		})
 
-		expect(action).to.be.an('object');
+		it('...Adds a second item through the reducer', () => {
+			expect(list02).to.be.an('array');
+			expect(list02.length).to.equal(2);
+		})
+	}); // descr ADD_TODO
 
-	})
+	describe('The REMOVE_TODO action', () => {
+		it('...removes an item from an array', () => {
+			let _id = list01[0].id;
+			console.log(_id);
+
+			let action03 = removeTodo(_id);
+			let updated = TodoReducer(list02,action03);
+			console.log(updated);
+
+			expect(_id).to.equal("todo_1");
+			expect(action).to.be.an('object');
+			expect(updated.length).to.equal(1);
+		});
+	}); // descr Remove
+
+}); //master describe
+

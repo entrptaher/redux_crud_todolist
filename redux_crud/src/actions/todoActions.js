@@ -1,32 +1,32 @@
 import React from 'react';
 
-const addTodo = ( _item, _rank ) => {
+const addTodo = (item, rank) => {
 	return {
 		type: "ADD_TODO",
 		payload: {
-
-			item: _item,
-			rank: _rank,
+			id:"",
+			item: item,
+			rank: rank,
 			complete: false
 		}
 	}
 }
 
-const removeTodo = ( _id ) => {
+const removeTodo = (id) => {
 	return {
 		type: "REMOVE_TODO",
 		payload: {
-			id: _id
+			id: id
 		}
 	}
 }
 
-const toggleTodo = ( _id) => {
+const toggleTodo = (id) => {
 	return {
 		type: "TOGGLE_TODO",
 		payload: {
-			item: _item,
-			rank: _rank
+			item: item,
+			rank: rank
 		}
 	}
 }
