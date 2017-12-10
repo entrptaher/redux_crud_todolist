@@ -1,5 +1,7 @@
 import React from 'react';
-import { Button } from 'react-bootstrap'
+import { connect } from 'react-redux';
+
+import { Button } from 'react-bootstrap';
 
 
 const list =  [1,2,3,4,5]

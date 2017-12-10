@@ -12,6 +12,7 @@ import {
 	removeTodo, 
 	toggleTodo 
 } from '../actions/todoActions'
+// import * as reducers from '../actions/todoActions'
 
 describe("The todoReducer items", () => {
 
