@@ -1,7 +1,9 @@
 // import React from 'react'
 import _ from 'lodash'
 
-const TodoReducer = (state, action) => {
+const initialState = [];
+
+const TodoReducer = (state = initialState, action) => {
 
 	let payload  = action.payload;
 	let type = action.type;
