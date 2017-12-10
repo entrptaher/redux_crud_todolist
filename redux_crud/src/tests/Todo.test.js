@@ -24,14 +24,14 @@ describe("The todoReducer items", () => {
 	let rank = "High";
 
 	let action = addTodo(item, rank );
-		console.log(action)
+		console.log("action => ", action)
 	let action2 = addTodo(item2, rank );
-		console.log(action2)
+		// console.log("action2 => ",action2)
 		
 	let list01 = TodoReducer(state_start, action )
-		console.log(list01);
+		// console.log("list01 => ", list01);
 	let list02 = TodoReducer(list01, action2)
-		console.log(list02);
+		console.log("list02 => ", list02);
 
 	it('renders without crashing', () => {
 	  const div = document.createElement('div');
@@ -60,17 +60,17 @@ describe("The todoReducer items", () => {
 	describe('The REMOVE_TODO action', () => {
 		it('...removes an item from an array', () => {
 			let _id = list01[0].id;
-			console.log(_id);
 
 			let action03 = removeTodo(_id);
 			let updated = TodoReducer(list02,action03);
-			console.log(updated);
+			console.log("item removed => ", updated);
 
 			expect(_id).to.equal("todo_1");
 			expect(action).to.be.an('object');
 			expect(updated.length).to.equal(1);
 		});
 	}); // descr Remove
-
+	
+	
 }); //master describe
 

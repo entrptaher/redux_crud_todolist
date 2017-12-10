@@ -1,7 +1,7 @@
 // import React from 'react'
 import _ from 'lodash'
 
-const TodoReducer = (state =[], action) => {
+const TodoReducer = (state, action) => {
 
 	let payload  = action.payload;
 	let type = action.type;
@@ -44,7 +44,6 @@ const TodoReducer = (state =[], action) => {
 		default:
 			return state
 	}
-
 }
 
 
