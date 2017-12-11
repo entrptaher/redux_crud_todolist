@@ -1,4 +1,4 @@
-export const addTodo = (item, rank) => {
+const addTodo = (item, rank) => {
 	return {
 		type: "ADD_TODO",
 		payload: {
@@ -10,7 +10,7 @@ export const addTodo = (item, rank) => {
 	}
 };
 
-export const removeTodo = (id) => {
+const removeTodo = (id) => {
 	return {
 		type: "REMOVE_TODO",
 		payload: {
@@ -19,7 +19,7 @@ export const removeTodo = (id) => {
 	}
 };
 
-export const toggleTodo = (id) => {
+const toggleTodo = (id) => {
 	return {
 		type: "TOGGLE_TODO",
 		payload: {
@@ -27,8 +27,8 @@ export const toggleTodo = (id) => {
 	}
 };
 
-/*module.exports = {
+module.exports = {
 	addTodo, 
 	removeTodo,
 	toggleTodo
-}*/
+}
