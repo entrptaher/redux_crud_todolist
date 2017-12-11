@@ -1,8 +1,16 @@
 import React from 'react';
 
 import { Button } from 'react-bootstrap';
+import store from '../store/store'
 
-const List =  [1,2,3,4,5]
+import { 
+	addTodo, 
+	removeTodo, 
+	toggleTodo 
+} from '../actions/todoActions'
+
+
+const TodoList =  store.getState()
 
 /*const appendList = (todo) => {
 	List.push(todo)
@@ -25,8 +33,8 @@ return (
 		<Button> Del </Button>
 
 		<ul> 
-		{ List.map((num)=>
-			<li key = {List.indexOf(num)}> {num} </li>
+		{ TodoList.todo.map((num)=>
+			<li key = {TodoList.indexOf(num)}> {num} </li>
 			)}
 			
 		</ul>

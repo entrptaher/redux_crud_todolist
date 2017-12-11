@@ -1,23 +1,22 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import { Provider } from 'react-redux';
-import store from '../store/store';
-
+// Testing...
 import deepFreeze from 'deep-freeze';
 import { expect } from 'chai'
+
+// Data & components
+import store from '../store/store';
+
 import todoReducer from '../reducers/todoReducers'
-
-// import * as todoAction from '../actions/todoActions'
-
 import Todo from '../components/Todo';
-
 import { 
 	addTodo, 
 	removeTodo, 
 	toggleTodo 
 } from '../actions/todoActions'
-// import * as reducers from '../actions/todoActions'
+
+// ====================================
 
 describe("The todoReducer items", () => {
 

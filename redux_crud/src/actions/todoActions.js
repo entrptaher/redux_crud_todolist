@@ -1,5 +1,3 @@
-
-
 const addTodo = (item, rank) => {
 	return {
 		type: "ADD_TODO",
