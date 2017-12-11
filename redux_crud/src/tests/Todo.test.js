@@ -45,7 +45,7 @@ describe("The todoReducer items", () => {
 	  	<Todo />,
 	  	div);
 	});
-
+ 
 	describe ('the Redux Store implementation', () => {
 
 		it('can use ADD_TODO to add a todo to the array', () => {
@@ -54,7 +54,6 @@ describe("The todoReducer items", () => {
 			expect(todoList.length).to.equal(1);
 			expect(todoList[0].item).to.equal("PicklePop,Inc")
 		});
-
 	})
 
 	describe('The ADD_TODO action ', () => {
