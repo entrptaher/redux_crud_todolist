@@ -11,7 +11,6 @@ import {
 
  let data = addTodo("Hungry")
 
-
 const handleEvent=(event) => {
 	event.preventDefault();
 	(addTodo(data))

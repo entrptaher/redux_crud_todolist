@@ -10,7 +10,7 @@ import { Provider } from 'react-redux';
 import store from '../store';
 
 import todoReducer from '../reducers/todoReducer'
-import Todo from '../components/Todo';
+import TodoList from '../components/TodoList';
 import { 
 	addTodo, 
 	removeTodo, 
@@ -43,9 +43,7 @@ describe("The todoReducer items", () => {
 	describe('renders without crashing', () => {
 	  const div = document.createElement('div');
 	  ReactDOM.render(
-	  	<Provider store = { store} >
-		  	<Todo />
-	  	</Provider>
+		  	<TodoList />
 	  	, div
   	);
 	});
@@ -92,7 +90,7 @@ describe("The todoReducer items", () => {
 
 describe("The connect function", ()=> {
 
-	
+	// need to develop a test for props rendering
 	xit('can pass props to the child elements')
 
 })
