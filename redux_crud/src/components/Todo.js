@@ -1,46 +1,62 @@
 import React from 'react';
 
 import { Button } from 'react-bootstrap';
-import store from '../store/store'
+// import store from '../store/store';
+
+// import todoAction from '../actions/todoActions'
+import { connect } from 'react-redux';
 
 import { 
 	addTodo, 
-	removeTodo, 
-	toggleTodo 
+	// removeTodo, 
+	// toggleTodo 
 } from '../actions/todoActions'
 
+ let data = addTodo("Hungry")
 
-const TodoList =  store.getState()
+ // let todoArray = store.getState().todo
 
-/*const appendList = (todo) => {
-	List.push(todo)
-}
-*/
-/*const handleClick = (event) => {
+const handleEvent=(event) => {
 	event.preventDefault();
-	appendList("howdy")
-}*/
+	(addTodo(data))
+}
+
+/*{ TodoList.todo.map((num)=>
+			<li key = {TodoList.indexOf(num)}> {num} </li>
+			)}*/
 
 const Todo = () => {
-
+ 
+ // console.log(this.props)
 return (
 
 	<div>
-
 		<h1> My Todo List </h1>
 
-		<Button> Add </Button>
+		<Button onClick= { handleEvent} > Add </Button>
 		<Button> Del </Button>
 
+		<h2> **  { } ** </h2>
+
 		<ul> 
-		{ TodoList.todo.map((num)=>
-			<li key = {TodoList.indexOf(num)}> {num} </li>
-			)}
-			
 		</ul>
 		
 	</div>
 	)
 }
  
-export default Todo 
+const mapStateToProps = (state) => {
+	return {
+		todo: state.todo
+	}
+}
+const mapDispatchToProps = (dispatch) => {
+	return {
+		addTodo: ()=> dispatch(todoAction.addTodo())
+	}
+}
+
+export default connect(
+	mapStateToProps,
+	mapDispatchToProps
+)(Todo) 

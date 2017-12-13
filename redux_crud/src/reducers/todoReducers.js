@@ -3,7 +3,7 @@ import _ from 'lodash'
 
 // state can also be an object with a collection of other objects or
 // arrays.  SImple array used her for this test
-const initialState = [];
+// const initialState = [];
 
 const TodoReducer = (state = [], action) => {
 
@@ -20,7 +20,6 @@ const TodoReducer = (state = [], action) => {
 
 			// good: doesn't mutate
 			return [...state, payload];
-
 			break;
 
 		case "REMOVE_TODO":

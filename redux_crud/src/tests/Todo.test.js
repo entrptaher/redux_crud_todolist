@@ -4,6 +4,7 @@ import ReactDOM from 'react-dom';
 // Testing...
 import deepFreeze from 'deep-freeze';
 import { expect } from 'chai'
+import { Provider } from 'react-redux';
 
 // Data & components
 import store from '../store/store';
@@ -41,11 +42,16 @@ describe("The todoReducer items", () => {
 	describe('renders without crashing', () => {
 	  const div = document.createElement('div');
 	  ReactDOM.render(
-	  	<Todo />,
-	  	div);
+	  	<Provider store = {store}>
+		  	<Todo />
+	  	</Provider>,
+	  	div
+  	);
 	});
  
 	describe ('the Redux Store implementation', () => {
+
+		console.log ("*****", store.getState())
 
 		it('can use ADD_TODO to add a todo to the array', () => {
 			store.dispatch(addTodo("PicklePop,Inc"))
@@ -76,6 +82,9 @@ describe("The todoReducer items", () => {
 
 	describe('The REMOVE_TODO action', () => {
 	}); // descr Remove
-
 }); //master describe
 
+describe("The connect function", ()=> {
+
+
+})

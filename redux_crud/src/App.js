@@ -5,7 +5,7 @@ import logo from './logo.svg';
 import './App.css';
 
 import Todo from './components/Todo';
-import * as todoAction from './actions/todoActions'
+// import * as todoAction from './actions/todoActions'
 
 class App extends Component {
   render() {
