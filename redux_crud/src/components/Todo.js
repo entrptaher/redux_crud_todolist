@@ -52,7 +52,7 @@ const mapStateToProps = (state) => {
 }
 const mapDispatchToProps = (dispatch) => {
 	return {
-		addTodo: ()=> dispatch(todoAction.addTodo())
+		// addTodo: ()=> dispatch(todoAction.addTodo())
 	}
 }
 

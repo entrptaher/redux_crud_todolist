@@ -7,7 +7,7 @@ import { expect } from 'chai'
 import { Provider } from 'react-redux';
 
 // Data & components
-import store from '../store/store';
+import store from '../store';
 
 import todoReducer from '../reducers/todoReducers'
 import Todo from '../components/Todo';
@@ -51,7 +51,7 @@ describe("The todoReducer items", () => {
  
 	describe ('the Redux Store implementation', () => {
 
-		console.log ("*****", store.getState())
+		console.log ("**** This is the state of the store ****", store.getState())
 
 		it('can use ADD_TODO to add a todo to the array', () => {
 			store.dispatch(addTodo("PicklePop,Inc"))
