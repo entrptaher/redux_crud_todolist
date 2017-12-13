@@ -5,6 +5,8 @@ import logo from './logo.svg';
 import './App.css';
 
 import TodoList from './components/TodoList';
+import TodoForm from './components/TodoForm';
+
 import * as todoAction from './actions/todoActions'
 
 class App extends Component {
@@ -17,6 +19,8 @@ class App extends Component {
         </header>
         <h3> {this.props.todo[0].item} </h3>
         <TodoList todoList ={this.props.todo[0].item}  name={"test name"} />
+        <TodoForm/>
+
       </div>
     );
   }

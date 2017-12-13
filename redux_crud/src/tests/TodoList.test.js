@@ -4,7 +4,6 @@ import ReactDOM from 'react-dom';
 // Testing...
 import deepFreeze from 'deep-freeze';
 import { expect } from 'chai'
-import { Provider } from 'react-redux';
 
 // Data & components
 import store from '../store';
