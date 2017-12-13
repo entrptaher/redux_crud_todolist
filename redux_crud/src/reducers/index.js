@@ -1,6 +1,9 @@
 import { combineReducers } from 'redux'
-import todoReducers from './todoReducers'
+import todoReducer from './todoReducer'
+
 
 export default combineReducers({
-	todo: todoReducers
+	// todo: todoReducers
+	// no need to provid a key/val pair if same names 
+	todoReducer
 })

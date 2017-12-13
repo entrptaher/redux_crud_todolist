@@ -1,10 +1,7 @@
 import React from 'react';
 
 import { Button } from 'react-bootstrap';
-// import store from '../store/store';
-
-// import todoAction from '../actions/todoActions'
-import { connect } from 'react-redux';
+import PropTypes from 'prop-types'
 
 import { 
 	addTodo, 
@@ -14,7 +11,6 @@ import {
 
  let data = addTodo("Hungry")
 
- // let todoArray = store.getState().todo
 
 const handleEvent=(event) => {
 	event.preventDefault();
@@ -25,38 +21,28 @@ const handleEvent=(event) => {
 			<li key = {TodoList.indexOf(num)}> {num} </li>
 			)}*/
 
-const Todo = () => {
- 
+const Todo = (props) => {
  // console.log(this.props)
-return (
+ 
+	return (
 
-	<div>
-		<h1> My Todo List </h1>
+		<div>
+			<h1> My Todo List </h1>
 
-		<Button onClick= { handleEvent} > Add </Button>
-		<Button> Del </Button>
-
-		<h2> **  { } ** </h2>
-
-		<ul> 
-		</ul>
-		
-	</div>
-	)
+			<Button onClick= { handleEvent} > Add </Button>
+			<Button> Del </Button>
+			<h1> 
+				{props.todoList} {props.name}
+			</h1>
+				
+		</div>
+		)
 }
  
-const mapStateToProps = (state) => {
-	return {
-		todo: state.todo
-	}
-}
-const mapDispatchToProps = (dispatch) => {
-	return {
-		// addTodo: ()=> dispatch(todoAction.addTodo())
-	}
-}
 
-export default connect(
-	mapStateToProps,
-	mapDispatchToProps
-)(Todo) 
+
+Todo.propTypes = { }
+
+Todo.defaultProps = { }
+
+export default Todo

@@ -1,11 +1,10 @@
-// import React from 'react'
 import _ from 'lodash'
 
 // state can also be an object with a collection of other objects or
 // arrays.  SImple array used her for this test
 // const initialState = [];
 
-const TodoReducer = (state = [], action) => {
+const TodoReducer = (state = [{item:"Default todo Item", rank: "High"}], action) => {
 
 	let payload  = action.payload;
 	let type = action.type;

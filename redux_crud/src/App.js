@@ -5,7 +5,7 @@ import logo from './logo.svg';
 import './App.css';
 
 import Todo from './components/Todo';
-// import * as todoAction from './actions/todoActions'
+import * as todoAction from './actions/todoActions'
 
 class App extends Component {
   render() {
@@ -15,7 +15,8 @@ class App extends Component {
           <img src={logo} className="App-logo" alt="logo" />
           <h1 className="App-title">Welcome to React</h1>
         </header>
-        <Todo />
+        <h3> {this.props.todo[0].item} </h3>
+        <Todo todoList ={this.props.todo[0].item}  name={"test name"} />
       </div>
     );
   }
@@ -23,14 +24,14 @@ class App extends Component {
 
 const mapStateToProps =(state) => {
   return {
-    todo: state
+    todo: state.todoReducer
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
 
   return {
-  // addTodo
+    addTodo: () => { todoAction.addTodo()}
   };
 };
 

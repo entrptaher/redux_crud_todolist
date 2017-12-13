@@ -9,7 +9,7 @@ import { Provider } from 'react-redux';
 // Data & components
 import store from '../store';
 
-import todoReducer from '../reducers/todoReducers'
+import todoReducer from '../reducers/todoReducer'
 import Todo from '../components/Todo';
 import { 
 	addTodo, 
@@ -39,13 +39,14 @@ describe("The todoReducer items", () => {
 	let list02 = todoReducer(list01, action2)
 		// console.log("list02 => ", list02);
 
+// this may want a Provider to work
 	describe('renders without crashing', () => {
 	  const div = document.createElement('div');
 	  ReactDOM.render(
-	  	<Provider store = {store}>
+	  	<Provider store = { store} >
 		  	<Todo />
-	  	</Provider>,
-	  	div
+	  	</Provider>
+	  	, div
   	);
 	});
  
@@ -53,11 +54,16 @@ describe("The todoReducer items", () => {
 
 		console.log ("**** This is the state of the store ****", store.getState())
 
+		it('can display props', ()=> {
+			// console.log(this.props)
+		})
+
 		it('can use ADD_TODO to add a todo to the array', () => {
 			store.dispatch(addTodo("PicklePop,Inc"))
-			let todoList = (store.getState().todo)
-			expect(todoList.length).to.equal(1);
-			expect(todoList[0].item).to.equal("PicklePop,Inc")
+			let todoList = (store.getState().todoReducer)
+			// let todoList = (store.getState().todo)
+			expect(todoList.length).to.equal(2);
+			expect(todoList[1].item).to.equal("PicklePop,Inc")
 		});
 	})
 
@@ -86,5 +92,7 @@ describe("The todoReducer items", () => {
 
 describe("The connect function", ()=> {
 
+	
+	xit('can pass props to the child elements')
 
 })
