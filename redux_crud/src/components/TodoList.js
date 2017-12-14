@@ -20,18 +20,20 @@ const handleEvent=(event) => {
 			<li key = {TodoList.indexOf(num)}> {num} </li>
 			)}*/
 
-const Todo = (props) => {
+const TodoList = (props) => {
  // console.log(this.props)
- 
+ 	
+
 	return (
 
 		<div>
-			<h1> My Todo List </h1>
+			<h1> My TodoList  </h1>
 
 			<Button onClick= { handleEvent} > Add </Button>
 			<Button> Del </Button>
 			<h1> 
-				{props.todoList} {props.name}
+				mm{props.todoList} 
+				{props.name}
 			</h1>
 				
 		</div>
@@ -40,8 +42,8 @@ const Todo = (props) => {
  
 
 
-Todo.propTypes = { }
+TodoList.propTypes = { }
 
-Todo.defaultProps = { }
+TodoList.defaultProps = { }
 
-export default Todo
+export default TodoList

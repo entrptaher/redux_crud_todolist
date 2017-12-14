@@ -85,11 +85,19 @@ describe("The todoReducer items", () => {
 
 	describe('The REMOVE_TODO action', () => {
 	}); // descr Remove
+
+	describe("The connect function", ()=> {
+
+		// need to develop a test for props rendering
+		xit('can pass props to the child elements', ()=> {
+
+		})
+
+	})
+
+	xdescribe("TodoList assing props", () => {
+
+
+	})
+
 }); //master describe
-
-describe("The connect function", ()=> {
-
-	// need to develop a test for props rendering
-	xit('can pass props to the child elements')
-
-})

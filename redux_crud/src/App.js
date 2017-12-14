@@ -10,6 +10,11 @@ import TodoForm from './components/TodoForm';
 import * as todoAction from './actions/todoActions'
 
 class App extends Component {
+
+  constructor(props) {
+    super(props)
+  }
+
   render() {
     return (
       <div className="App">
@@ -17,8 +22,7 @@ class App extends Component {
           <img src={logo} className="App-logo" alt="logo" />
           <h1 className="App-title">Welcome to React</h1>
         </header>
-        <h3> {this.props.todo[0].item} </h3>
-        <TodoList todoList ={this.props.todo[0].item}  name={"test name"} />
+        <TodoList name={"test name"} />
         <TodoForm/>
 
       </div>
