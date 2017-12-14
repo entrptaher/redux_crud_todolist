@@ -9,9 +9,6 @@ import TodoForm from './components/TodoForm';
 
 import * as todoAction from './actions/todoActions'
 
-// const todo
-
-
 class App extends Component {
 
   constructor(props) {
@@ -19,18 +16,16 @@ class App extends Component {
   }
 
   render() {
-    // const todoList = f=>f
     
     const todoArray = this.props.todo
-    console.log("===> Here's the array: ", todoArray)
+    // console.log("===> Here's the array: ", todoArray)
     
     const todoList = todoArray.map(task => {
       return <li>{task.item} |  {task.rank}</li>
     })
-    console.log("===> Here's the list: ", todoList)
+    // console.log("===> Here's the list: ", todoList)
     
     const Myname = "Props passed from Parent APP"
-
 
     return (
       <div className="App">
@@ -58,5 +53,7 @@ const mapDispatchToProps = (dispatch) => {
     addTodo: () => { todoAction.addTodo()}
   };
 };
+
+// ADD proptypes for validations
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
