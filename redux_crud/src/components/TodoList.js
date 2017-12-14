@@ -21,8 +21,11 @@ const handleEvent=(event) => {
 			)}*/
 
 const TodoList = (props) => {
- // console.log(this.props)
  	
+ console.log(props)
+ // console.log(props.todoList.item)
+
+
 
 	return (
 
@@ -31,15 +34,12 @@ const TodoList = (props) => {
 
 			<Button onClick= { handleEvent} > Add </Button>
 			<Button> Del </Button>
-			<h1> 
-				mm{props.todoList} 
-				{props.name}
-			</h1>
+			<h3> {props.name} </h3>
+			<h3> list?{props.todoList}   </h3>
 				
 		</div>
 		)
 }
- 
 
 
 TodoList.propTypes = { }

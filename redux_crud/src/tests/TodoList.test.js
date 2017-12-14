@@ -97,7 +97,6 @@ describe("The todoReducer items", () => {
 
 	xdescribe("TodoList assing props", () => {
 
-
 	})
 
 }); //master describe
