@@ -1,21 +1,21 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-
-// bootstrap not working...
-import { Button, Row, Col } from 'react-bootstrap'
-import DeleteBtn from './components/DeleteBtn';
-
-
 import logo from './logo.svg';
 import './App.css';
+import PropTypes from 'prop-types'
 
+// ============ COMPONENTS ============ 
+import { Button, Row, Col } from 'react-bootstrap'
+// bootstrap not working...
+import DeleteBtn from './components/DeleteBtn';
 import TodoList from './components/TodoList';
 import TodoForm from './components/TodoForm';
 
-// import * as todoAction from './actions/todoActions'
-
+// ============ FUNCTIONS ============ 
 import { addTodo, removeTodo } from './actions/todoActions'
+
   
+// ===================================
 class App extends Component {
 
   constructor(props) {
@@ -24,43 +24,38 @@ class App extends Component {
 
   render() {
 
-    const todoArray = this.props.todo
-    // console.log("===> Here's the array: ", todoArray)
-    
-    const todoList = todoArray.map(task => {
+    const todoList = this.props.todo.map(task => {
       return (
         <li key={task.id}  > {task.item} ..... {task.rank} {task.id}
           <DeleteBtn id={task.id} removeTodo = { this.props.removeTodo } />
         </li>
         )
     })
-    // console.log("===> Here's the list: ", todoList)
     
-    const ListTitle = "My first React / Redux Todo list "
-
     return (
       <div className="App">
+
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
           <h1 className="App-title">Welcome to React</h1>
         </header>
-          <h1> {ListTitle} </h1>
-          <TodoForm addTodo = { this.props.addTodo } />
-          <TodoList todoList = { todoList } />
+
+        <h1> React/Redux Todo List</h1>
+        <TodoForm addTodo = { this.props.addTodo } />
+        <TodoList todoList = { todoList } />
 
       </div>
     );
   }
-}
+}; // end Class
 
 const mapStateToProps =(state) => {
   return {
     todo: state.todoReducer
   };
-};
+}; // end const
 
 const mapDispatchToProps = (dispatch) => {
-
   return {
     removeTodo: (id) => {
       dispatch(removeTodo(id))
@@ -68,10 +63,23 @@ const mapDispatchToProps = (dispatch) => {
     addTodo: (task, rank) => {
       dispatch(addTodo(task,rank)) 
     },
-    
   };
-};
+}; // end const
 
 // ADD proptypes for validations
 
+App.propTypes = { 
+  addTodo: PropTypes.func.isRequired,
+  // updateTodo: PropTypes.func.isRequired,
+  removeTodo: PropTypes.func.isRequired,
+  // toggleTodo: PropTypes.func.isRequired
+}
+
+App.defaultProps ={
+  addTodo: f=>f,
+  removeTodo: f=>f,
+  // updateTodo: f=>f
+  // toggleTodo: f=>f
+
+}
 export default connect(mapStateToProps, mapDispatchToProps)(App);

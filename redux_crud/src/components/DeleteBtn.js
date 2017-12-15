@@ -16,9 +16,13 @@ const DeleteBtn = (props) => {
 }
 
 DeleteBtn.propTypes = {
-
 	removeTodo: PropTypes.func.isRequired,
-	test: PropTypes.string.isRequired
+	id: PropTypes.number.isRequired
+}
+
+DeleteBtn.defaultProps = {
+	removeTodo: f=>f,
+	id: 0
 }
 
 export default DeleteBtn
