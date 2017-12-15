@@ -6,7 +6,7 @@ import PropTypes from 'prop-types'
 
 const TodoList = (props) => {
  	
- console.log(props)
+ // console.log(props)
 
 	return (
 

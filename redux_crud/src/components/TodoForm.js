@@ -8,7 +8,7 @@ const handleClick = (event) => {
 
 const TodoForm = (props) => {
 
-	console.log("&&&&", props.addTodo)
+	// console.log("&&&&", props.addTodo)
 	// console.log(props.addTodo("Michael"))
 
 	return (

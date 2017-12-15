@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 
 // bootstrap not working...
 import { Button, Row, Col } from 'react-bootstrap'
+import DeleteBtn from './components/DeleteBtn';
+
 
 import logo from './logo.svg';
 import './App.css';
@@ -27,8 +29,8 @@ class App extends Component {
     
     const todoList = todoArray.map(task => {
       return (
-        <li> {task.item} ..... {task.rank} {task.id}
-          <Button onClick ={()=> removeTodo("todo_9")} > delete </Button>   
+        <li key={task.id}  > {task.item} ..... {task.rank} {task.id}
+          <DeleteBtn id={task.id} removeTodo = { this.props.removeTodo } />
         </li>
         )
     })
@@ -43,8 +45,8 @@ class App extends Component {
           <h1 className="App-title">Welcome to React</h1>
         </header>
           <h1> {ListTitle} </h1>
-          <TodoForm addTodo = {this.props.addTodo} />
-          <TodoList todoList = {todoList} />
+          <TodoForm addTodo = { this.props.addTodo } />
+          <TodoList todoList = { todoList } />
 
       </div>
     );
