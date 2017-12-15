@@ -2,18 +2,13 @@ import React from 'react';
 import PropTypes from 'prop-types'
 
 const Checkbox = () => {
-
-	return "Checkbox"
+	return (<input type="checkbox" />)
 };
 
-
-Checkbox.propTypes ={
-	
+Checkbox.propTypes = {
 }
 
-Checkbox.defaultProps ={
-
+Checkbox.defaultProps = {
 }
-
 
 export default Checkbox

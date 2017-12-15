@@ -7,6 +7,7 @@ import PropTypes from 'prop-types'
 // ============ COMPONENTS ============ 
 import { Button, Row, Col } from 'react-bootstrap'
 // bootstrap not working...
+import Checkbox from '../containers/Checkbox';
 import DeleteBtn from '../containers/DeleteBtn';
 import TodoList from '../containers/TodoList';
 import TodoForm from '../containers/TodoForm';
@@ -37,7 +38,7 @@ class App extends Component {
     // create the todo list items
     const todoList = this.props.todo.map(task => {
       return (
-        <li key={task.id}> <input type="checkbox" /> {task.date} {task.task} ..... {task.rank} {task.id}
+        <li key={task.id}> <Checkbox/> {task.date} {task.task} ..... {task.rank} {task.id}
           <DeleteBtn id={task.id} removeTodo = { this.props.removeTodo } />
         </li>
         )

@@ -3,9 +3,7 @@ import PropTypes from 'prop-types'
 // import { Form } from 'react-bootstrap'
 
 const TodoForm = (props) => {
-
 	let _task, _rank, _date
-
 	const handleSubmit = (event) => {
 		event.preventDefault();
 		props.addTodo(_task.value, _rank.value, _date.value);
