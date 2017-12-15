@@ -8,14 +8,10 @@ const TodoForm = (props) => {
 
 	const handleSubmit = (event) => {
 		event.preventDefault();
-		// alert("Hello")
-/*		if (_task.value == "" || _rank.value == "") {
-			alert ("Please enter all fields")
-		}
-*/		props.addTodo(_task.value, _rank.value);
+		props.addTodo(_task.value, _rank.value);
+	
 		// reset the fields
 		_task.value ="";
-		_date = 
 		_task.focus();
 	}
 
@@ -26,11 +22,11 @@ const TodoForm = (props) => {
 
 				<select ref= {(input) => _rank = input}>
 				  <option value="high">High</option>
-				  <option value="medium" defaultValue= "selected">Med</option>
+				  <option value="medium" selected="selected">Med</option>
 				  <option value="low">Low</option>
 				</select>
 
-				<input ref= {(input) => _task = input} type = "text"  placeholder="Task" size={60} required></input>
+				<input ref= {(input) => _task = input} type = "text"  placeholder="Task" size={40} required></input>
 				<input ref= {(input) => _date = input} type = "date" defaultValue="2020-12-31" required></input>
 				
 				<input type="submit"/>
@@ -39,8 +35,6 @@ const TodoForm = (props) => {
 		</div>
 	)
 }
-
-// add Proptype validation
 
 TodoForm.propTypes = {
 	_task: PropTypes.string.isRequired,

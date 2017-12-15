@@ -26,7 +26,7 @@ class App extends Component {
 
     const todoList = this.props.todo.map(task => {
       return (
-        <li key={task.id}  > {task.item} ..... {task.rank} {task.id}
+        <li key={task.id}> <input type="checkbox" /> {task.item} ..... {task.rank} {task.id}
           <DeleteBtn id={task.id} removeTodo = { this.props.removeTodo } />
         </li>
         )
