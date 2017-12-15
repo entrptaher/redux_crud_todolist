@@ -1,3 +1,5 @@
+// should split this into a reducer test suite
+
 import React from 'react';
 import ReactDOM from 'react-dom';
 
@@ -82,21 +84,5 @@ describe("The todoReducer items", () => {
 			expect(list02.length).to.equal(2);
 		})
 	}); // descr ADD_TODO
-
-	describe('The REMOVE_TODO action', () => {
-	}); // descr Remove
-
-	describe("The connect function", ()=> {
-
-		// need to develop a test for props rendering
-		xit('can pass props to the child elements', ()=> {
-
-		})
-
-	})
-
-	xdescribe("TodoList assing props", () => {
-
-	})
 
 }); //master describe

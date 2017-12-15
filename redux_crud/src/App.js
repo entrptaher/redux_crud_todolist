@@ -12,14 +12,13 @@ import TodoForm from './components/TodoForm';
 
 // import * as todoAction from './actions/todoActions'
 
-import { addTodo } from './actions/todoActions'
+import { addTodo, removeTodo } from './actions/todoActions'
   
 class App extends Component {
 
   constructor(props) {
     super(props)
   }
-
 
   render() {
 
@@ -28,8 +27,8 @@ class App extends Component {
     
     const todoList = todoArray.map(task => {
       return (
-        <li> {task.item} ..... {task.rank} 
-          <Button bsStyle="primary" bsSize="small"> delete </Button>   
+        <li> {task.item} ..... {task.rank} {task.id}
+          <Button onClick ={()=> removeTodo("todo_9")} > delete </Button>   
         </li>
         )
     })
@@ -61,9 +60,13 @@ const mapStateToProps =(state) => {
 const mapDispatchToProps = (dispatch) => {
 
   return {
+    removeTodo: (id) => {
+      dispatch(removeTodo(id))
+    },
     addTodo: (task, rank) => {
       dispatch(addTodo(task,rank)) 
-    }
+    },
+    
   };
 };
 

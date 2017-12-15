@@ -13,9 +13,7 @@ const addTodo = (item, rank) => {
 const removeTodo = (id) => {
 	return {
 		type: "REMOVE_TODO",
-		payload: {
-			id: id
-		}
+		payload: id
 	}
 };
 
