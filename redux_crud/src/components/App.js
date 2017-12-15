@@ -13,7 +13,7 @@ import TodoList from '../containers/TodoList';
 import TodoForm from '../containers/TodoForm';
 
 // ============ FUNCTIONS ============ 
-import { addTodo, removeTodo } from '../actions/todoActions'
+import { addTodo, removeTodo,toggleTodo } from '../actions/todoActions'
 
   
 // ===================================
@@ -31,15 +31,23 @@ class App extends Component {
       let month = date.getMonth()+1;
       let day = date.getDate();
       let fullDate =[]
-      return [...fullDate,year,month,day].join("-")
+      return [...fullDate, year, month, day].join("-")
     }
     const _today = getDay(new Date())
 
     // create the todo list items
     const todoList = this.props.todo.map(task => {
+      let _id = task.id
       return (
-        <li key={task.id}> <Checkbox/> {task.date} {task.task} ..... {task.rank} {task.id}
-          <DeleteBtn id={task.id} removeTodo = { this.props.removeTodo } />
+        <li key={_id}> 
+
+          {_id} ..
+          <Checkbox id={_id} toggleTodo={ this.props.toggleTodo }/>..    
+          {task.task} ..... 
+          {task.rank} .....
+          {task.date} 
+          <DeleteBtn id={_id} removeTodo={ this.props.removeTodo } />
+
         </li>
         )
     })
@@ -74,11 +82,14 @@ const mapStateToProps =(state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
+    addTodo: (task, rank, date) => {
+      dispatch(addTodo(task, rank, date)) 
+    },
     removeTodo: (id) => {
       dispatch(removeTodo(id))
     },
-    addTodo: (task, rank, date) => {
-      dispatch(addTodo(task, rank, date)) 
+    toggleTodo: (id) => {
+      dispatch(removeTodo(id))
     },
   };
 }; // end const
@@ -89,14 +100,14 @@ App.propTypes = {
   addTodo: PropTypes.func.isRequired,
   // updateTodo: PropTypes.func.isRequired,
   removeTodo: PropTypes.func.isRequired,
-  // toggleTodo: PropTypes.func.isRequired
+  toggleTodo: PropTypes.func.isRequired
 }
 
 App.defaultProps ={
   addTodo: f=>f,
   removeTodo: f=>f,
+  toggleTodo: f=>f
   // updateTodo: f=>f
-  // toggleTodo: f=>f
 
 }
 export default connect(mapStateToProps, mapDispatchToProps)(App);

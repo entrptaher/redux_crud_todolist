@@ -21,8 +21,7 @@ const removeTodo = (id) => {
 const toggleTodo = (id) => {
 	return {
 		type: "TOGGLE_TODO",
-		payload: {
-		}
+		payload: id
 	}
 };
 
