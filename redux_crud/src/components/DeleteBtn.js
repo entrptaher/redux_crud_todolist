@@ -17,12 +17,12 @@ const DeleteBtn = (props) => {
 
 DeleteBtn.propTypes = {
 	removeTodo: PropTypes.func.isRequired,
-	id: PropTypes.number.isRequired
+	// id: PropTypes.number.isRequired
 }
 
 DeleteBtn.defaultProps = {
-	removeTodo: f=>f,
-	id: 0
+	// removeTodo: f=>f,
+	// id: 0
 }
 
 export default DeleteBtn

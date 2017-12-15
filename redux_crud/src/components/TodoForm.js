@@ -8,17 +8,29 @@ const handleClick = (event) => {
 
 const TodoForm = (props) => {
 
-	// console.log("&&&&", props.addTodo)
-	// console.log(props.addTodo("Michael"))
+	let _task, _rank
+
+	const handleForm = (event) => {
+		event.preventDefault();
+		// alert("Hello")
+/*		if (_task.value == "" || _rank.value == "") {
+			alert ("Please enter all fields")
+		}
+*/		props.addTodo(_task.value, _rank.value);
+		// reset the fields
+		_task.value ="";
+		_rank.value ="";
+		_task.focus();
+	}
 
 	return (
 		<div>
 			<h4> Add a new todo here: </h4>
-			<form>
-				<input type = "text" placeholder="Task"></input>
-				<input type = "text" placeholder="Rank"></input>
+			<form onSubmit={handleForm}>
+				<input ref= {(input) => _task = input} type = "text"  placeholder="Task" required></input>
+				<input ref= {(input) => _rank = input} type = "text" placeholder="Rank" required></input>
+			<button type="submit" > Add todo </button>
 			</form>
-			<button type="submit" onClick={()=>props.addTodo("Michael")} > Add to List  </button>
 		</div>
 	)
 }

@@ -36,9 +36,9 @@ xdescribe('The ADD_TODO function', () => {
 
 });
 
-describe('The REMOVE_TODO function', () => { 
+xdescribe('The REMOVE_TODO function', () => { 
 
-	it('...can REMOVE an item from the list', () => {
+	xit('...can REMOVE an item from the list', () => {
 		let listBefore = store.getState().todoReducer
 		deepFreeze (listBefore)
 			expect(listBefore.length).to.equal(3);
