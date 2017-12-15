@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import DeleteBtn from '../components/DeleteBtn';
+import DeleteBtn from '../containers/DeleteBtn';
 
 import { Provider } from 'react-redux';
 import store from '../store';

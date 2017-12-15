@@ -1,18 +1,18 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import logo from './logo.svg';
+import logo from '../assets/logo.svg';
 import './App.css';
 import PropTypes from 'prop-types'
 
 // ============ COMPONENTS ============ 
 import { Button, Row, Col } from 'react-bootstrap'
 // bootstrap not working...
-import DeleteBtn from './components/DeleteBtn';
-import TodoList from './components/TodoList';
-import TodoForm from './components/TodoForm';
+import DeleteBtn from '../containers/DeleteBtn';
+import TodoList from '../containers/TodoList';
+import TodoForm from '../containers/TodoForm';
 
 // ============ FUNCTIONS ============ 
-import { addTodo, removeTodo } from './actions/todoActions'
+import { addTodo, removeTodo } from '../actions/todoActions'
 
   
 // ===================================

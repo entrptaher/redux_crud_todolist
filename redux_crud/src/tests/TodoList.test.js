@@ -11,7 +11,7 @@ import { expect } from 'chai'
 import store from '../store';
 
 import todoReducer from '../reducers/todoReducer'
-import TodoList from '../components/TodoList';
+import TodoList from '../containers/TodoList';
 import { 
 	addTodo, 
 	removeTodo, 
