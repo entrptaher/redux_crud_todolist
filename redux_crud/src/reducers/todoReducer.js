@@ -4,7 +4,11 @@ import _ from 'lodash'
 // arrays.  SImple array used her for this test
 // const initialState = [];
 
-const TodoReducer = (state = [{item:"Default todo Item", rank: "High"}], action) => {
+const TodoReducer = (state = [
+	{item:"Default todo Item 01", rank: "High"},
+	{item:"Default todo Item 02", rank: "Med"},
+	{item:"Default todo Item 03", rank: "Low"},
+	], action) => {
 
 	let payload  = action.payload;
 	let type = action.type;

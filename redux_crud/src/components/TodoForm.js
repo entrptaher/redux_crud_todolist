@@ -8,11 +8,12 @@ export default class TodoForm extends Component {
 
 		return (
 			<div>
-				<h1> The form will go here </h1>
+				<h4> Add a new todo here: </h4>
 				<form>
 					<input type = "text" placeholder="Task"></input>
 					<input type = "text" placeholder="Rank"></input>
 				</form>
+				<button type="submit"> Add to List  </button>
 			</div>
 			)
 	}

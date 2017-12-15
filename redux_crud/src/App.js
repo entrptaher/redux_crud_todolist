@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Button, Row, Col } from 'react-bootstrap'
 
 import logo from './logo.svg';
 import './App.css';
@@ -21,11 +22,13 @@ class App extends Component {
     // console.log("===> Here's the array: ", todoArray)
     
     const todoList = todoArray.map(task => {
-      return <li>{task.item} |  {task.rank}</li>
+      return (
+        <li> {task.item} ..... {task.rank} <Button> delete </Button>   </li>
+        )
     })
     // console.log("===> Here's the list: ", todoList)
     
-    const Myname = "Props passed from Parent APP"
+    const ListTitle = "My first React / Redux Todo list "
 
     return (
       <div className="App">
@@ -33,8 +36,9 @@ class App extends Component {
           <img src={logo} className="App-logo" alt="logo" />
           <h1 className="App-title">Welcome to React</h1>
         </header>
-        <TodoList todoList = {todoList} name={Myname} />
-        <TodoForm/>
+          <h1> {ListTitle} </h1>
+          <TodoForm/>
+          <TodoList todoList = {todoList} addTodo = {this.props.addTodo}/>
 
       </div>
     );

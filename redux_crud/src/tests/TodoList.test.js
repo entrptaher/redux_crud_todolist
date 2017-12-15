@@ -59,8 +59,8 @@ describe("The todoReducer items", () => {
 			store.dispatch(addTodo("PicklePop,Inc"))
 			let todoList = (store.getState().todoReducer)
 			// let todoList = (store.getState().todo)
-			expect(todoList.length).to.equal(2);
-			expect(todoList[1].item).to.equal("PicklePop,Inc")
+			expect(todoList.length).to.equal(4);
+			expect(todoList[3].item).to.equal("PicklePop,Inc")
 		});
 	})
 
