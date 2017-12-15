@@ -14,7 +14,4 @@ it('renders without crashing', () => {
   	div);
 });
 
-xdescribe('The todo Reducer Props', () => {
-
-})
 

@@ -1,17 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import DeleteBtn from '../containers/DeleteBtn';
-
-import store from '../store';
+import Checkbox from '../containers/Checkbox';
 
 it('renders without crashing', () => {
   const div = document.createElement('div');
   ReactDOM.render(
-  		<DeleteBtn />,
+  		<Checkbox />,
   	div);
 });
 
-xdescribe('The todo Reducer Props', () => {
-
-})
 

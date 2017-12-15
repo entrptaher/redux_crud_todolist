@@ -1,5 +1,4 @@
 // should split this into a reducer test suite
-
 import React from 'react';
 
 // Testing...
