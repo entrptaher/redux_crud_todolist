@@ -12,7 +12,7 @@ const TodoList = (props) => {
 
 		<div>
 			<h2> TodoList </h2>
-			<h3> {props.todoList}   </h3>
+			<p> {props.todoList} </p>
 		</div>
 		)
 }

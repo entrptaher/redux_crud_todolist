@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+
+// bootstrap not working...
 import { Button, Row, Col } from 'react-bootstrap'
 
 import logo from './logo.svg';
@@ -8,22 +10,27 @@ import './App.css';
 import TodoList from './components/TodoList';
 import TodoForm from './components/TodoForm';
 
-import * as todoAction from './actions/todoActions'
+// import * as todoAction from './actions/todoActions'
 
+import { addTodo } from './actions/todoActions'
+  
 class App extends Component {
 
   constructor(props) {
     super(props)
   }
 
+
   render() {
-    
+
     const todoArray = this.props.todo
     // console.log("===> Here's the array: ", todoArray)
     
     const todoList = todoArray.map(task => {
       return (
-        <li> {task.item} ..... {task.rank} <Button> delete </Button>   </li>
+        <li> {task.item} ..... {task.rank} 
+          <Button bsStyle="primary" bsSize="small"> delete </Button>   
+        </li>
         )
     })
     // console.log("===> Here's the list: ", todoList)
@@ -37,8 +44,8 @@ class App extends Component {
           <h1 className="App-title">Welcome to React</h1>
         </header>
           <h1> {ListTitle} </h1>
-          <TodoForm/>
-          <TodoList todoList = {todoList} addTodo = {this.props.addTodo}/>
+          <TodoForm addTodo = {this.props.addTodo} />
+          <TodoList todoList = {todoList} />
 
       </div>
     );
@@ -54,7 +61,9 @@ const mapStateToProps =(state) => {
 const mapDispatchToProps = (dispatch) => {
 
   return {
-    addTodo: () => { todoAction.addTodo()}
+    addTodo: (task, rank) => {
+      dispatch(addTodo(task,rank)) 
+    }
   };
 };
 
