@@ -1,10 +1,11 @@
-const addTodo = (item, rank) => {
+const addTodo = (_task, _rank, _date) => {
 	return {
 		type: "ADD_TODO",
 		payload: {
 			id:"",
-			item: item,
-			rank: rank,
+			task: _task,
+			rank: _rank,
+			date: _date,
 			complete: false
 		}
 	}

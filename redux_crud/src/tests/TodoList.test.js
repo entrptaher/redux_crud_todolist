@@ -20,19 +20,20 @@ import {
 
 // ====================================
 
-describe("The todoReducer items", () => {
+describe("The todoReducer tasks", () => {
 
 	let state_start =[ ];
 		// freeze object to ensure immutable result
 		deepFreeze (state_start)
 		
-	let item = "Get groceries";
-	let item2 = "Add a second item";
+	let task = "Get groceries";
+	let task2 = "Add a second task";
 	let rank = "High";
+	let date = "2020-12-31"
 
-	let action = addTodo(item, rank );
+	let action = addTodo(task, rank );
 		// console.log("action => ", action)
-	let action2 = addTodo(item2, rank );
+	let action2 = addTodo(task2, rank );
 		// console.log("action2 => ",action2)
 		
 	let list01 = todoReducer(state_start, action )
@@ -58,11 +59,11 @@ describe("The todoReducer items", () => {
 		})
 
 		it('can use ADD_TODO to add a todo to the array', () => {
-			store.dispatch(addTodo("PicklePop,Inc"))
+			store.dispatch(addTodo("PicklePop,Inc", "High", "2020-12-31"))
 			let todoList = (store.getState().todoReducer)
 			// let todoList = (store.getState().todo)
 			expect(todoList.length).to.equal(4);
-			expect(todoList[3].item).to.equal("PicklePop,Inc")
+			expect(todoList[3].task).to.equal("PicklePop,Inc")
 		});
 	})
 
@@ -70,16 +71,16 @@ describe("The todoReducer items", () => {
 
 		it('...returns a redux action object', () => {
 			expect(action).to.be.an('object');
-			expect(action.payload.item).to.equal(item);
+			expect(action.payload.task).to.equal(task);
 			expect(action.payload.rank).to.equal(rank);
 		})
 
-		it('...Adds a new item through the reducer', () => {
+		it('...Adds a new task through the reducer', () => {
 			expect(list01).to.be.an('array');
 			expect(list01.length).to.equal(1);
 		})
 
-		it('...Adds a second item through the reducer', () => {
+		it('...Adds a second task through the reducer', () => {
 			expect(list02).to.be.an('array');
 			expect(list02.length).to.equal(2);
 		})

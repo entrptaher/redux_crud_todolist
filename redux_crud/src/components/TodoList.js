@@ -15,7 +15,6 @@ const listStyle = {
 // ===============
 const TodoList = (props) => {
 
-
 	return (
 
 		<div>

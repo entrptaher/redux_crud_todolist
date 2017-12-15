@@ -5,9 +5,9 @@ import _ from 'lodash'
 // const initialState = [];
 
 const TodoReducer = (state = [
-	{id:0.1, item:"Default todo Item 01", rank: "High"},
-	{id:0.2, item:"Default todo Item 02", rank: "Med"},
-	{id:0.3, item:"Default todo Item 03", rank: "Low"},
+	{id:0.1, date: 	"2020-01-01", complete: false, task:"Default todo task 01", rank: "High"},
+	{id:0.2, date: 	"2020-01-01", complete: false, task:"Default todo task 02", rank: "Med"},
+	{id:0.3, date: 	"2020-01-01", complete: false, task:"Default todo task 03", rank: "Low"},
 	], action) => {
 
 	let payload  = action.payload;

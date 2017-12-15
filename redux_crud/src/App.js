@@ -24,9 +24,20 @@ class App extends Component {
 
   render() {
 
+    // create a default format for today's date
+    const getDay = (date) => {
+      let year = date.getFullYear();
+      let month = date.getMonth()+1;
+      let day = date.getDate();
+      let fullDate =[]
+      return [...fullDate,year,month,day].join("-")
+    }
+    const _today = getDay(new Date())
+
+    // create the todo list items
     const todoList = this.props.todo.map(task => {
       return (
-        <li key={task.id}> <input type="checkbox" /> {task.item} ..... {task.rank} {task.id}
+        <li key={task.id}> <input type="checkbox" /> {task.date} {task.task} ..... {task.rank} {task.id}
           <DeleteBtn id={task.id} removeTodo = { this.props.removeTodo } />
         </li>
         )
@@ -41,7 +52,12 @@ class App extends Component {
         </header>
 
         <h1> React/Redux Todo List</h1>
-        <TodoForm addTodo = { this.props.addTodo } />
+
+        <TodoForm 
+          addTodo = { this.props.addTodo }
+          _today = { _today } 
+        />
+
         <TodoList todoList = { todoList } />
 
       </div>
@@ -60,8 +76,8 @@ const mapDispatchToProps = (dispatch) => {
     removeTodo: (id) => {
       dispatch(removeTodo(id))
     },
-    addTodo: (task, rank) => {
-      dispatch(addTodo(task,rank)) 
+    addTodo: (task, rank, date) => {
+      dispatch(addTodo(task, rank, date)) 
     },
   };
 }; // end const
