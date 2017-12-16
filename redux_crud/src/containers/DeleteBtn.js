@@ -4,8 +4,6 @@ import { Button } from "react-bootstrap";
 
 const DeleteBtn = (props) => {
 
- console.log(props)
-
 	return (
 		// <Button > {props.test} </Button>
 		<Button onClick= {()=> props.removeTodo(props.id)} > Delete </Button>
@@ -14,12 +12,11 @@ const DeleteBtn = (props) => {
 
 DeleteBtn.propTypes = {
 	removeTodo: PropTypes.func.isRequired,
-	// id: PropTypes.number.isRequired
+	id: PropTypes.string.isRequired
 }
 
 DeleteBtn.defaultProps = {
-	// removeTodo: f=>f,
-	// id: 0
+	removeTodo: f => f,
 }
 
 export default DeleteBtn

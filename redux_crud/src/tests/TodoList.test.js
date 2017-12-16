@@ -10,7 +10,7 @@ import { expect } from 'chai'
 // Data & components
 import store from '../store';
 
-import todoReducer from '../reducers/todoReducer'
+import todos from '../reducers/todoReducer'
 import TodoList from '../containers/TodoList';
 import { 
 	addTodo, 
@@ -20,7 +20,7 @@ import {
 
 // ====================================
 
-describe("The todoReducer tasks", () => {
+describe("The todos tasks", () => {
 
 	let state_start =[ ];
 		// freeze object to ensure immutable result
@@ -36,12 +36,12 @@ describe("The todoReducer tasks", () => {
 	let action2 = addTodo(task2, rank );
 		// console.log("action2 => ",action2)
 		
-	let list01 = todoReducer(state_start, action )
+	let list01 = todos(state_start, action )
 		// console.log("list01 => ", list01);
-	let list02 = todoReducer(list01, action2)
+	let list02 = todos(list01, action2)
 		// console.log("list02 => ", list02);
 
-// this may want a Provider to work
+// this may want a Prover to work
 	describe('renders without crashing', () => {
 	  const div = document.createElement('div');
 	  ReactDOM.render(
@@ -60,7 +60,7 @@ describe("The todoReducer tasks", () => {
 
 		it('can use ADD_TODO to add a todo to the array', () => {
 			store.dispatch(addTodo("PicklePop,Inc", "High", "2020-12-31"))
-			let todoList = (store.getState().todoReducer)
+			let todoList = (store.getState().todos)
 			// let todoList = (store.getState().todo)
 			expect(todoList.length).to.equal(4);
 			expect(todoList[3].task).to.equal("PicklePop,Inc")

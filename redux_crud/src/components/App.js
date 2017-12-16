@@ -76,7 +76,7 @@ class App extends Component {
 
 const mapStateToProps =(state) => {
   return {
-    todo: state.todoReducer
+    todo: state.todos
   };
 }; // end const
 

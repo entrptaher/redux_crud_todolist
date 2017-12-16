@@ -15,7 +15,7 @@ const TodoReducer = (state = [
 
 	switch (type) {
 
-		case "ADD_TODO":
+		case "ADD_TODO": {
 			action.payload.id = _.uniqueId();
 
 			// wrong: mutates state
@@ -24,21 +24,17 @@ const TodoReducer = (state = [
 			// good: doesn't mutate
 			return [...state, payload];
 			break;
+		}
 
-		case "REMOVE_TODO":
-			
-			let id = payload
-
-			// poor mutating method:
-			// state.splice(id,1)
-
-			// non mutating method
+		case "REMOVE_TODO":{
+					
+			let _id = payload
 
 			let matchId = (todo) => {
-				if(todo.id === id) {
+				if(todo.id === _id) {
 					return true;
 				}
-					return false;
+				return false;
 			}
 
 			if(state.some(matchId)) {
@@ -48,14 +44,43 @@ const TodoReducer = (state = [
 					...state.slice(0, index), 
 				 	...state.slice(index+1)
 				]
-
 			} 
 				return state
 			break;
+		}
+
+		case "TOGGLE_TODO": {
+
+			let _id = payload
+
+			let matchId = (todo) => {
+				if(todo.id === _id) {
+					return true;
+				}
+				return false;
+			}
+			let target = state.findIndex(matchId)
+
+			let newState = state.map((task, index) => {
+				if(index != target ) {
+					return task
+				}
+				return Object.assign(
+						{}, 
+						task, 
+						{complete:true}
+					)
+			})
+
+			return Object.assign({}, state, newState)
+
+			break;
+		}
+		
 
 		default:
 			return state
-	}
+		}
 }
 
 export default TodoReducer
