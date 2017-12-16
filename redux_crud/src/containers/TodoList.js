@@ -3,7 +3,6 @@ import React from 'react';
 import {  } from 'react-bootstrap';
 import PropTypes from 'prop-types'
 
-
 // =============== STYLING =============
 
 const listStyle = {

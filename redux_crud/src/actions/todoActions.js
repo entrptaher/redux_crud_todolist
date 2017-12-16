@@ -11,22 +11,33 @@ const addTodo = (_task, _rank, _date) => {
 	}
 };
 
-const removeTodo = (id) => {
+const removeTodo = (_id) => {
 	return {
 		type: "REMOVE_TODO",
-		payload: id
+		payload: {id:_id}
 	}
 };
 
-const toggleTodo = (id) => {
+const toggleTodo = (_id) => {
 	return {
 		type: "TOGGLE_TODO",
-		payload: id
+		payload: {id:_id}
+	}
+};
+
+const updateTodo = (_id,_task) => {
+	return {
+		type: "UPDATE_TODO",
+		payload: {
+			id:_id,
+			task: _task
+		}
 	}
 };
 
 module.exports = {
 	addTodo, 
+	updateTodo,
 	removeTodo,
-	toggleTodo
+	toggleTodo,
 }

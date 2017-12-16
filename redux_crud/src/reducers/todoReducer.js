@@ -1,14 +1,12 @@
-import _ from 'lodash'
+import shortid from 'shortid'
 
-// state can also be an object with a collection of other objects or
-// arrays.  SImple array used her for this test
-// const initialState = [];
-
-const TodoReducer = (state = [
-	{id:0.1, date: 	"2020-01-01", complete: false, task:"Default todo task 01", rank: "High"},
-	{id:0.2, date: 	"2020-01-01", complete: false, task:"Default todo task 02", rank: "Med"},
-	{id:0.3, date: 	"2020-01-01", complete: false, task:"Default todo task 03", rank: "Low"},
-	], action) => {
+const TodoReducer = (
+	state = [
+	{id:"0.1HxYz", date: 	"2020-01-01", complete: false, task:"Get some Milk", rank: "High"},
+	{id:"0.2HxYz", date: 	"2020-01-01", complete: false, task:"Kiss my daughter", rank: "Med"},
+	{id:"0.3HxYz", date: 	"2020-01-01", complete: false, task:"Celebrate life!", rank: "Low"},
+	],
+	action) => {
 
 	let payload  = action.payload;
 	let type = action.type;
@@ -16,18 +14,13 @@ const TodoReducer = (state = [
 	switch (type) {
 
 		case "ADD_TODO": {
-			action.payload.id = _.uniqueId();
-
-			// wrong: mutates state
-			// state.push(payload)
-
-			// good: doesn't mutate
+			action.payload.id = shortid.generate();
 			return [...state, payload];
 		}
 
 		case "REMOVE_TODO":{
 					
-			let _id = payload
+			let _id = payload.id
 
 			let matchId = (todo) => {
 				if(todo.id === _id) {
@@ -49,7 +42,7 @@ const TodoReducer = (state = [
 
 		case "TOGGLE_TODO": {
 
-			let _id = payload
+			let _id = payload.id
 
 			let matchId = (task) => {
 				if(task.id === _id) {
@@ -73,9 +66,36 @@ const TodoReducer = (state = [
 			return Object.assign([], state, newState)
 		}
 
-		default:
+		case "UPDATE_TODO": {
+			let _id = payload.id
+			let _newTask = payload.task
+
+			let matchId = (task) => {
+				if(task.id === _id) {
+					return true;
+				}
+				return false;
+			}
+			let target = state.findIndex(matchId)
+
+			let newState = state.map((task, index) => {
+				if(index !== target ) {
+					return task
+				}
+				return Object.assign(
+						{}, 
+						task, 
+						{task:_newTask}
+					)
+			})
+
+		 return Object.assign([], state, newState)
+		}
+
+		default: {
 			return state
 		}
+	}
 }
 
 export default TodoReducer

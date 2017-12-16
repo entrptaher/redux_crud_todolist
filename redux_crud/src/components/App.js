@@ -14,7 +14,6 @@ import TodoForm from '../containers/TodoForm';
 
 // ============ FUNCTIONS ============ 
 import { addTodo, removeTodo,toggleTodo } from '../actions/todoActions'
-
   
 // ===================================
 class App extends Component {
@@ -35,7 +34,6 @@ class App extends Component {
     }
     const _today = getDay(new Date())
 
-
     // create the todo list items
     const todoList = this.props.todo.map(task => {
       let _id = task.id
@@ -48,7 +46,6 @@ class App extends Component {
           <Checkbox id= {_id} 
             toggleTodo= { this.props.toggleTodo }
             />..    
-          {_id} .. ..
           {task.task} ..... 
           {task.rank} .....
           {task.date} 

@@ -8,11 +8,13 @@ const DeleteBtn = (props) => {
 		event.preventDefault();
 		// allow restricted global use of `confirm`
 		//eslint-disable-next-line
-		let _confirmed = confirm("Do you want to DELETE this item?") 
+		let _confirmed = confirm("DELETE this item?") 
 			
-		_confirmed ?
-			props.removeTodo(props.id) :
-			console.log( "Cancelled")
+		if (_confirmed) {
+			props.removeTodo(props.id);
+			return console.log("Task DELETED!")
+		} 
+		console.log( "DELETE Cancelled")
 	}
 
 	return (
@@ -22,7 +24,7 @@ const DeleteBtn = (props) => {
 
 DeleteBtn.propTypes = {
 	removeTodo: PropTypes.func.isRequired,
-	id: PropTypes.number
+	id: PropTypes.string
 }
 
 DeleteBtn.defaultProps = {

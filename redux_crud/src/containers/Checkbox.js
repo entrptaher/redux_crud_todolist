@@ -8,19 +8,20 @@ const Checkbox = (props) => {
 		color: "black"
 	}
 
-	/*const handleChange = (event) => {
+	const handleClick = (event) => {
 		event.preventDefault();
 		props.toggleTodo(props.id);
-	}*/
+		console.log("Task COMPLETED!")
+	}
 	
 return (
-	<input type="checkbox" style={style} onClick={ ()=> props.toggleTodo(props.id) }/>
+	<input type="checkbox" style={style} onClick={ handleClick }/>
 	)
 };
 
 Checkbox.propTypes = {
 	toggleTodo: PropTypes.func.isRequired,
-	id: PropTypes.number,
+	id: PropTypes.string,
 	complete: PropTypes.bool,
 }
 

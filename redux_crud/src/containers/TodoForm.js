@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-// import { Form } from 'react-bootstrap';
+import { Form } from 'react-bootstrap';
 
 const TodoForm = (props) => {
 
@@ -9,6 +9,7 @@ const TodoForm = (props) => {
 	const handleSubmit = (event) => {
 		event.preventDefault();
 		props.addTodo(_task.value, _rank.value, _date.value);
+		console.log("Task ADDED!")
 	
 		// reset the fields
 		_task.value ="";
@@ -19,7 +20,7 @@ const TodoForm = (props) => {
 		<div>
 			<h3> Todays Date:  { props._today } </h3>
 			<h4> Add a new todo here: </h4>
-			<form onSubmit={ handleSubmit }>
+			<Form onSubmit={ handleSubmit }>
 
 				<select ref= { (input) => _rank = input }>
 				  <option value="High">High</option>
@@ -30,9 +31,9 @@ const TodoForm = (props) => {
 				<input ref= { (input) => _task = input } type = "text"  placeholder="Task" size={ 40 } required/>
 				<input ref= { (input) => _date = input } type = "date"  defaultValue = { props._today } required/>
 				
-				<input type="submit"/>
+				<input type="submit" value="Add Task" />
 				<input type = "reset"/>
-			</form>
+			</Form>
 		</div>
 	)
 }
