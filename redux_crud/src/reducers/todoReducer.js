@@ -49,7 +49,7 @@ const TodoReducer = (state = [
 
 		case "TOGGLE_TODO": {
 
-			/*let _id = payload
+			let _id = payload
 
 			let matchId = (task) => {
 				if(task.id === _id) {
@@ -70,15 +70,12 @@ const TodoReducer = (state = [
 					)
 			})
 
-			return Object.assign({}, state, newState)*/
-			if (state.id !== action.id) {
-				return state
-			} 
-
-			return {
-				...state,
-				completed: !state.completed
-			};
+			return Object.assign([], state, newState)
+			// return {
+			// 	...state,
+			// 	// x:"Hello"
+			// }
+			// return [state]
 
 		}
 		

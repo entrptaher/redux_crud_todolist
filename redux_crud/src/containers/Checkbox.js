@@ -8,13 +8,13 @@ const Checkbox = (props) => {
 		color: "black"
 	}
 
-	const handleChange = (event) => {
+	/*const handleChange = (event) => {
 		event.preventDefault();
 		props.toggleTodo(props.id);
-	}
+	}*/
 	
 return (
-	<input type="checkbox" style={style} onClick={ handleChange }/>
+	<input type="checkbox" style={style} onClick={ ()=> props.toggleTodo(props.id) }/>
 	)
 };
 
