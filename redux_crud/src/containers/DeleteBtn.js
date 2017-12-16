@@ -4,10 +4,20 @@ import { Button } from "react-bootstrap";
 
 const DeleteBtn = (props) => {
 
+	const handleClick = (event) => {
+		event.preventDefault();
+		// allow restricted global use of `confirm`
+		//eslint-disable-next-line
+		let _confirmed = confirm("Do you want to DELETE this item?") 
+			
+		_confirmed ?
+			props.removeTodo(props.id) :
+			console.log( "Cancelled")
+	}
+
 	return (
-		// <Button > {props.test} </Button>
-		<Button onClick= {()=> props.removeTodo(props.id)} > Delete </Button>
-		)
+		<Button onClick= { handleClick } > Delete </Button>
+	)
 }
 
 DeleteBtn.propTypes = {

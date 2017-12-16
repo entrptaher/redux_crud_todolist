@@ -60,7 +60,7 @@ const TodoReducer = (state = [
 			let target = state.findIndex(matchId)
 
 			let newState = state.map((task, index) => {
-				if(index != target ) {
+				if(index !== target ) {
 					return task
 				}
 				return Object.assign(
