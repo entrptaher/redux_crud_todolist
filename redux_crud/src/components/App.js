@@ -39,16 +39,16 @@ class App extends Component {
     // create the todo list items
     const todoList = this.props.todo.map(task => {
       let _id = task.id
-      let style = {
-        color: task.completed? "red" : "blue"
-      }
+      
       return (
-        <li key={_id} style={style} > 
+        <li key={_id} style= {
+          {textDecoration: task.complete ? "line-through" : "none", color: task.complete ? "lightgrey": "steelblue"}
+        }> 
 
-          {_id} .. ..
-          <Checkbox id= {_id} style= { style }
+          <Checkbox id= {_id} 
             toggleTodo= { this.props.toggleTodo }
             />..    
+          {_id} .. ..
           {task.task} ..... 
           {task.rank} .....
           {task.date} 

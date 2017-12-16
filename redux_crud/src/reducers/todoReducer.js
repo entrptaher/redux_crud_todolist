@@ -71,14 +71,7 @@ const TodoReducer = (state = [
 			})
 
 			return Object.assign([], state, newState)
-			// return {
-			// 	...state,
-			// 	// x:"Hello"
-			// }
-			// return [state]
-
 		}
-		
 
 		default:
 			return state

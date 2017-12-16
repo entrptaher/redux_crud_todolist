@@ -8,7 +8,7 @@ import PropTypes from 'prop-types'
 
 const listStyle = {
 	// remove bullets from the ul list
-  listStyleType: "none"
+  listStyleType: "none",
 } 	
 
 // ===============
