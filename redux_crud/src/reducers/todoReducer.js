@@ -68,7 +68,7 @@ const TodoReducer = (state = [
 				return Object.assign(
 						{}, 
 						task, 
-						{complete:true}
+						{complete:!task.complete}
 					)
 			})
 
