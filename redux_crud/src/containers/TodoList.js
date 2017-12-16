@@ -1,6 +1,6 @@
 // component to display the curret todo list
 import React from 'react';
-import { Button } from 'react-bootstrap';
+import {  } from 'react-bootstrap';
 import PropTypes from 'prop-types'
 
 
@@ -23,8 +23,12 @@ const TodoList = (props) => {
 		)
 }
 
-TodoList.propTypes = { }
+TodoList.propTypes = {
+	todoList: PropTypes.array.isRequired,
+ }
 
-TodoList.defaultProps = { }
+TodoList.defaultProps = { 
+	todoList: [],
+}
 
 export default TodoList

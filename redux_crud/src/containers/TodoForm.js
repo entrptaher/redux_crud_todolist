@@ -17,18 +17,18 @@ const TodoForm = (props) => {
 
 	return (
 		<div>
-			<h3> Todays Date:  {props._today} </h3>
+			<h3> Todays Date:  { props._today } </h3>
 			<h4> Add a new todo here: </h4>
-			<form onSubmit={handleSubmit}>
+			<form onSubmit={ handleSubmit }>
 
-				<select ref= {(input) => _rank = input}>
+				<select ref= { (input) => _rank = input }>
 				  <option value="High">High</option>
 				  <option value="Med" selected="selected">Med</option>
 				  <option value="low">Low</option>
 				</select>
 
-				<input ref= {(input) => _task = input} type = "text"  placeholder="Task" size={40} required/>
-				<input ref= {(input) => _date = input} type = "date"  defaultValue = {props._today} required/>
+				<input ref= { (input) => _task = input } type = "text"  placeholder="Task" size={ 40 } required/>
+				<input ref= { (input) => _date = input } type = "date"  defaultValue = { props._today } required/>
 				
 				<input type="submit"/>
 				<input type = "reset"/>

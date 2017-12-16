@@ -5,7 +5,7 @@ import './App.css';
 import PropTypes from 'prop-types'
 
 // ============ COMPONENTS ============ 
-import { Button, Row, Col } from 'react-bootstrap'
+// import { Button, Row, Col } from 'react-bootstrap'
 // bootstrap not working...
 import Checkbox from '../containers/Checkbox';
 import DeleteBtn from '../containers/DeleteBtn';
@@ -19,9 +19,9 @@ import { addTodo, removeTodo,toggleTodo } from '../actions/todoActions'
 // ===================================
 class App extends Component {
 
-  constructor(props) {
-    super(props)
-  }
+  // constructor(props) {
+  //   super(props)
+  // }
 
   render() {
 
@@ -35,14 +35,20 @@ class App extends Component {
     }
     const _today = getDay(new Date())
 
+
     // create the todo list items
     const todoList = this.props.todo.map(task => {
       let _id = task.id
+      let style = {
+        color: task.completed? "red" : "blue"
+      }
       return (
-        <li key={_id}> 
+        <li key={_id} style={style} > 
 
-          {_id} ..
-          <Checkbox id={_id} toggleTodo={ this.props.toggleTodo }/>..    
+          {_id} .. ..
+          <Checkbox id= {_id} style= { style }
+            toggleTodo= { this.props.toggleTodo }
+            />..    
           {task.task} ..... 
           {task.rank} .....
           {task.date} 
@@ -89,7 +95,7 @@ const mapDispatchToProps = (dispatch) => {
       dispatch(removeTodo(id))
     },
     toggleTodo: (id) => {
-      dispatch(removeTodo(id))
+      dispatch(toggleTodo(id))
     },
   };
 }; // end const

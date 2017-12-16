@@ -23,7 +23,6 @@ const TodoReducer = (state = [
 
 			// good: doesn't mutate
 			return [...state, payload];
-			break;
 		}
 
 		case "REMOVE_TODO":{
@@ -46,15 +45,14 @@ const TodoReducer = (state = [
 				]
 			} 
 				return state
-			break;
 		}
 
 		case "TOGGLE_TODO": {
 
-			let _id = payload
+			/*let _id = payload
 
-			let matchId = (todo) => {
-				if(todo.id === _id) {
+			let matchId = (task) => {
+				if(task.id === _id) {
 					return true;
 				}
 				return false;
@@ -72,9 +70,16 @@ const TodoReducer = (state = [
 					)
 			})
 
-			return Object.assign({}, state, newState)
+			return Object.assign({}, state, newState)*/
+			if (state.id !== action.id) {
+				return state
+			} 
 
-			break;
+			return {
+				...state,
+				completed: !state.completed
+			};
+
 		}
 		
 

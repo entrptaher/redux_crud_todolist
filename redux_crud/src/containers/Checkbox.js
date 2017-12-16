@@ -1,17 +1,27 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Button } from "react-bootstrap";
+import {  } from "react-bootstrap";
 
 const Checkbox = (props) => {
+
+	let style= {
+		color: "black"
+	}
+
+	const handleChange = (event) => {
+		event.preventDefault();
+		props.toggleTodo(props.id);
+	}
 	
 return (
-	<input type="checkbox" onClick= {() => props.toggleTodo(props.id)}/>
+	<input type="checkbox" style={style} onClick={ handleChange }/>
 	)
 };
 
 Checkbox.propTypes = {
-	removeTodo: PropTypes.func.isRequired,
-	id: PropTypes.number.isRequired
+	toggleTodo: PropTypes.func.isRequired,
+	id: PropTypes.number,
+	complete: PropTypes.bool,
 }
 
 Checkbox.defaultProps = {
