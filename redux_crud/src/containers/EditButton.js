@@ -20,7 +20,13 @@ const EditButton = (props) => {
 	}
 
 	return (
-		<Button onClick= { handleClick } > Edit </Button>
+
+		<Button 
+			onClick= { handleClick } 
+			className= { "btn btn-warning btn-sm" }
+		> 
+			Edit
+		</Button>
 	)
 } //end Container
 

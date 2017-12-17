@@ -47,7 +47,12 @@ const TodoList = (props) => {
 			</Row>
 			
 			<Row>
-				<TodoItem item={item}/>
+				<TodoItem 
+					item={item}
+					removeTodo= { props.removeTodo }
+					toggleTodo= { props.toggleTodo }
+					updateTodo= { props.updateTodo }
+				/>
 			</Row>
 
 		</Grid>
@@ -56,10 +61,19 @@ const TodoList = (props) => {
 
 TodoList.propTypes = {
 	_todoArray: PropTypes.array.isRequired,
+
+  removeTodo: PropTypes.func.isRequired,
+  toggleTodo: PropTypes.func.isRequired,
+  updateTodo: PropTypes.func.isRequired,
+
  }
 
 TodoList.defaultProps = { 
 	_todoArray: [],
+	
+	removeTodo: f=>f,
+  toggleTodo: f=>f,
+  updateTodo: f=>f,
 }
 
 export default TodoList

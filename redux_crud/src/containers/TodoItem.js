@@ -59,10 +59,16 @@ const TodoItem = (props) => {
 			<Col sm={7}style={ outline } >{item.task}</Col>
 			<Col sm={2}style={ outline } >{item.date}</Col>
 			<Col sm={1}style={ outline } > 
-				<EditButton/>
+				<EditButton 
+					updateTodo= { props.updateTodo }   
+					id= {item.id} 
+				/>
 			</Col>
 			<Col sm={1}style={ outline } >
-				<DeleteBtn/>
+				<DeleteBtn 
+					removeTodo= { props.removeTodo }   
+					id= {item.id} 
+				/>
 			</Col>
 
 		</Row>
@@ -78,13 +84,12 @@ const TodoItem = (props) => {
 TodoItem.propTypes = { 
   addTodo: PropTypes.func.isRequired,
   removeTodo: PropTypes.func.isRequired,
-  item: PropTypes.array.isRequired,
+  item: PropTypes.object.isRequired,
   toggleTodo: PropTypes.func.isRequired,
   updateTodo: PropTypes.func.isRequired,
 }
 
 TodoItem.defaultProps ={
-  addTodo: f=>f,
   removeTodo: f=>f,
   toggleTodo: f=>f,
   updateTodo: f=>f,
@@ -93,7 +98,5 @@ TodoItem.defaultProps ={
              complete: false,
              task: 'Celebrate life!',
              rank: 'Low' }
-
-
 }
 export default TodoItem

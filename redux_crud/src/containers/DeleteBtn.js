@@ -18,7 +18,12 @@ const DeleteBtn = (props) => {
 	}
 
 	return (
-		<Button onClick= { handleClick } > Delete </Button>
+		<Button 
+			onClick= { handleClick } 
+			className= { "btn btn-danger btn-sm" }
+		> 
+			Delete 
+		</Button>
 	)
 }
 
