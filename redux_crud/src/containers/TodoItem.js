@@ -44,8 +44,9 @@ import TodoForm from '../containers/TodoForm';
     
   
 const TodoItem = (props) => {
-		console.log(props)
-		let item = props._todoArray[0]
+	
+		let item = props.item
+
     return (
       <div>
        <p>
@@ -63,7 +64,7 @@ const TodoItem = (props) => {
 TodoItem.propTypes = { 
   addTodo: PropTypes.func.isRequired,
   removeTodo: PropTypes.func.isRequired,
-  _todoArray: PropTypes.array.isRequired,
+  item: PropTypes.array.isRequired,
   toggleTodo: PropTypes.func.isRequired,
   updateTodo: PropTypes.func.isRequired,
 }
@@ -73,7 +74,11 @@ TodoItem.defaultProps ={
   removeTodo: f=>f,
   toggleTodo: f=>f,
   updateTodo: f=>f,
-  // _todoArray:[],
+  item: { id: '0.3HxYz',
+             date: '2020-01-01',
+             complete: false,
+             task: 'Celebrate life!',
+             rank: 'Low' }
 
 
 }
