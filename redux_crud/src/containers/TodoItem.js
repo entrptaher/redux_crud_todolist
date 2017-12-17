@@ -42,19 +42,33 @@ import TodoForm from '../containers/TodoForm';
       </div>
       )*/
     
-  
-const TodoItem = (props) => {
-	
-		let item = props.item
+// ============== STYLING
+const outline= {
+	border: "1px solid orange",
+}
 
-    return (
-      <div>
-       <p>
-       hello
-       </p>
-       {item.task}
-      </div>
-      )
+const TodoItem = (props) => {
+
+	let item = props.item
+
+  return (
+	<Grid>
+
+		<Row className="tableHeader">
+			<Col sm={1}style={ outline } >{item.rank}</Col>
+			<Col sm={7}style={ outline } >{item.task}</Col>
+			<Col sm={2}style={ outline } >{item.date}</Col>
+			<Col sm={1}style={ outline } > 
+				<EditButton/>
+			</Col>
+			<Col sm={1}style={ outline } >
+				<DeleteBtn/>
+			</Col>
+
+		</Row>
+		
+		</Grid>
+  )
     
 }; // end Component
 
