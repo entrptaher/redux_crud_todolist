@@ -21,13 +21,7 @@ const TodoReducer = (
 		case "REMOVE_TODO":{
 					
 			let _id = payload.id
-
-			let matchId = (todo) => {
-				if(todo.id === _id) {
-					return true;
-				}
-				return false;
-			}
+			let matchId = (task) => { return task.id === _id }
 
 			if(state.some(matchId)) {
 				let index = state.findIndex(matchId)
@@ -43,13 +37,7 @@ const TodoReducer = (
 		case "TOGGLE_TODO": {
 
 			let _id = payload.id
-
-			let matchId = (task) => {
-				if(task.id === _id) {
-					return true;
-				}
-				return false;
-			}
+			let matchId = (task) => { return task.id === _id }
 			let target = state.findIndex(matchId)
 
 			let newState = state.map((task, index) => {
@@ -67,29 +55,22 @@ const TodoReducer = (
 		}
 
 		case "UPDATE_TODO": {
+
 			let _id = payload.id
 			let _newTask = payload.task
+			let matchId = (task) => { return task.id === _id }
 
-			let matchId = (task) => {
-				if(task.id === _id) {
-					return true;
-				}
-				return false;
-			}
 			let target = state.findIndex(matchId)
 
-			let newState = state.map((task, index) => {
+			let updatedTask = state.map((task, index) => {
 				if(index !== target ) {
 					return task
+				} else {
+				return Object.assign({}, task, {task:_newTask})
 				}
-				return Object.assign(
-						{}, 
-						task, 
-						{task:_newTask}
-					)
 			})
 
-		 return Object.assign([], state, newState)
+		 return Object.assign([], state, updatedTask)
 		}
 
 		default: {

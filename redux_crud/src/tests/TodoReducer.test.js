@@ -75,7 +75,7 @@ describe("The TOGGLE_TODO function", () => {
 	})
 })
 
-describe("The UPDATE_TODO function", () => {
+describe.only("The UPDATE_TODO function", () => {
 	it('changes the todo content', () => {
 		let listB5 = store.getState().todos
 		expect(listB5).to.be.an("array")
