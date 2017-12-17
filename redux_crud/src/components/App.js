@@ -9,11 +9,17 @@ import PropTypes from 'prop-types'
 // bootstrap not working...
 import Checkbox from '../containers/Checkbox';
 import DeleteBtn from '../containers/DeleteBtn';
+import EditButton from '../containers/EditButton';
 import TodoList from '../containers/TodoList';
 import TodoForm from '../containers/TodoForm';
 
 // ============ FUNCTIONS ============ 
-import { addTodo, removeTodo,toggleTodo } from '../actions/todoActions'
+import { 
+  addTodo, 
+  removeTodo,
+  updateTodo,
+  toggleTodo,
+  } from '../actions/todoActions'
   
 // ===================================
 class App extends Component {
@@ -49,7 +55,8 @@ class App extends Component {
           {task.task} ..... 
           {task.rank} .....
           {task.date} 
-          <DeleteBtn id={_id} removeTodo={ this.props.removeTodo } />
+          <DeleteBtn id={_id} removeTodo={ this.props.removeTodo }/>
+          <EditButton id={_id} updateTodo={ this.props.updateTodo }/>
 
         </li>
         )
@@ -91,6 +98,9 @@ const mapDispatchToProps = (dispatch) => {
     removeTodo: (id) => {
       dispatch(removeTodo(id))
     },
+    updateTodo: (id, task) => {
+      dispatch(updateTodo(id,task))
+    },
     toggleTodo: (id) => {
       dispatch(toggleTodo(id))
     },
@@ -101,7 +111,7 @@ const mapDispatchToProps = (dispatch) => {
 
 App.propTypes = { 
   addTodo: PropTypes.func.isRequired,
-  // updateTodo: PropTypes.func.isRequired,
+  updateTodo: PropTypes.func.isRequired,
   removeTodo: PropTypes.func.isRequired,
   toggleTodo: PropTypes.func.isRequired
 }
@@ -109,8 +119,8 @@ App.propTypes = {
 App.defaultProps ={
   addTodo: f=>f,
   removeTodo: f=>f,
-  toggleTodo: f=>f
-  // updateTodo: f=>f
+  toggleTodo: f=>f,
+  updateTodo: f=>f
 
 }
 export default connect(mapStateToProps, mapDispatchToProps)(App);

@@ -11,8 +11,8 @@ const EditButton = (props) => {
 		let _confirmed = confirm("EDIT this item?") 
 			
 		if (_confirmed) {
-			props.removeTodo(props.id);
-			return console.log("Task EDITD!")
+			props.updateTodo( props.id, "MICHAEL JAY!");
+			return console.log("Task EDITED!")
 		} 
 		console.log( "EDIT Cancelled")
 	}
@@ -24,12 +24,12 @@ const EditButton = (props) => {
 }
 
 EditButton.propTypes = {
-	removeTodo: PropTypes.func.isRequired,
+	updateTodo: PropTypes.func.isRequired,
 	id: PropTypes.string
 }
 
 EditButton.defaultProps = {
-	removeTodo: f => f,
+	updateTodo: f => f,
 }
 
 export default EditButton
