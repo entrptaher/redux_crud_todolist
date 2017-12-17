@@ -55,8 +55,9 @@ class App extends Component {
           addTodo = { this.props.addTodo }
           _today = { _today } 
         />
-
-        <TodoList todoList = { todoList } />
+        <h1>
+          <TodoItem _todoArray= { this.props.todoArray}/>
+        </h1>
 
       </div>
     );
@@ -65,7 +66,7 @@ class App extends Component {
 
 const mapStateToProps =(state) => {
   return {
-    todo: state.todos
+    todoArray: state.todos
   };
 }; // end const
 
