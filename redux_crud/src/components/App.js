@@ -49,22 +49,26 @@ class App extends Component {
           <h1 className="App-title">React/Redux Todo List</h1>
         </header>
 
-          <p> Todays Date: { _today } </p>
+        <p> Todays Date: { _today } </p>
 
         <TodoForm 
           addTodo = { this.props.addTodo }
           _today = { _today } 
         />
-          <TodoList 
-            _todoArray= { this.props.todoArray}
-            removeTodo= { this.props.removeTodo }
-            toggleTodo= { this.props.toggleTodo }
-            updateTodo= { this.props.updateTodo }
+
+        <TodoList 
+          todoArray=  { this.props.todoArray }
+          removeTodo= { this.props.removeTodo }
+          toggleTodo= { this.props.toggleTodo }
+          updateTodo= { this.props.updateTodo }
         />
+
       </div>
     );
   }
 }; // end Class
+
+// ===========================================================
 
 const mapStateToProps =(state) => {
   return {
@@ -77,6 +81,7 @@ const mapDispatchToProps = (dispatch) => {
     addTodo: (task, rank, date) => {
       dispatch(addTodo(task, rank, date)) 
     },
+
     removeTodo: (id) => {
       dispatch(removeTodo(id))
     },
@@ -89,10 +94,11 @@ const mapDispatchToProps = (dispatch) => {
   };
 }; // end const
 
-// ADD proptypes for validations
+// ===========================================================
 
 App.propTypes = { 
   addTodo: PropTypes.func.isRequired,
+
   updateTodo: PropTypes.func.isRequired,
   removeTodo: PropTypes.func.isRequired,
   toggleTodo: PropTypes.func.isRequired
@@ -100,6 +106,7 @@ App.propTypes = {
 
 App.defaultProps ={
   addTodo: f=>f,
+
   removeTodo: f=>f,
   toggleTodo: f=>f,
   updateTodo: f=>f

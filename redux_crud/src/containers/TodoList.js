@@ -23,22 +23,38 @@ const listStyle = {
 const outline= {
 	border: "1px solid orange",
 }
+const outline02= {
+	border: "1px solid lime",
+}
 
 // ===============
 const TodoList = (props) => {
 
-	let item= props._todoArray[0]
+	let todoArray= props.todoArray
 
+	let arr= [1,2,3,4,5]
+
+	let todos= todoArray.map(item => {
+		return <TodoItem 
+			item={item}
+			removeTodo= { props.removeTodo }
+			toggleTodo= { props.toggleTodo }
+			updateTodo= { props.updateTodo }
+		/>
+	})
+
+// let todos
+	
 	return (
 
-		<Grid>
-			<Row> 
+		<Grid sm={1} style={ outline02 }>
+			<Row style={ outline02 }> 
 				<Col style= { outline } sm={12}>
 					<h2> TodoList </h2>
 				</Col>
 			</Row>
 
-			<Row className="tableHeader">
+			<Row style={ outline02 } className="tableHeader">
 				<Col sm={1}style={ outline } >Rank</Col>
 				<Col sm={7}style={ outline } >Task</Col>
 				<Col sm={2}style={ outline } >Date</Col>
@@ -47,12 +63,9 @@ const TodoList = (props) => {
 			</Row>
 			
 			<Row>
-				<TodoItem 
-					item={item}
-					removeTodo= { props.removeTodo }
-					toggleTodo= { props.toggleTodo }
-					updateTodo= { props.updateTodo }
-				/>
+				<Col sm= { 12 }>
+					<ul marginLeft= { 0 }> {todos} </ul>
+				</Col>
 			</Row>
 
 		</Grid>
@@ -60,7 +73,7 @@ const TodoList = (props) => {
 }
 
 TodoList.propTypes = {
-	_todoArray: PropTypes.array.isRequired,
+	todoArray: PropTypes.array.isRequired,
 
   removeTodo: PropTypes.func.isRequired,
   toggleTodo: PropTypes.func.isRequired,
@@ -69,8 +82,8 @@ TodoList.propTypes = {
  }
 
 TodoList.defaultProps = { 
-	_todoArray: [],
-	
+	todoArray: [],
+
 	removeTodo: f=>f,
   toggleTodo: f=>f,
   updateTodo: f=>f,

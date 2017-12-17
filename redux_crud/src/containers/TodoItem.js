@@ -52,7 +52,6 @@ const TodoItem = (props) => {
 	let item = props.item
 
   return (
-	<Grid>
 
 		<Row className="tableHeader">
 			<Col sm={1}style={ outline } >{item.rank}</Col>
@@ -72,8 +71,6 @@ const TodoItem = (props) => {
 			</Col>
 
 		</Row>
-		
-		</Grid>
   )
     
 }; // end Component
