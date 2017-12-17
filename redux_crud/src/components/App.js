@@ -10,8 +10,9 @@ import PropTypes from 'prop-types'
 import Checkbox from '../containers/Checkbox';
 import DeleteBtn from '../containers/DeleteBtn';
 import EditButton from '../containers/EditButton';
-import TodoList from '../containers/TodoList';
 import TodoForm from '../containers/TodoForm';
+import TodoItem from '../containers/TodoItem';
+import TodoList from '../containers/TodoList';
 
 // ============ FUNCTIONS ============ 
 import { 
@@ -39,28 +40,6 @@ class App extends Component {
       return [...fullDate, year, month, day].join("-")
     }
     const _today = getDay(new Date())
-
-    // create the todo list items
-    const todoList = this.props.todo.map(task => {
-      let _id = task.id
-      
-      return (
-        <li key={_id} style= {
-          {textDecoration: task.complete ? "line-through" : "none", color: task.complete ? "lightgrey": "steelblue"}
-        }> 
-
-          <Checkbox id= {_id} 
-            toggleTodo= { this.props.toggleTodo }
-            />..    
-          {task.task} ..... 
-          {task.rank} .....
-          {task.date} 
-          <DeleteBtn id={_id} removeTodo={ this.props.removeTodo }/>
-          <EditButton id={_id} updateTodo={ this.props.updateTodo }/>
-
-        </li>
-        )
-    })
     
     return (
       <div className="App">

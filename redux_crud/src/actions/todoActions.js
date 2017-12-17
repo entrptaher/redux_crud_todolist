@@ -36,10 +36,3 @@ export const updateTodo = (_id,_task) => {
 		}
 	}
 };
-
-/*module.exports = {
-	addTodo, 
-	updateTodo,
-	removeTodo,
-	toggleTodo,
-}*/
