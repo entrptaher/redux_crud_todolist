@@ -18,7 +18,6 @@ const TodoForm = (props) => {
 
 	return (
 		<div>
-			<h3> Todays Date:  { props._today } </h3>
 			<h4> Add a new todo here: </h4>
 			<Form onSubmit={ handleSubmit }>
 

@@ -1,8 +1,10 @@
-const addTodo = (_task, _rank, _date) => {
+import shortid from 'shortid'
+
+export const addTodo = (_task, _rank, _date) => {
 	return {
 		type: "ADD_TODO",
 		payload: {
-			id:"",
+			id: shortid.generate(),
 			task: _task,
 			rank: _rank,
 			date: _date,
@@ -11,21 +13,21 @@ const addTodo = (_task, _rank, _date) => {
 	}
 };
 
-const removeTodo = (_id) => {
+export const removeTodo = (_id) => {
 	return {
 		type: "REMOVE_TODO",
 		payload: {id:_id}
 	}
 };
 
-const toggleTodo = (_id) => {
+export const toggleTodo = (_id) => {
 	return {
 		type: "TOGGLE_TODO",
 		payload: {id:_id}
 	}
 };
 
-const updateTodo = (_id,_task) => {
+export const updateTodo = (_id,_task) => {
 	return {
 		type: "UPDATE_TODO",
 		payload: {
@@ -35,9 +37,9 @@ const updateTodo = (_id,_task) => {
 	}
 };
 
-module.exports = {
+/*module.exports = {
 	addTodo, 
 	updateTodo,
 	removeTodo,
 	toggleTodo,
-}
+}*/
