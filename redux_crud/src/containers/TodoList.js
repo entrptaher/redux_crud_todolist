@@ -23,7 +23,7 @@ const listStyle = {
 const TodoList = (props) => {
 
 
-	const style= {
+	const outline= {
 
 		border: "1px solid orange",
 
@@ -32,20 +32,29 @@ const TodoList = (props) => {
 
 		<Grid>
 			<Row>
-				<ul style={listStyle} > List starts here </ul>
+				<ul style={ listStyle } > List starts here </ul>
 			</Row>
+
+			<Row className="tableHeader">
+				<Col sm={2}style={ outline } >Priority</Col>
+				<Col sm={2}style={ outline } >Task</Col>
+				<Col sm={2}style={ outline } >Date</Col>
+				<Col sm={2}style={ outline } >Edit</Col>
+				<Col sm={2}style={ outline } >Delete</Col>
+			</Row>
+
 			<Row> 
-				<Col style={ style } sm={12}>
+				<Col style= { outline } sm={12}>
 					<h2> TodoList </h2>
 				</Col>
 			</Row>
 
 			<Row> 
-				<Col style={ style } sm={ 3 } >Left</Col>
-				<Col style={ style } sm={ 3 } >
+				<Col style= { outline } sm={ 4 } >Left</Col>
+				<Col style= { outline } sm={ 4 } >
 					<TodoItem/>
 				</Col>
-				<Col style={ style } sm={ 3 } >Right</Col>
+				<Col style= { outline } sm={ 4 } >Right</Col>
 			</Row>
 
 		</Grid>

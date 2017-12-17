@@ -55,10 +55,7 @@ class App extends Component {
           addTodo = { this.props.addTodo }
           _today = { _today } 
         />
-        <h1>
           <TodoList _todoArray= { this.props.todoArray}/>
-        </h1>
-
       </div>
     );
   }
