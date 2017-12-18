@@ -1,12 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {  } from "react-bootstrap";
+import { Form } from "react-bootstrap";
 
 const Checkbox = (props) => {
-
-	let style= {
-		color: "black"
-	}
 
 	const handleClick = (event) => {
 		event.preventDefault();
@@ -15,7 +11,12 @@ const Checkbox = (props) => {
 	}
 	
 return (
-	<input type="checkbox" style={style} onClick={ handleClick }/>
+	<Form>
+		<input 
+			type="checkbox" 
+			onClick={ handleClick }
+		/>
+	</Form>
 	)
 };
 

@@ -9,6 +9,7 @@ import {
 } from 'react-bootstrap';
 
 import TodoItem from './TodoItem';
+import Checkbox from './Checkbox';
 
 
 const headerItem = { 
@@ -40,6 +41,7 @@ const TodoList = (props) => {
 
 	let todos= todoArray.map(item => {
 		return <TodoItem 
+		
 			key = {item.id}
 			item={item}
 			removeTodo= { props.removeTodo }
@@ -48,6 +50,7 @@ const TodoList = (props) => {
 			updateRank= { props.updateRank }
 			updateTodo= { props.updateTodo }
 		/>
+
 	})
 
 	return (
@@ -60,13 +63,16 @@ const TodoList = (props) => {
 				</Col>
 			</Row>
 
-			<Row style={ outline02 } className="tableHeader">
+			<Row style={ outline02 } className="tableHeaders">
 				<ul>
-					<Col sm={1}style={ outline } >Rank</Col>
-					<Col sm={2}style={ outline } >Due Date</Col>
-					<Col sm={7}style={ outline } >Task</Col>
-					<Col sm={1}style={ outline } >Edit</Col>
-					<Col sm={1}style={ outline } >Delete</Col>
+				<Col sm= { 1 } style={ outline } >
+			  	<input type="checkbox" disabled />
+		  	</Col >
+					<Col sm={1} style={ outline } >Rank</Col>
+					<Col sm={2} style={ outline } >Due Date</Col>
+					<Col sm={7} style={ outline } >Task</Col>
+					<Col sm={1} style={ outline } >Edit</Col>
+					<Col sm={1} style={ outline } >Delete</Col>
 				</ul>
 			</Row>
 

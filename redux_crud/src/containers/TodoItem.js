@@ -23,11 +23,27 @@ const outline= {
 
 const TodoItem = (props) => {
 
-	let item = props.item
+	let item = props.item;
+	let _box;
+
+	const texty = {
+		textDecoration: "line-through",
+		color: item.complete ? "lightgrey" : "blue"
+	}
 
   return (
 
-		<Row className="tableHeader">
+		<Row style= { texty
+			 }>
+
+	  	<Col sm= { 1 } style={ outline } >
+		  	<Checkbox
+					toggleTodo= { props.toggleTodo }   
+					id= {item.id}
+		  	/>
+
+	  	</Col >
+
 	  	<Col sm= { 1 } style={ outline } >
 		  	<PriorityBtn
 					updateRank= { props.updateRank }   
@@ -40,23 +56,23 @@ const TodoItem = (props) => {
 				<CalendarBtn
 					updateDate= { props.updateDate }   
 					id= {item.id}
-					currDate = {item.date}
+					currDate = { item.date }
 				/>	  	
 	  	</Col >
 
-			<Col sm={7} style={ outline } >{item.task}</Col>
+			<Col sm={ 6} >{ item.task}</Col>
 			
-			<Col sm={1} style={ outline } > 
+			<Col sm={ 1} style={ outline } > 
 				<EditButton 
 					updateTodo= { props.updateTodo }   
 					id= {item.id} 
 				/>
 			</Col>
 
-			<Col sm={1} style={ outline } >
+			<Col sm={ 1 } style={ outline } >
 				<DeleteBtn 
 					removeTodo= { props.removeTodo }   
-					id= {item.id} 
+					id= { item.id } 
 				/>
 			</Col>
 
