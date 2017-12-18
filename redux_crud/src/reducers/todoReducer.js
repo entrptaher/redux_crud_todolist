@@ -97,6 +97,29 @@ const TodoReducer = (state=initState, action) => {
 		 return Object.assign([], state, updatedTask)
 		}
 
+		case "UPDATE_DATE": {
+
+			let _id =		payload.id
+			let _date = payload.date
+
+			let matchId = (task) => { return task.id === _id }
+			let target = state.findIndex(matchId)
+
+			let updatedTask = state.map((task, index) => {
+				if(index !== target ) {
+					return task
+				} else {
+					return Object.assign(
+						{}, 
+						task, 
+						{ date: _date }
+					)
+				}
+			})
+
+		 return Object.assign([], state, updatedTask)
+		}
+
 		default: {
 			return state
 		}

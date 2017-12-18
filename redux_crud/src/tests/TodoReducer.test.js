@@ -16,6 +16,7 @@ import {
 	removeTodo, 
 	toggleTodo,
 	updateRank, 
+	updateDate,
 } from '../actions/todoActions'
 
 // ====================================
@@ -58,7 +59,7 @@ describe("The TOGGLE_TODO function", () => {
 	it('changes the todo complete status', () => {
 		let listB4 = store.getState().todos
 		expect(listB4).to.be.an("array")
-		// ensre immutability
+		// ensure immutability
 		deepFreeze(listB4);
 
 		let _id = listB4[0].id
@@ -80,7 +81,7 @@ describe("The UPDATE_TODO function", () => {
 	it('changes the todo content', () => {
 		let listB5 = store.getState().todos
 		expect(listB5).to.be.an("array")
-		// ensre immutability
+		// ensure immutability
 		deepFreeze(listB5);
 
 		let _id = listB5[0].id
@@ -94,11 +95,11 @@ describe("The UPDATE_TODO function", () => {
 	})
 })
 
-describe.only("The UPDATE_RANK function", () => {
+describe("The UPDATE_RANK function", () => {
 	it('changes the rank content', () => {
 		let listB5 = store.getState().todos
 		expect(listB5).to.be.an("array")
-		// ensre immutability
+		// ensure immutability
 		deepFreeze(listB5);
 
 		let _id = listB5[0].id
@@ -109,6 +110,25 @@ describe.only("The UPDATE_RANK function", () => {
 
 		let listAFT2 = store.getState().todos
 		expect(listAFT2[0].rank).to.equal("Highest")
+
+	})
+})
+
+describe.only("The UPDATE_DATE function", () => {
+	it('changes the DATE content', () => {
+		let listB5 = store.getState().todos
+		expect(listB5).to.be.an("array")
+		// ensure immutability
+		deepFreeze(listB5);
+
+		let _id = listB5[0].id
+		expect(_id).to.be.a('string');
+		expect(_id).to.be.equal("0.1HxYz");
+
+		store.dispatch(updateDate(_id,"Jan 25th"));
+
+		let listAFT2 = store.getState().todos
+		expect(listAFT2[0].date).to.equal("Jan 25th")
 
 	})
 })
