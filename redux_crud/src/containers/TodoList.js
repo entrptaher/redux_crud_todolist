@@ -55,7 +55,7 @@ const TodoList = (props) => {
 
 	return (
 
-		<Grid  style={ outline02 }>
+		<Grid style={ outline02 }  >
 
 			<Row style={ outline02 }> 
 				<Col style= { outline } sm={12}>
@@ -63,22 +63,20 @@ const TodoList = (props) => {
 				</Col>
 			</Row>
 
-			<Row style={ outline02 } className="tableHeaders">
-				<ul>
-				<Col sm= { 1 } style={ outline } >
-			  	<input type="checkbox" disabled />
-		  	</Col >
+			<Row style={ outline02 } className="tableHeaders ">
+					<Col sm= { 1 } style={ outline } >
+				  	<input type="checkbox" disabled />
+			  	</Col >
 					<Col sm={1} style={ outline } >Rank</Col>
 					<Col sm={2} style={ outline } >Due Date</Col>
-					<Col sm={7} style={ outline } >Task</Col>
+					<Col sm={6} style={ outline } >Task</Col>
 					<Col sm={1} style={ outline } >Edit</Col>
 					<Col sm={1} style={ outline } >Delete</Col>
-				</ul>
 			</Row>
 
 			<Row>
 				<Col sm= { 12 }>
-					<ul > {todos} </ul>
+					{todos} 
 				</Col>
 			</Row>
 

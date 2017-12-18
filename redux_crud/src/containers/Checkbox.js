@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Form } from "react-bootstrap";
+import { Form, Button } from "react-bootstrap";
 
 const Checkbox = (props) => {
 
@@ -12,10 +12,13 @@ const Checkbox = (props) => {
 	
 return (
 	<Form>
-		<input 
-			type="checkbox" 
+		<Button 
+		className= { "btn btn-default btn-xsm" }
+			type="radio" 
 			onClick={ handleClick }
-		/>
+		> 
+			X 
+		</Button>
 	</Form>
 	)
 };

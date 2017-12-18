@@ -2,10 +2,10 @@ import React from 'react'
 import { 
 	Button,
 	Col,
+	Form,
 	Grid,
 	Row,
 } from 'react-bootstrap';
-
 import PropTypes from 'prop-types'
 
 // ============ COMPONENTS ============ 
@@ -27,21 +27,19 @@ const TodoItem = (props) => {
 	let _box;
 
 	const texty = {
-		textDecoration: "line-through",
-		color: item.complete ? "lightgrey" : "blue"
+		textDecoration: item.complete ? "line-through": "none",
+		color: item.complete ? "lightgrey" : "blue",
 	}
 
   return (
 
-		<Row style= { texty
-			 }>
+		<Row style= { texty }>
 
 	  	<Col sm= { 1 } style={ outline } >
 		  	<Checkbox
 					toggleTodo= { props.toggleTodo }   
 					id= {item.id}
 		  	/>
-
 	  	</Col >
 
 	  	<Col sm= { 1 } style={ outline } >
@@ -60,9 +58,9 @@ const TodoItem = (props) => {
 				/>	  	
 	  	</Col >
 
-			<Col sm={ 6} >{ item.task}</Col>
+			<Col sm={ 6 } style={ outline } >{ item.task}</Col>
 			
-			<Col sm={ 1} style={ outline } > 
+			<Col sm={ 1 } style={ outline } > 
 				<EditButton 
 					updateTodo= { props.updateTodo }   
 					id= {item.id} 
