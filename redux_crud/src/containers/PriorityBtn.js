@@ -18,17 +18,17 @@ const PriorityBtn = (props) => {
 		event.preventDefault();
 
 			props.updateRank(props.id, _rank.value);
-			console.log(_rank)
-			console.log(_rank.value)
+			console.log("The new rank is: ", _rank.value)
 			return console.log("Task Priority EDITED!")
 	}
 
 	return (
 		<form >
 			<select onChange= { handleClick } ref= { (value) => _rank = value }>
+			  <option value="High">{props.currRank}</option>
 			  <option value="High">High</option>
-			  <option value="Med" selected="selected">Med</option>
-			  <option value="low">Low</option>
+			  <option value="Med" >Med</option>
+			  <option value="Low">Low</option>
 			</select>
 		</form >
 	)

@@ -31,6 +31,7 @@ const TodoItem = (props) => {
 		  	<PriorityBtn
 					updateRank= { props.updateRank }   
 					id= {item.id}
+					currRank = {item.rank}
 		  	/>
 	  	</Col >
 

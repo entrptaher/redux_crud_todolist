@@ -2,6 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Form } from 'react-bootstrap';
 
+import PriorityBtn from './PriorityBtn';
+
 const TodoForm = (props) => {
 
 	let _task, _rank, _date
@@ -20,9 +22,11 @@ const TodoForm = (props) => {
 		<div>
 			<h4> Add a new todo here: </h4>
 			<Form onSubmit={ handleSubmit }>
-
-				
-
+			<select ref= { (value) => _rank = value }>
+			  <option value="High">High</option>
+			  <option value="Med" selected="selected">Med</option>
+			  <option value="Low">Low</option>
+			</select>
 				<input ref= { (input) => _task = input } type = "text"  placeholder="Task" size={ 40 } required/>
 				<input ref= { (input) => _date = input } type = "date"  defaultValue = { props._today } required/>
 				
