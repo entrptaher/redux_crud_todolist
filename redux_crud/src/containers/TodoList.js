@@ -63,8 +63,8 @@ const TodoList = (props) => {
 			<Row style={ outline02 } className="tableHeader">
 				<ul>
 					<Col sm={1}style={ outline } >Rank</Col>
+					<Col sm={2}style={ outline } >Due Date</Col>
 					<Col sm={7}style={ outline } >Task</Col>
-					<Col sm={2}style={ outline } >Date</Col>
 					<Col sm={1}style={ outline } >Edit</Col>
 					<Col sm={1}style={ outline } >Delete</Col>
 				</ul>

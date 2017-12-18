@@ -35,14 +35,17 @@ const TodoItem = (props) => {
 		  	/>
 	  	</Col >
 
-			<Col sm={7}style={ outline } >{item.task}</Col>
 			<Col sm={2}style={ outline } >{item.date}</Col>
+			<Col sm={7}style={ outline } >{item.task}</Col>
+			
 			<Col sm={1}style={ outline } > 
 				<EditButton 
 					updateTodo= { props.updateTodo }   
 					id= {item.id} 
+					
 				/>
 			</Col>
+
 			<Col sm={1}style={ outline } >
 				<DeleteBtn 
 					removeTodo= { props.removeTodo }   
