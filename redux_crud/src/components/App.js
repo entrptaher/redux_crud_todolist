@@ -32,15 +32,7 @@ class App extends Component {
 
   render() {
 
-    // create a default format for today's date
-    const getDay = (date) => {
-      let year = date.getFullYear();
-      let month = date.getMonth()+1;
-      let day = date.getDate();
-      let fullDate =[]
-      return [...fullDate, year, month, day].join("-")
-    }
-    const _today = getDay(new Date())
+    
     
     return (
       <div className="App">
@@ -50,7 +42,7 @@ class App extends Component {
           <h1 className="App-title">React/Redux Todo List</h1>
         </header>
 
-        <p> Todays Date: { _today } </p>
+        <p> Todays Date: { Date() } </p>
 
         <TodoForm 
           addTodo = { this.props.addTodo }
@@ -61,6 +53,7 @@ class App extends Component {
           todoArray=  { this.props.todoArray }
           removeTodo= { this.props.removeTodo }
           toggleTodo= { this.props.toggleTodo }
+          updateDate= { this.props.updateDate }
           updateRank= { this.props.updateRank }
           updateTodo= { this.props.updateTodo }
         />
@@ -89,6 +82,9 @@ const mapDispatchToProps = (dispatch) => {
     toggleTodo: (id) => {
       dispatch(toggleTodo(id))
     },
+    updateDate: (id, date) => {
+      dispatch(updateTodo(id, date))
+    },
     updateRank: (id, rank) => {
       dispatch(updateRank(id,rank))
     },
@@ -104,6 +100,7 @@ App.propTypes = {
   addTodo:    PropTypes.func.isRequired,
   removeTodo: PropTypes.func.isRequired,
   toggleTodo: PropTypes.func.isRequired,
+  updateDate: PropTypes.func.isRequired,
   updateRank: PropTypes.func.isRequired,
   updateTodo: PropTypes.func.isRequired,
 }
@@ -112,6 +109,7 @@ App.defaultProps ={
   addTodo:    f=>f,
   removeTodo: f=>f,
   toggleTodo: f=>f,
+  updateDate: f=>f,
   updateRank: f=>f,
   updateTodo: f=>f,
 }

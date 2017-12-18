@@ -4,12 +4,16 @@ import { Button } from "react-bootstrap";
 
 //============================================================
 
-/*<select ref= { (input) => _rank = input }>
-				  <option value="High">High</option>
-				  <option value="Med" selected="selected">Med</option>
-				  <option value="low">Low</option>
-				</select>
-*/
+// create a default format for today's date
+const getDay = (date) => {
+  let year = date.getFullYear();
+  let month = date.getMonth()+1;
+  let day = date.getDate();
+  let fullDate =[]
+  return [...fullDate, year, month, day].join("-")
+}
+
+const _today = getDay(new Date())
 
 const PriorityBtn = (props) => {
 	let _rank
