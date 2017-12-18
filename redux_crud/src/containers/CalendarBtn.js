@@ -24,12 +24,7 @@ const PriorityBtn = (props) => {
 
 	return (
 		<form >
-			<select onChange= { handleClick } ref= { (value) => _rank = value }>
-			  <option value={props.currRank}>{props.currRank}</option>
-			  <option value="High">High</option>
-			  <option value="Med" >Med</option>
-			  <option value="Low">Low</option>
-			</select>
+			<input ref= { (input) => _date = input } type = "date"  defaultValue = { props._today } required/>
 		</form >
 	)
 } //end Container

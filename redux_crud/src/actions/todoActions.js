@@ -47,3 +47,13 @@ export const updateRank = (_id, _rank) => {
 	}
 };
 
+export const updateDate = (_id, _date) => {
+	return {
+		type: "UPDATE_DATE",
+		payload: {
+			id:_id,
+			date: _date
+		}
+	}
+};
+
