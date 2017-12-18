@@ -8,9 +8,8 @@ import {
 	Row, 
 } from 'react-bootstrap';
 
-
-
 import TodoItem from './TodoItem';
+
 
 const headerItem = { 
 	id: '0.1HxYz',
@@ -20,7 +19,7 @@ const headerItem = {
 	rank: 'High' 
 }
 
-// =============== STYLING =============
+// ============================ STYLING ============================
 
 const listStyle = {
 	// remove bullets from the ul list
@@ -33,23 +32,24 @@ const outline02= {
 	border: "1px solid lime",
 }
 
-// ===============
+// =========================== COMPONENT ===========================
+
 const TodoList = (props) => {
 
 	let todoArray= props.todoArray
 
 	let todos= todoArray.map(item => {
 		return <TodoItem 
+			key = {item.id}
 			item={item}
 			removeTodo= { props.removeTodo }
 			toggleTodo= { props.toggleTodo }
-			updateTodo= { props.updateTodo }
+			updateDate= { props.updateDate }
 			updateRank= { props.updateRank }
+			updateTodo= { props.updateTodo }
 		/>
 	})
 
-// let todos
-	
 	return (
 
 		<Grid  style={ outline02 }>
@@ -80,24 +80,22 @@ const TodoList = (props) => {
 		)
 } // end component
 
-// ===================================================================
+// ==================================================================
 
-
-/*
-*/
 TodoList.propTypes = {
 	todoArray: PropTypes.array.isRequired,
   removeTodo: PropTypes.func.isRequired,
   toggleTodo: PropTypes.func.isRequired,
+  updateDate: PropTypes.func.isRequired,
   updateRank: PropTypes.func.isRequired,
   updateTodo: PropTypes.func.isRequired,
-
  }
 
 TodoList.defaultProps = { 
 	todoArray: [],
 	removeTodo: f=>f,
   toggleTodo: f=>f,
+  updateDate: f=>f,
   updateRank: f=>f,
   updateTodo: f=>f,
 }

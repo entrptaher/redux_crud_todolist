@@ -19,6 +19,7 @@ import {
   addTodo, 
   removeTodo,
   toggleTodo,
+  updateDate,
   updateTodo,
   updateRank,
   } from '../actions/todoActions'
@@ -80,7 +81,7 @@ const mapDispatchToProps = (dispatch) => {
       dispatch(toggleTodo(id))
     },
     updateDate: (id, date) => {
-      dispatch(updateTodo(id, date))
+      dispatch(updateDate(id, date))
     },
     updateRank: (id, rank) => {
       dispatch(updateRank(id,rank))

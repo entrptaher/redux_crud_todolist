@@ -4,17 +4,15 @@ import { Button } from "react-bootstrap";
 
 //============================================================
 
-
-
 const PriorityBtn = (props) => {
-	let _date
 
-	const handleClick = (event) => {
+	let _date
+	const handleChange = (event) => {
 		event.preventDefault();
 
-		props.updateRank(props.id, _date.value);
-		console.log("The new rank is: ", _date.value)
-		return console.log("Task Priority EDITED!")
+		props.updateDate(props.id, _date.value);
+		console.log("The new DATE is: ", _date.value)
+		return console.log("Task Date EDITED!")
 	}
 
 	return (
@@ -22,7 +20,9 @@ const PriorityBtn = (props) => {
 			<input 
 			type = "date"  
 			ref= { (input) => _date = input } 
-			defaultValue = { props._today } required/>
+			onChange= { handleChange }
+			defaultValue = { props.currDate } required
+			/>
 		</form >
 	)
 } //end Container
@@ -30,12 +30,13 @@ const PriorityBtn = (props) => {
 //============================================================
 
 PriorityBtn.propTypes = {
-	updateRank: PropTypes.func.isRequired,
-	id: PropTypes.string
+	updateDate: PropTypes.func.isRequired,
+	currDate: PropTypes.string,
+	id: PropTypes.string,
 }
 
 PriorityBtn.defaultProps = {
-	updateRank: f => f,
+	updateDate: f => f,
 }
 
 //============================================================

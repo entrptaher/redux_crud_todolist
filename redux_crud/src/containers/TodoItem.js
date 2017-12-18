@@ -10,9 +10,10 @@ import PropTypes from 'prop-types'
 
 // ============ COMPONENTS ============ 
 import Checkbox from '../containers/Checkbox';
-import DeleteBtn from '../containers/DeleteBtn';
-import EditButton from '../containers/EditButton';
 import PriorityBtn from '../containers/PriorityBtn';
+import CalendarBtn from '../containers/CalendarBtn';
+import EditButton from '../containers/EditButton';
+import DeleteBtn from '../containers/DeleteBtn';
 import TodoForm from '../containers/TodoForm';
     
 // ============== STYLING
@@ -27,7 +28,7 @@ const TodoItem = (props) => {
   return (
 
 		<Row className="tableHeader">
-	  	<Col sm= { 1 } >
+	  	<Col sm= { 1 } style={ outline } >
 		  	<PriorityBtn
 					updateRank= { props.updateRank }   
 					id= {item.id}
@@ -35,18 +36,24 @@ const TodoItem = (props) => {
 		  	/>
 	  	</Col >
 
-			<Col sm={2}style={ outline } >{item.date}</Col>
-			<Col sm={7}style={ outline } >{item.task}</Col>
+	  	<Col sm= { 2 } style={ outline } >
+				<CalendarBtn
+					updateDate= { props.updateDate }   
+					id= {item.id}
+					currDate = {item.date}
+				/>	  	
+	  	</Col >
+
+			<Col sm={7} style={ outline } >{item.task}</Col>
 			
-			<Col sm={1}style={ outline } > 
+			<Col sm={1} style={ outline } > 
 				<EditButton 
 					updateTodo= { props.updateTodo }   
 					id= {item.id} 
-					
 				/>
 			</Col>
 
-			<Col sm={1}style={ outline } >
+			<Col sm={1} style={ outline } >
 				<DeleteBtn 
 					removeTodo= { props.removeTodo }   
 					id= {item.id} 
@@ -55,16 +62,15 @@ const TodoItem = (props) => {
 
 		</Row>
   )
-    
 }; // end Component
 
-
-// ADD proptypes for validations
+//===========================================================
 
 TodoItem.propTypes = { 
   item: PropTypes.object.isRequired,
   removeTodo: PropTypes.func,
   toggleTodo: PropTypes.func,
+  updateDate: PropTypes.func,
   updateRank: PropTypes.func,
   updateTodo: PropTypes.func,
 }
@@ -79,6 +85,7 @@ TodoItem.defaultProps ={
  	},
   removeTodo: f=>f,
   toggleTodo: f=>f,
+  updateDate: f=>f,
   updateRank: f=>f,
   updateTodo: f=>f,
 }

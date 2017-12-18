@@ -14,7 +14,7 @@ import { Button } from "react-bootstrap";
 const PriorityBtn = (props) => {
 	let _rank
 
-	const handleClick = (event) => {
+	const handleChange = (event) => {
 		event.preventDefault();
 
 		props.updateRank(props.id, _rank.value);
@@ -24,7 +24,10 @@ const PriorityBtn = (props) => {
 
 	return (
 		<form >
-			<select onChange= { handleClick } ref= { (value) => _rank = value }>
+			<select 
+				onChange= { handleChange } 
+				ref= { (value) => _rank = value }
+			>
 			  <option value={props.currRank}>{props.currRank}</option>
 			  <option value="High">High</option>
 			  <option value="Med" >Med</option>
