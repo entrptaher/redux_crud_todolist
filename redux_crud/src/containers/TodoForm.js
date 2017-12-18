@@ -21,16 +21,12 @@ const TodoForm = (props) => {
 			<h4> Add a new todo here: </h4>
 			<Form onSubmit={ handleSubmit }>
 
-				<select ref= { (input) => _rank = input }>
-				  <option value="High">High</option>
-				  <option value="Med" selected="selected">Med</option>
-				  <option value="low">Low</option>
-				</select>
+				
 
 				<input ref= { (input) => _task = input } type = "text"  placeholder="Task" size={ 40 } required/>
 				<input ref= { (input) => _date = input } type = "date"  defaultValue = { props._today } required/>
 				
-				<input type="submit" value="Add Task" />
+				<input type= "submit" value= "Add Task" />
 				<input type = "reset"/>
 			</Form>
 		</div>

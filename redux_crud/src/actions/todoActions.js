@@ -27,7 +27,7 @@ export const toggleTodo = (_id) => {
 	}
 };
 
-export const updateTodo = (_id,_task) => {
+export const updateTodo = (_id, _task) => {
 	return {
 		type: "UPDATE_TODO",
 		payload: {

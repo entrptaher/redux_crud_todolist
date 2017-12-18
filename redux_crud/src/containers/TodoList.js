@@ -32,7 +32,13 @@ const TodoList = (props) => {
 
 	let todoArray= props.todoArray
 
-	let arr= [1,2,3,4,5]
+	let headerObj= { 
+		id: 'ID',
+   	date: 'DATE',
+		complete: '?',
+		task: 'TASK',
+		rank: 'RANK' 
+	}
 
 	let todos= todoArray.map(item => {
 		return <TodoItem 
@@ -47,31 +53,42 @@ const TodoList = (props) => {
 	
 	return (
 
-		<Grid sm={1} style={ outline02 }>
+		<Grid  style={ outline02 }>
 			<Row style={ outline02 }> 
 				<Col style= { outline } sm={12}>
 					<h2> TodoList </h2>
 				</Col>
 			</Row>
 
-			<Row style={ outline02 } className="tableHeader">
-				<Col sm={1}style={ outline } >Rank</Col>
-				<Col sm={7}style={ outline } >Task</Col>
-				<Col sm={2}style={ outline } >Date</Col>
-				<Col sm={1}style={ outline } >Edit</Col>
-				<Col sm={1}style={ outline } >Delete</Col>
-			</Row>
-			
 			<Row>
 				<Col sm= { 12 }>
-					<ul marginLeft= { 0 }> {todos} </ul>
+					<ul>
+						<Row style={ outline02 } className="tableHeader">
+							<Col sm={1}style={ outline } >Rank</Col>
+							<Col sm={7}style={ outline } >Task</Col>
+							<Col sm={2}style={ outline } >Date</Col>
+							<Col sm={1}style={ outline } >Edit</Col>
+							<Col sm={1}style={ outline } >Delete</Col>
+						</Row>
+					</ul>
+				</Col>
+			</Row>
+
+			<Row>
+				<Col sm= { 12 }>
+					<ul > {todos} </ul>
 				</Col>
 			</Row>
 
 		</Grid>
 		)
-}
+} // end component
 
+// ===================================================================
+
+
+/*
+*/
 TodoList.propTypes = {
 	todoArray: PropTypes.array.isRequired,
 
