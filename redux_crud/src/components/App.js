@@ -32,8 +32,6 @@ class App extends Component {
 
   render() {
 
-    
-    
     return (
       <div className="App">
 
@@ -46,7 +44,6 @@ class App extends Component {
 
         <TodoForm 
           addTodo = { this.props.addTodo }
-          _today = { _today } 
         />
 
         <TodoList 
