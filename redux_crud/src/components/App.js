@@ -18,8 +18,9 @@ import TodoList from '../containers/TodoList';
 import { 
   addTodo, 
   removeTodo,
-  updateTodo,
   toggleTodo,
+  updateTodo,
+  updateRank,
   } from '../actions/todoActions'
   
 // ===================================
@@ -60,6 +61,7 @@ class App extends Component {
           todoArray=  { this.props.todoArray }
           removeTodo= { this.props.removeTodo }
           toggleTodo= { this.props.toggleTodo }
+          updateRank= { this.props.updateRank }
           updateTodo= { this.props.updateTodo }
         />
 
@@ -81,15 +83,17 @@ const mapDispatchToProps = (dispatch) => {
     addTodo: (task, rank, date) => {
       dispatch(addTodo(task, rank, date)) 
     },
-
     removeTodo: (id) => {
       dispatch(removeTodo(id))
     },
-    updateTodo: (id, task) => {
-      dispatch(updateTodo(id,task))
-    },
     toggleTodo: (id) => {
       dispatch(toggleTodo(id))
+    },
+    updateRank: (id, rank) => {
+      dispatch(updateRank(id,rank))
+    },
+    updateTodo: (id, task) => {
+      dispatch(updateTodo(id,task))
     },
   };
 }; // end const
@@ -97,19 +101,18 @@ const mapDispatchToProps = (dispatch) => {
 // ===========================================================
 
 App.propTypes = { 
-  addTodo: PropTypes.func.isRequired,
-
-  updateTodo: PropTypes.func.isRequired,
+  addTodo:    PropTypes.func.isRequired,
   removeTodo: PropTypes.func.isRequired,
-  toggleTodo: PropTypes.func.isRequired
+  toggleTodo: PropTypes.func.isRequired,
+  updateRank: PropTypes.func.isRequired,
+  updateTodo: PropTypes.func.isRequired,
 }
 
 App.defaultProps ={
-  addTodo: f=>f,
-
+  addTodo:    f=>f,
   removeTodo: f=>f,
   toggleTodo: f=>f,
-  updateTodo: f=>f
-
+  updateRank: f=>f,
+  updateTodo: f=>f,
 }
 export default connect(mapStateToProps, mapDispatchToProps)(App);

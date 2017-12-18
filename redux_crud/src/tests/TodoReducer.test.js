@@ -14,7 +14,8 @@ import {
 	addTodo, 
 	updateTodo,
 	removeTodo, 
-	toggleTodo 
+	toggleTodo,
+	updateRank, 
 } from '../actions/todoActions'
 
 // ====================================
@@ -75,7 +76,7 @@ describe("The TOGGLE_TODO function", () => {
 	})
 })
 
-describe.only("The UPDATE_TODO function", () => {
+describe("The UPDATE_TODO function", () => {
 	it('changes the todo content', () => {
 		let listB5 = store.getState().todos
 		expect(listB5).to.be.an("array")
@@ -90,6 +91,24 @@ describe.only("The UPDATE_TODO function", () => {
 
 		let listAFT2 = store.getState().todos
 		expect(listAFT2[0].task).to.equal("Task Updated. Whatever!")
+	})
+})
+
+describe.only("The UPDATE_RANK function", () => {
+	it('changes the rank content', () => {
+		let listB5 = store.getState().todos
+		expect(listB5).to.be.an("array")
+		// ensre immutability
+		deepFreeze(listB5);
+
+		let _id = listB5[0].id
+		expect(_id).to.be.a('string');
+		expect(_id).to.be.equal("0.1HxYz");
+
+		store.dispatch(updateRank(_id,"Highest"));
+
+		let listAFT2 = store.getState().todos
+		expect(listAFT2[0].rank).to.equal("Highest")
 
 	})
 })

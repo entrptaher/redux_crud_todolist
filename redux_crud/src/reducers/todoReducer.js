@@ -53,13 +53,10 @@ const TodoReducer = (state=initState, action) => {
 
 		case "UPDATE_TODO": {
 
-			let _id = payload.id
+			let _id = 	payload.id
 			let _task = payload.task
-			let _rank= payload.rank
-			let _date= payload.date
 
 			let matchId = (task) => { return task.id === _id }
-
 			let target = state.findIndex(matchId)
 
 			let updatedTask = state.map((task, index) => {
@@ -70,6 +67,29 @@ const TodoReducer = (state=initState, action) => {
 						{}, 
 						task, 
 						{ task: _task }
+					)
+				}
+			})
+
+		 return Object.assign([], state, updatedTask)
+		}
+
+		case "UPDATE_RANK": {
+
+			let _id =		payload.id
+			let _rank = payload.rank
+
+			let matchId = (task) => { return task.id === _id }
+			let target = state.findIndex(matchId)
+
+			let updatedTask = state.map((task, index) => {
+				if(index !== target ) {
+					return task
+				} else {
+					return Object.assign(
+						{}, 
+						task, 
+						{ rank: _rank }
 					)
 				}
 			})

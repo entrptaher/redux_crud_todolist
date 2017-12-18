@@ -11,16 +11,17 @@ import { Button } from "react-bootstrap";
 				</select>
 */
 
-const EditButton = (props) => {
+const PriorityBtn = (props) => {
 	let _rank
 
 	const handleClick = (event) => {
 		event.preventDefault();
 
-			props.updateTodo(props.id, _rank);
+			props.updateRank(props.id, _rank.value);
+			console.log(_rank)
+			console.log(_rank.value)
 			return console.log("Task Priority EDITED!")
 	}
-
 
 	return (
 		<form >
@@ -35,14 +36,14 @@ const EditButton = (props) => {
 
 //============================================================
 
-EditButton.propTypes = {
-	updateTodo: PropTypes.func.isRequired,
+PriorityBtn.propTypes = {
+	updateRank: PropTypes.func.isRequired,
 	id: PropTypes.string
 }
 
-EditButton.defaultProps = {
-	updateTodo: f => f,
+PriorityBtn.defaultProps = {
+	updateRank: f => f,
 }
 
 //============================================================
-export default EditButton
+export default PriorityBtn

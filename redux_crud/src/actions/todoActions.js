@@ -36,3 +36,14 @@ export const updateTodo = (_id, _task) => {
 		}
 	}
 };
+
+export const updateRank = (_id, _rank) => {
+	return {
+		type: "UPDATE_RANK",
+		payload: {
+			id:_id,
+			rank: _rank
+		}
+	}
+};
+

@@ -12,14 +12,20 @@ import {
 
 import TodoItem from './TodoItem';
 
+const headerItem = { 
+	id: '0.1HxYz',
+	date: '2020-01-01',
+	complete: false,
+	task: 'Get some Milk',
+	rank: 'High' 
+}
+
 // =============== STYLING =============
 
 const listStyle = {
 	// remove bullets from the ul list
   listStyleType: "none",
 } 	
-
-// ============== STYLING
 const outline= {
 	border: "1px solid orange",
 }
@@ -32,20 +38,13 @@ const TodoList = (props) => {
 
 	let todoArray= props.todoArray
 
-	let headerObj= { 
-		id: 'ID',
-   	date: 'DATE',
-		complete: '?',
-		task: 'TASK',
-		rank: 'RANK' 
-	}
-
 	let todos= todoArray.map(item => {
 		return <TodoItem 
 			item={item}
 			removeTodo= { props.removeTodo }
 			toggleTodo= { props.toggleTodo }
 			updateTodo= { props.updateTodo }
+			updateRank= { props.updateRank }
 		/>
 	})
 
@@ -54,24 +53,21 @@ const TodoList = (props) => {
 	return (
 
 		<Grid  style={ outline02 }>
+
 			<Row style={ outline02 }> 
 				<Col style= { outline } sm={12}>
 					<h2> TodoList </h2>
 				</Col>
 			</Row>
 
-			<Row>
-				<Col sm= { 12 }>
-					<ul>
-						<Row style={ outline02 } className="tableHeader">
-							<Col sm={1}style={ outline } >Rank</Col>
-							<Col sm={7}style={ outline } >Task</Col>
-							<Col sm={2}style={ outline } >Date</Col>
-							<Col sm={1}style={ outline } >Edit</Col>
-							<Col sm={1}style={ outline } >Delete</Col>
-						</Row>
-					</ul>
-				</Col>
+			<Row style={ outline02 } className="tableHeader">
+				<ul>
+					<Col sm={1}style={ outline } >Rank</Col>
+					<Col sm={7}style={ outline } >Task</Col>
+					<Col sm={2}style={ outline } >Date</Col>
+					<Col sm={1}style={ outline } >Edit</Col>
+					<Col sm={1}style={ outline } >Delete</Col>
+				</ul>
 			</Row>
 
 			<Row>
@@ -91,18 +87,18 @@ const TodoList = (props) => {
 */
 TodoList.propTypes = {
 	todoArray: PropTypes.array.isRequired,
-
   removeTodo: PropTypes.func.isRequired,
   toggleTodo: PropTypes.func.isRequired,
+  updateRank: PropTypes.func.isRequired,
   updateTodo: PropTypes.func.isRequired,
 
  }
 
 TodoList.defaultProps = { 
 	todoArray: [],
-
 	removeTodo: f=>f,
   toggleTodo: f=>f,
+  updateRank: f=>f,
   updateTodo: f=>f,
 }
 

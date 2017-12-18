@@ -29,13 +29,12 @@ const TodoItem = (props) => {
 		<Row className="tableHeader">
 	  	<Col sm= { 1 } >
 		  	<PriorityBtn
-					updateTodo= { props.updateTodo }   
-					item= {item.id}
+					updateRank= { props.updateRank }   
+					id= {item.id}
 		  	/>
 	  	</Col >
 
-			<Col sm={1}style={ outline } >{item.rank}</Col>
-			<Col sm={6}style={ outline } >{item.task}</Col>
+			<Col sm={7}style={ outline } >{item.task}</Col>
 			<Col sm={2}style={ outline } >{item.date}</Col>
 			<Col sm={1}style={ outline } > 
 				<EditButton 
@@ -60,9 +59,9 @@ const TodoItem = (props) => {
 
 TodoItem.propTypes = { 
   item: PropTypes.object.isRequired,
-
   removeTodo: PropTypes.func,
   toggleTodo: PropTypes.func,
+  updateRank: PropTypes.func,
   updateTodo: PropTypes.func,
 }
 
@@ -74,9 +73,9 @@ TodoItem.defaultProps ={
     task: 'Celebrate life!',
     rank: 'Low', 
  	},
-
   removeTodo: f=>f,
   toggleTodo: f=>f,
+  updateRank: f=>f,
   updateTodo: f=>f,
 }
 export default TodoItem
