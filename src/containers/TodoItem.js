@@ -24,7 +24,7 @@ const TodoItem = (props) => {
 		paddingBottom: 10,
 		backgroundColor: item.complete ? "whitesmoke" : "white", 
 		textDecoration: item.complete ? "line-through" : "none",
-		color: item.complete ? "grey" : "black",
+		color: item.complete ? "lightgrey" : "black",
 	}
 
   return (

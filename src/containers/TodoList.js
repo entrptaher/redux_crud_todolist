@@ -14,15 +14,20 @@ import TodoItem from './TodoItem';
 // ============================ STYLING ============================
 
 const styleTitle= {
-	// border: "1px solid orange",
 	background:"#006699",
-	color: "white",
+	color: "lightblue",
 	borderRadius: 5,
 	marginBottom: 10,
 }
-const bordering= {
-	// outline: "1px solid lightgrey", 
+const styleItems= { 
 	padding: 7, 
+}
+
+const styleMain = {
+	border: "1px solid #006699",
+	borderRadius: 5,
+	paddingTop: 20,
+	paddingBottom: 20,
 }
 
 // =========================== COMPONENT ===========================
@@ -49,30 +54,22 @@ const TodoList = (props) => {
 
 		<Grid >
 
-			{/*<Row style={ bordering }> 
-							<Col 
-								sm={12}
-							>
-								<h2> TodoList </h2>
-							</Col>
-						</Row>*/}
-
 			<Row 
-				className="tableHeaders"
+				className= "tableHeaders"
 				style= { styleTitle } 
 			>
-					<Col sm= { 1 } style={ bordering } >
+					<Col sm= { 1 } style={ styleItems } >
 				  	<input type="checkbox" disabled />
 			  	</Col >
-					<Col sm={1} style={ bordering } >Rank</Col>
-					<Col sm={2} style={ bordering } >Due Date</Col>
-					<Col sm={6} style={ bordering } >Task</Col>
-					<Col sm={1} style={ bordering } >Edit</Col>
-					<Col sm={1} style={ bordering } >Delete</Col>
+					<Col sm={1} style={ styleItems } >Rank</Col>
+					<Col sm={2} style={ styleItems } >Due Date</Col>
+					<Col sm={6} style={ styleItems } >Task</Col>
+					<Col sm={1} style={ styleItems } >Edit</Col>
+					<Col sm={1} style={ styleItems } >Delete</Col>
 			</Row>
 
-			<Row>
-				<Col sm= { 12 }>
+			<Row className= "todoItems" >
+				<Col sm= { 12 } style= { styleMain } >
 					{todos} 
 				</Col>
 			</Row>
