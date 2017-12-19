@@ -15,7 +15,11 @@ const store = createStore(rootReducer, persistedState, middleware)
 
 // save the state anytime we have a change in the store
 store.subscribe(() => {
-	saveState(store.getState());
+	saveState({ 
+		// pass specific object to limit scope of state saved
+		// e.g. not save state of a visibility filter
+		todos: store.getState().todos
+		});
 })
 
 export default store;
