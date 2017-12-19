@@ -2,16 +2,12 @@
 
 import React from 'react';
 import ReactDOM from 'react-dom';
-
-// Testing...
 import deepFreeze from 'deep-freeze';
 import { expect } from 'chai'
-
-// Data & components
-import store from '../store';
-
 import todos from '../reducers/todoReducer'
 import TodoList from '../containers/TodoList';
+import store from '../store/store';
+
 import { 
 	addTodo, 
 	removeTodo, 

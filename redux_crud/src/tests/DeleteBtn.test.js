@@ -2,8 +2,6 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import DeleteBtn from '../containers/DeleteBtn';
 
-import store from '../store';
-
 it('renders without crashing', () => {
   const div = document.createElement('div');
   ReactDOM.render(

@@ -1,13 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import registerServiceWorker from './registerServiceWorker';
+import './index.css';
+import App from './components/App';
 
 import { Provider } from 'react-redux';
-import store from './store';
+import store from './store/store';
 
-import './index.css';
-
-import registerServiceWorker from './registerServiceWorker';
-import App from './components/App';
+console.log(store.getState())
 
 ReactDOM.render(
 	

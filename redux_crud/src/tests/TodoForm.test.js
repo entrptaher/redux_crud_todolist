@@ -4,9 +4,6 @@ import ReactDOM from 'react-dom';
 // Testing...
 import { expect } from 'chai'
 
-// Data & components
-import store from '../store';
-
 import todoReducer from '../reducers/todoReducer'
 import TodoList from '../containers/TodoList';
 import { 

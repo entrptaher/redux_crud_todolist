@@ -1,13 +1,9 @@
 // should split this into a reducer test suite
 import React from 'react';
 
-// Testing...
 import deepFreeze from 'deep-freeze';
 import { expect } from 'chai'
-
-// Data & components
-import store from '../store';
-
+import store from '../store/store';
 import todos from '../reducers/todoReducer'
 
 import { 
