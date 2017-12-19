@@ -79,7 +79,7 @@ const TodoForm = (props) => {
 						<input 
 							ref= { (input) => _task = input } 
 							type = "text"  
-							placeholder="Task" 
+							placeholder="enter a new task here..." 
 							size={ 60 } 
 							required
 						/>
