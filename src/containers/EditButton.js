@@ -23,7 +23,7 @@ const EditButton = (props) => {
 
 		<Button 
 			onClick= { handleClick } 
-			className= { "btn btn-warning btn-sm" }
+			className= { "btn btn-primary btn-sm" }
 		> 
 			Edit
 		</Button>

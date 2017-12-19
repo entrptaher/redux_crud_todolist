@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Grid, Row, Col, Form } from 'react-bootstrap';
+import { Grid, Row, Col, Button, Form } from 'react-bootstrap';
 
 const TodoForm = (props) => {
 
@@ -32,17 +32,19 @@ const TodoForm = (props) => {
 	}
 
 	const styleTop ={
-		outline: "1px solid lightgrey",
+		// outline: "1px solid lightgrey",
 		// backgroundColor: "#ffdda3",//orange
 		backgroundColor: "lightblue",
+		borderRadius: 5,
 		padding:5,
+		paddingBottom:20,
 		marginTop: 20,
 		marginBottom: 20,
 	}
 
 	const styleTitle ={
 		color:"#006699",
-		marginBottom: 10,
+		marginBottom: 20,
 	}
 
 	return (
@@ -84,11 +86,18 @@ const TodoForm = (props) => {
 					</Col>
 
 					<Col className="add"   style= { style } sm= {1} > 
-						<input type= "submit" value= "Add" /> 
+						<Button 
+							className= { "btn btn-info btn-sm" } 
+							type= "submit" 
+							value= "Add" 
+						> Add </Button>
 					</Col>
 
 					<Col className="reset" style= { style } sm= {1} > 
-						<input type = "reset"/>
+						<Button 
+							className= { "btn btn-warning btn-sm" } 
+							type = "reset"
+							> Reset </Button> 
 					</Col>
 
 				</Form>
