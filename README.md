@@ -10,8 +10,6 @@ Application:
 - Bootstrap CSS
 - CRUD actions for Todo list (Create, Read, Update, Delete)
 - Data persists in localStorage
-
-Successfully deployed on Heroku
-https://redux-crud-project.herokuapp.com/
+- Deployed on Heroku: https://redux-crud-project.herokuapp.com/
 
 
