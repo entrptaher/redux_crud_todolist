@@ -33,21 +33,24 @@ const TodoForm = (props) => {
 
 	const styleTop ={
 		outline: "1px solid lightgrey",
-		backgroundColor: "#ffdda3",//orange
+		// backgroundColor: "#ffdda3",//orange
+		backgroundColor: "lightblue",
 		padding:5,
 		marginTop: 20,
 		marginBottom: 20,
 	}
+
 	const styleTitle ={
 		color:"#006699",
 		marginBottom: 10,
 	}
 
-
 	return (
 		<Grid>
 			<Row style= { styleTop }>
-			<h3 style= { styleTitle } > Add a new todo here: </h3>
+			
+				<h3 style= { styleTitle } > Add a new todo here: </h3>
+			
 				<Form onSubmit={ handleSubmit }>
 
 					<Col className="rank"  sm= {1} > 
@@ -87,7 +90,9 @@ const TodoForm = (props) => {
 					<Col className="reset" style= { style } sm= {1} > 
 						<input type = "reset"/>
 					</Col>
+
 				</Form>
+
 			</Row>
 		</Grid>
 	)

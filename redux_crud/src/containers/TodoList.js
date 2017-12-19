@@ -17,10 +17,11 @@ const styleTitle= {
 	// border: "1px solid orange",
 	background:"#006699",
 	color: "white",
-	marginBottom: 10, 
+	marginBottom: 10,
 }
 const bordering= {
 	outline: "1px solid lightgrey", 
+	padding: 7, 
 }
 
 // =========================== COMPONENT ===========================

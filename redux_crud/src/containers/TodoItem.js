@@ -20,14 +20,15 @@ const TodoItem = (props) => {
 
 	let item = props.item;
 
-	const texty = {
-		textDecoration: item.complete ? "line-through": "none",
-		color: item.complete ? "lightgrey" : "blue",
+	const styleTask = {
+		backgroundColor: item.complete ? "whitesmoke" : "white", 
+		textDecoration: item.complete ? "line-through" : "none",
+		color: item.complete ? "grey" : "black",
 	}
 
   return (
 
-		<Row  style= { texty }>
+		<Row  >
 
 	  	<Col className= "checkBox" sm= { 1 } >
 		  	<Checkbox
@@ -59,7 +60,7 @@ const TodoItem = (props) => {
 			<Col 
 				className= "currentTask" 
 				sm={ 6 } 
-				style= {{ backgroundColor: "lightgrey", color:"black" }} 
+				style= { styleTask } 
 			>
 				{ item.task}
 			</Col>
