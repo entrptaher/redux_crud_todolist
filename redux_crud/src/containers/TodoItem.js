@@ -1,8 +1,5 @@
 import React from 'react'
-import { 
-	Col,
-	Row,
-} from 'react-bootstrap';
+import { Col,Row, } from 'react-bootstrap';
 import PropTypes from 'prop-types'
 
 // ============ COMPONENTS ============ 
@@ -17,6 +14,10 @@ const outline= {
 	border: "1px solid orange",
 }
 
+const centered = {
+	padding: 0	
+}
+
 const TodoItem = (props) => {
 
 	let item = props.item;
@@ -28,7 +29,7 @@ const TodoItem = (props) => {
 
   return (
 
-		<Row style= { texty }>
+		<Row  style= { texty }>
 
 	  	<Col sm= { 1 } style={ outline } >
 		  	<Checkbox
@@ -37,7 +38,7 @@ const TodoItem = (props) => {
 		  	/>
 	  	</Col >
 
-	  	<Col sm= { 1 } style={ outline } >
+	  	<Col sm= { 1 } style={ centered } >
 		  	<PriorityBtn
 					updateRank= { props.updateRank }   
 					id= {item.id}
@@ -45,7 +46,7 @@ const TodoItem = (props) => {
 		  	/>
 	  	</Col >
 
-	  	<Col sm= { 2 } style={ outline } >
+	  	<Col sm= { 2 } style={ centered, {padding:0,fontSize:"0.75em"} } >
 				<CalendarBtn
 					updateDate= { props.updateDate }   
 					id= {item.id}
@@ -53,16 +54,16 @@ const TodoItem = (props) => {
 				/>	  	
 	  	</Col >
 
-			<Col sm={ 6 } style={ outline } >{ item.task}</Col>
+			<Col sm={ 6 } style={ outline, centered } >{ item.task}</Col>
 			
-			<Col sm={ 1 } style={ outline } > 
+			<Col sm={ 1 } style={ outline, centered } > 
 				<EditButton 
 					updateTodo= { props.updateTodo }   
 					id= {item.id} 
 				/>
 			</Col>
 
-			<Col sm={ 1 } style={ outline } >
+			<Col sm={ 1 } style={ outline, centered } >
 				<DeleteBtn 
 					removeTodo= { props.removeTodo }   
 					id= { item.id } 
