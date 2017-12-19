@@ -11,11 +11,12 @@ import DeleteBtn from '../containers/DeleteBtn';
     
 // ============== STYLING
 const outline= {
-	border: "1px solid orange",
+	// borderBottom: "1px solid grey",
 }
 
 const centered = {
-	padding: 0	
+	padding: 0,
+	marginBottom: 5,	
 }
 
 const TodoItem = (props) => {
@@ -31,7 +32,7 @@ const TodoItem = (props) => {
 
 		<Row  style= { texty }>
 
-	  	<Col sm= { 1 } style={ outline } >
+	  	<Col sm= { 1 } >
 		  	<Checkbox
 					toggleTodo= { props.toggleTodo }   
 					id= {item.id}
@@ -54,7 +55,7 @@ const TodoItem = (props) => {
 				/>	  	
 	  	</Col >
 
-			<Col sm={ 6 } style={ outline, centered } >{ item.task}</Col>
+			<Col sm={ 6 } style={ outline } >{ item.task}</Col>
 			
 			<Col sm={ 1 } style={ outline, centered } > 
 				<EditButton 
@@ -69,7 +70,6 @@ const TodoItem = (props) => {
 					id= { item.id } 
 				/>
 			</Col>
-
 		</Row>
   )
 }; // end Component

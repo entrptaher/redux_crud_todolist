@@ -14,10 +14,11 @@ import TodoItem from './TodoItem';
 // ============================ STYLING ============================
 
 const outline= {
-	border: "1px solid orange",
+	// border: "1px solid orange",
 }
-const outline02= {
-	border: "1px solid lime",
+const bordering= {
+	outline: "1px solid lightgrey", 
+	marginBottom: 25, 
 }
 
 // =========================== COMPONENT ===========================
@@ -42,23 +43,29 @@ const TodoList = (props) => {
 
 	return (
 
-		<Grid style={ outline02 }  >
+		<Grid style={ outline }  >
 
-			<Row style={ outline02 }> 
-				<Col style= { outline } sm={12}>
+			<Row style={ bordering }> 
+				<Col 
+					style= { bordering } 
+					sm={12}
+				>
 					<h2> TodoList </h2>
 				</Col>
 			</Row>
 
-			<Row style={ outline02 } className="tableHeaders ">
-					<Col sm= { 1 } style={ outline } >
+			<Row 
+				className="tableHeaders"
+				style= { outline } 
+			>
+					<Col sm= { 1 } style={ bordering } >
 				  	<input type="checkbox" disabled />
 			  	</Col >
-					<Col sm={1} style={ outline } >Rank</Col>
-					<Col sm={2} style={ outline } >Due Date</Col>
-					<Col sm={6} style={ outline } >Task</Col>
-					<Col sm={1} style={ outline } >Edit</Col>
-					<Col sm={1} style={ outline } >Delete</Col>
+					<Col sm={1} style={ bordering } >Rank</Col>
+					<Col sm={2} style={ bordering } >Due Date</Col>
+					<Col sm={6} style={ bordering } >Task</Col>
+					<Col sm={1} style={ bordering } >Edit</Col>
+					<Col sm={1} style={ bordering } >Delete</Col>
 			</Row>
 
 			<Row>

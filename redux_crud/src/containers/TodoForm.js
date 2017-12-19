@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Form } from 'react-bootstrap';
+import { Grid, Row, Col, Form } from 'react-bootstrap';
 
 const TodoForm = (props) => {
 
@@ -26,9 +26,23 @@ const TodoForm = (props) => {
 		_task.focus();
 	}
 
+	const style ={
+		outline: "1px solid lightgrey"
+	}
+
 	return (
 		<div>
-			<h4> Add a new todo here: </h4>
+		<Grid>
+			<Row>
+				<Col className="rank"  sm= {2} style= { style } > x </Col>
+				<Col className="date"  sm= {2} style= { style } > x </Col>
+				<Col className="task"  sm= {6} style= { style } > x </Col>
+				<Col className="add"   sm= {1} style= { style } > x </Col>
+				<Col className="reset" sm= {1} style= { style } > x </Col>
+			</Row>
+		</Grid>
+
+			<h4 style= { style } > Add a new todo here: </h4>
 			<Form onSubmit={ handleSubmit }>
 			<select  defaultValue="Med" ref= { (value) => _rank = value }>
 			  <option value="High">High</option>
