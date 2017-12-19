@@ -1,6 +1,7 @@
 # redux_crud_todolist
 Basic todo application in React with Redux
-
+Readme is WIP.  Successfully deployed on Heroku
+https://redux-crud-project.herokuapp.com/
 
 ## Process Steps
 - create-react-app
