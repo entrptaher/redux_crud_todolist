@@ -27,35 +27,69 @@ const TodoForm = (props) => {
 	}
 
 	const style ={
-		outline: "1px solid lightgrey"
+		// outline: "0.5px solid lightgrey",
+		padding:0,
 	}
 
+	const styleTop ={
+		outline: "1px solid lightgrey",
+		backgroundColor: "#ffdda3",//orange
+		padding:5,
+		marginTop: 20,
+		marginBottom: 20,
+	}
+	const styleTitle ={
+		color:"#006699",
+		marginBottom: 10,
+	}
+
+
 	return (
-		<div>
 		<Grid>
-			<Row>
-				<Col className="rank"  sm= {2} style= { style } > x </Col>
-				<Col className="date"  sm= {2} style= { style } > x </Col>
-				<Col className="task"  sm= {6} style= { style } > x </Col>
-				<Col className="add"   sm= {1} style= { style } > x </Col>
-				<Col className="reset" sm= {1} style= { style } > x </Col>
+			<Row style= { styleTop }>
+			<h3 style= { styleTitle } > Add a new todo here: </h3>
+				<Form onSubmit={ handleSubmit }>
+
+					<Col className="rank"  sm= {1} > 
+						<select  
+							ref= { (value) => _rank = value }
+							defaultValue="Med" 
+						>
+						  <option value="High">High</option>
+						  <option value="Med" >Med</option>
+						  <option value="Low">Low</option>
+						</select>
+					</Col>
+
+					<Col className="date" style={ style } sm= {3} > 
+						<input 
+							ref= { (input) => _date = input } 
+							type = "date"  
+							defaultValue = { _today } 
+							required
+						/> 
+					</Col>
+
+					<Col className="task"  sm= {6} > 
+						<input 
+							ref= { (input) => _task = input } 
+							type = "text"  
+							placeholder="Task" 
+							size={ 60 } 
+							required
+						/>
+					</Col>
+
+					<Col className="add"   style= { style } sm= {1} > 
+						<input type= "submit" value= "Add" /> 
+					</Col>
+
+					<Col className="reset" style= { style } sm= {1} > 
+						<input type = "reset"/>
+					</Col>
+				</Form>
 			</Row>
 		</Grid>
-
-			<h4 style= { style } > Add a new todo here: </h4>
-			<Form onSubmit={ handleSubmit }>
-			<select  defaultValue="Med" ref= { (value) => _rank = value }>
-			  <option value="High">High</option>
-			  <option value="Med" >Med</option>
-			  <option value="Low">Low</option>
-			</select>
-				<input ref= { (input) => _task = input } type = "text"  placeholder="Task" size={ 40 } required/>
-				<input ref= { (input) => _date = input } type = "date"  defaultValue = { _today } required/>
-				
-				<input type= "submit" value= "Add Task" />
-				<input type = "reset"/>
-			</Form>
-		</div>
 	)
 }
 

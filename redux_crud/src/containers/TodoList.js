@@ -13,12 +13,14 @@ import TodoItem from './TodoItem';
 
 // ============================ STYLING ============================
 
-const outline= {
+const styleTitle= {
 	// border: "1px solid orange",
+	background:"#006699",
+	color: "white",
+	marginBottom: 10, 
 }
 const bordering= {
 	outline: "1px solid lightgrey", 
-	marginBottom: 25, 
 }
 
 // =========================== COMPONENT ===========================
@@ -43,20 +45,19 @@ const TodoList = (props) => {
 
 	return (
 
-		<Grid style={ outline }  >
+		<Grid >
 
-			<Row style={ bordering }> 
-				<Col 
-					style= { bordering } 
-					sm={12}
-				>
-					<h2> TodoList </h2>
-				</Col>
-			</Row>
+			{/*<Row style={ bordering }> 
+							<Col 
+								sm={12}
+							>
+								<h2> TodoList </h2>
+							</Col>
+						</Row>*/}
 
 			<Row 
 				className="tableHeaders"
-				style= { outline } 
+				style= { styleTitle } 
 			>
 					<Col sm= { 1 } style={ bordering } >
 				  	<input type="checkbox" disabled />

@@ -10,9 +10,6 @@ import EditButton from '../containers/EditButton';
 import DeleteBtn from '../containers/DeleteBtn';
     
 // ============== STYLING
-const outline= {
-	// borderBottom: "1px solid grey",
-}
 
 const centered = {
 	padding: 0,
@@ -32,14 +29,14 @@ const TodoItem = (props) => {
 
 		<Row  style= { texty }>
 
-	  	<Col sm= { 1 } >
+	  	<Col className= "checkBox" sm= { 1 } >
 		  	<Checkbox
 					toggleTodo= { props.toggleTodo }   
 					id= {item.id}
 		  	/>
 	  	</Col >
 
-	  	<Col sm= { 1 } style={ centered } >
+	  	<Col className= "priorityBtn" sm= { 1 } style={ centered } >
 		  	<PriorityBtn
 					updateRank= { props.updateRank }   
 					id= {item.id}
@@ -47,7 +44,11 @@ const TodoItem = (props) => {
 		  	/>
 	  	</Col >
 
-	  	<Col sm= { 2 } style={ centered, {padding:0,fontSize:"0.75em"} } >
+	  	<Col 
+	  		className= "calendarBtn" 
+	  		sm= { 2 } 
+	  		style={{padding:0,fontSize:"0.75em"}} 
+  		>
 				<CalendarBtn
 					updateDate= { props.updateDate }   
 					id= {item.id}
@@ -55,21 +56,28 @@ const TodoItem = (props) => {
 				/>	  	
 	  	</Col >
 
-			<Col sm={ 6 } style={ outline } >{ item.task}</Col>
+			<Col 
+				className= "currentTask" 
+				sm={ 6 } 
+				style= {{ backgroundColor: "lightgrey", color:"black" }} 
+			>
+				{ item.task}
+			</Col>
 			
-			<Col sm={ 1 } style={ outline, centered } > 
+			<Col className= "editButton" sm={ 1 } style={ centered } > 
 				<EditButton 
 					updateTodo= { props.updateTodo }   
 					id= {item.id} 
 				/>
 			</Col>
 
-			<Col sm={ 1 } style={ outline, centered } >
+			<Col className= "deleteBtn" sm={ 1 } style={ centered } >
 				<DeleteBtn 
 					removeTodo= { props.removeTodo }   
 					id= { item.id } 
 				/>
 			</Col>
+
 		</Row>
   )
 }; // end Component
