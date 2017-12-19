@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Button } from "react-bootstrap";
+import { Form } from "react-bootstrap";
 
 //============================================================
 
@@ -16,14 +16,14 @@ const PriorityBtn = (props) => {
 	}
 
 	return (
-		<form >
+		<Form >
 			<input 
 			type = "date"  
 			ref= { (input) => _date = input } 
 			onChange= { handleChange }
 			defaultValue = { props.currDate } required
 			/>
-		</form >
+		</Form >
 	)
 } //end Container
 

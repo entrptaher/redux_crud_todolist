@@ -7,11 +7,7 @@ import PropTypes from 'prop-types'
 // ============ COMPONENTS ============ 
 // import { Button, Row, Col } from 'react-bootstrap'
 // bootstrap not working...
-import Checkbox from '../containers/Checkbox';
-import DeleteBtn from '../containers/DeleteBtn';
-import EditButton from '../containers/EditButton';
 import TodoForm from '../containers/TodoForm';
-import TodoItem from '../containers/TodoItem';
 import TodoList from '../containers/TodoList';
 
 // ============ FUNCTIONS ============ 

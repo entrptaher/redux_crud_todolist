@@ -1,9 +1,6 @@
 import React from 'react'
 import { 
-	Button,
 	Col,
-	Form,
-	Grid,
 	Row,
 } from 'react-bootstrap';
 import PropTypes from 'prop-types'
@@ -14,7 +11,6 @@ import PriorityBtn from '../containers/PriorityBtn';
 import CalendarBtn from '../containers/CalendarBtn';
 import EditButton from '../containers/EditButton';
 import DeleteBtn from '../containers/DeleteBtn';
-import TodoForm from '../containers/TodoForm';
     
 // ============== STYLING
 const outline= {
@@ -24,7 +20,6 @@ const outline= {
 const TodoItem = (props) => {
 
 	let item = props.item;
-	let _box;
 
 	const texty = {
 		textDecoration: item.complete ? "line-through": "none",

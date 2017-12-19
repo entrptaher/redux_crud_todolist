@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Form, Button } from "react-bootstrap";
+import { Form } from "react-bootstrap";
 
 const Checkbox = (props) => {
 
@@ -8,17 +8,17 @@ const Checkbox = (props) => {
 		event.preventDefault();
 		props.toggleTodo(props.id);
 		console.log("Task COMPLETED!")
+		console.log(event.target)
 	}
 	
 return (
 	<Form>
-		<Button 
+		<input 
 		className= { "btn btn-default btn-xsm" }
-			type="radio" 
+			type="checkbox" 
 			onClick={ handleClick }
 		> 
-			X 
-		</Button>
+		</input>
 	</Form>
 	)
 };

@@ -9,23 +9,10 @@ import {
 } from 'react-bootstrap';
 
 import TodoItem from './TodoItem';
-import Checkbox from './Checkbox';
 
-
-const headerItem = { 
-	id: '0.1HxYz',
-	date: '2020-01-01',
-	complete: false,
-	task: 'Get some Milk',
-	rank: 'High' 
-}
 
 // ============================ STYLING ============================
 
-const listStyle = {
-	// remove bullets from the ul list
-  listStyleType: "none",
-} 	
 const outline= {
 	border: "1px solid orange",
 }
