@@ -19,6 +19,12 @@ const centered = {
 const TodoItem = (props) => {
 
 	let item = props.item;
+	let _task= "";
+
+	const testAlert = (event) => {
+		event.preventDefault();
+		alert(event.target._task);
+	}
 
 	const styleTask = {
 		paddingBottom: 10,
@@ -63,7 +69,14 @@ const TodoItem = (props) => {
 				sm={ 6 } 
 				style= { styleTask } 
 			>
-				{ item.task}
+			<input 
+				ref= { (input) => _task = input } 
+				type = "text"  
+				placeholder= { item.task } 
+				size={ 60 } 
+				required
+			/> 
+
 			</Col>
 			
 			<Col className= "editButton" sm={ 1 } style={ centered } > 
