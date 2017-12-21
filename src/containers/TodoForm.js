@@ -34,7 +34,8 @@ const TodoForm = (props) => {
 	const styleTop ={
 		// outline: "1px solid lightgrey",
 		// backgroundColor: "#ffdda3",//orange
-		backgroundColor: "#60D9FA",
+		// backgroundColor: "#60D9FA",
+		backgroundColor: "lightblue",
 		borderRadius: 5,
 		padding:5,
 		paddingBottom:20,

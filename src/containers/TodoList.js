@@ -24,7 +24,7 @@ const styleItems= {
 }
 
 const styleMain = {
-	border: "1px solid #006699",
+	border: "1px solid lightblue",
 	borderRadius: 5,
 	paddingTop: 20,
 	paddingBottom: 20,
