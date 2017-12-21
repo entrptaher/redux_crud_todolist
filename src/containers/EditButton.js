@@ -10,7 +10,7 @@ const EditButton = (props) => {
 		event.preventDefault();
 		// allow restricted global use of `confirm`
 		//eslint-disable-next-line
-		let _edited = prompt("EDIT this item?") 
+		let _edited = prompt("Enter Edited task below: ", props.task) 
 			
 		if (_edited) {
 			props.updateTodo( props.id, _edited,);
@@ -34,7 +34,8 @@ const EditButton = (props) => {
 
 EditButton.propTypes = {
 	updateTodo: PropTypes.func.isRequired,
-	id: PropTypes.string
+	id: PropTypes.string,
+	task: PropTypes.object, // item.task
 }
 
 EditButton.defaultProps = {

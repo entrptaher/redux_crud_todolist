@@ -81,7 +81,8 @@ const TodoItem = (props) => {
 			<Col className= "editButton" sm={ 1 } style={ centered } > 
 				<EditButton 
 					updateTodo= { props.updateTodo }   
-					id= {item.id} 
+					id= { item.id } 
+					task= { item.task }
 				/>
 			</Col>
 
