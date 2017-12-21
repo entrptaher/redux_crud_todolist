@@ -25,14 +25,15 @@ const TodoItem = (props) => {
 // Code is WET
 	const onFocusStyle = (event) => {
 		event.preventDefault();
-		_task.style.backgroundColor = "yellow";
+		_task.style.backgroundColor = "whitesmoke";
 		_task.style.color = "blue";
+		_task.setSelectionRange(0, _task.value.length)
 	}
 
 	const onBlurStyle = (event) => {
 		event.preventDefault();
 		_task.style.backgroundColor = "white";
-		_task.style.color = "darkgrey";
+		_task.style.color = "black";
 	}
 
 	const handleTaskEdit = (event) => {
@@ -60,19 +61,31 @@ const TodoItem = (props) => {
   return (
 
 		<Row  >
-	  	<Col className= "checkBox" sm= { 1 } >
+
+	  	<Col 
+	  		className= "checkBox" 
+	  		sm= { 1 } 
+  		>
+
 		  	<Checkbox
 					toggleTodo= { props.toggleTodo }   
 					id= { item.id }
 		  	/>
+
 	  	</Col >
 
-	  	<Col className= "priorityBtn" sm= { 1 } style={ centered } >
+	  	<Col 
+	  		className= "priorityBtn" 
+	  		sm= { 1 } 
+	  		style={ centered } 
+  		>
+
 		  	<PriorityBtn
 					updateRank= { props.updateRank }   
 					id= { item.id }
 					currRank = { item.rank }
 		  	/>
+
 	  	</Col >
 
 	  	<Col 
@@ -80,39 +93,50 @@ const TodoItem = (props) => {
 	  		sm= { 2 } 
 	  		style={{ padding:0,fontSize:"0.75em" }} 
   		>
+
 				<CalendarBtn
 					updateDate= { props.updateDate }   
 					id= { item.id }
 					currDate = { item.date }
-				/>	  	
+				/>	
+
 	  	</Col >
 
 			<Col 
 				className= "currentTask" 
-				sm={ 6 } 
+				sm={ 7 } 
 				style= { styleTask } 
 			>
-			<Form 
-			  onSubmit= { handleTaskEdit } 
-			  onFocus= { onFocusStyle } 
-			  onBlur= { onBlurStyle } 
+
+				<Form 
+				  onSubmit= { handleTaskEdit } 
+				  onFocus= { onFocusStyle } 
+				  onBlur= { onBlurStyle } 
 			  >
-				<input 
-					
-					ref= { (input) => _task = input } 
-					type = "text"  
-					defaultValue= { item.task } 
-					size={ 60 } 
-				/> 
-			</Form>
+
+					<input 
+						ref= { (input) => _task = input } 
+						type = "text"  
+						defaultValue= { item.task }
+						maxLength= {48} 
+						size= { 50 } 
+					/> 
+
+				</Form>
 
 			</Col>
 			
-			<Col className= "deleteBtn" sm={ 1 } focus={ centered } >
+			<Col 
+				className= "deleteBtn" 
+				sm= { 1 } 
+				style= { centered } 
+			>
+
 				<DeleteBtn 
 					removeTodo= { props.removeTodo }   
 					id= { item.id } 
 				/>
+
 			</Col>
 
 		</Row>

@@ -72,6 +72,7 @@ const TodoForm = (props) => {
 							ref= { (input) => _date = input } 
 							type = "date"  
 							defaultValue = { _today } 
+							maxLength= {48} 
 							required
 						/> 
 					</Col>
