@@ -16,10 +16,13 @@ const centered = {
 	marginBottom: 5,	
 }
 
+
 const TodoItem = (props) => {
 
 	let item = props.item;
 	let _task
+
+	console.log(_task)
 
 	const handleTaskEdit = (event) => {
 		event.preventDefault();

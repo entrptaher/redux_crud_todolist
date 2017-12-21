@@ -35,7 +35,7 @@ const EditButton = (props) => {
 EditButton.propTypes = {
 	updateTodo: PropTypes.func.isRequired,
 	id: PropTypes.string,
-	task: PropTypes.object, // item.task
+	task: PropTypes.string, // item.task
 }
 
 EditButton.defaultProps = {
