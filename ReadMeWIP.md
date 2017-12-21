@@ -1,3 +1,4 @@
+Use a doc like this to outline the recipe for this application
 # redux_crud_todolist
 Basic todo application in React with Redux
 Readme is WIP.  Successfully deployed on Heroku
