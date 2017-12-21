@@ -57,6 +57,10 @@ const TodoForm = (props) => {
 				<Form onSubmit={ handleSubmit }>
 
 					<Col className="rank"  sm= {1} > 
+					</Col>
+				
+					<Col className="rank"  sm= {1} > 
+
 						<select  
 							ref= { (value) => _rank = value }
 							defaultValue="Med" 
@@ -65,14 +69,14 @@ const TodoForm = (props) => {
 						  <option value="Med" >Med</option>
 						  <option value="Low">Low</option>
 						</select>
+
 					</Col>
 
-					<Col className="date" style={ style } sm= {3} > 
+					<Col className="date" style={ style } sm= {2} > 
 						<input 
 							ref= { (input) => _date = input } 
 							type = "date"  
 							defaultValue = { _today } 
-							maxLength= {48} 
 							required
 						/> 
 					</Col>
@@ -83,6 +87,7 @@ const TodoForm = (props) => {
 							type = "text"  
 							placeholder="enter a new task here..." 
 							size={ 60 } 
+							maxLength= {48} 
 							required
 						/>
 					</Col>

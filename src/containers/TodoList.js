@@ -60,7 +60,7 @@ const TodoList = (props) => {
 			>
 					<Col sm= { 1 } style={ styleItems } >
 				  	<input type="checkbox" checked disabled />
-				  	 .done 
+
 			  	</Col >
 					<Col sm={1} style={ styleItems } >Rank</Col>
 					<Col sm={2} style={ styleItems } >Due Date</Col>

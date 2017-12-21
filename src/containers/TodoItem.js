@@ -22,6 +22,13 @@ const TodoItem = (props) => {
 	let oldTask = item.task
 	let _task
 
+	const styleTask = {
+		paddingBottom: 10,
+		// backgroundColor: item.complete ? "whitesmoke" : "white", 
+		color: item.complete ? "lightgrey" : "black",
+		textDecoration: item.complete ? "line-through" : "none",
+	}
+
 // Code is WET
 	const onFocusStyle = (event) => {
 		event.preventDefault();
@@ -40,22 +47,15 @@ const TodoItem = (props) => {
 		event.preventDefault();
 		let newTask = _task.value
 			
-		if (newTask == oldTask) {
+	  if (newTask == oldTask) {
 			_task.style.backgroundColor = "white";
 			return console.log("No Changes Submitted")
-			
-		}
-			props.updateTodo(item.id, newTask);
-			alert("item edited!!")
-			_task.style.backgroundColor = "white";
-			return console.log("Task EDITED!", newTask)
-	}
+		} 
 
-	const styleTask = {
-		paddingBottom: 10,
-		backgroundColor: item.complete ? "whitesmoke" : "white", 
-		textDecoration: item.complete ? "line-through" : "none",
-		color: item.complete ? "lightgrey" : "black",
+		props.updateTodo(item.id, newTask);
+		alert("item edited!!")
+		_task.style.backgroundColor = "white";
+		return console.log("Task EDITED!", newTask)
 	}
 
   return (
@@ -104,8 +104,7 @@ const TodoItem = (props) => {
 
 			<Col 
 				className= "currentTask" 
-				sm={ 7 } 
-				style= { styleTask } 
+				sm={ 6 } 
 			>
 
 				<Form 
@@ -118,12 +117,16 @@ const TodoItem = (props) => {
 						ref= { (input) => _task = input } 
 						type = "text"  
 						defaultValue= { item.task }
-						maxLength= {48} 
-						size= { 50 } 
+						maxLength= { 50 } 
+						size= { 60 } 
+						style= { styleTask } 
 					/> 
 
 				</Form>
 
+			</Col>
+
+			<Col sm= { 1 } >
 			</Col>
 			
 			<Col 
@@ -138,6 +141,8 @@ const TodoItem = (props) => {
 				/>
 
 			</Col>
+
+			
 
 		</Row>
   )
