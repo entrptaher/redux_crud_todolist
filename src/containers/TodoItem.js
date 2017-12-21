@@ -1,5 +1,5 @@
 import React from 'react'
-import { Col,Row, } from 'react-bootstrap';
+import { Col, Form, Row, } from 'react-bootstrap';
 import PropTypes from 'prop-types'
 
 // ============ COMPONENTS ============ 
@@ -20,21 +20,19 @@ const centered = {
 const TodoItem = (props) => {
 
 	let item = props.item;
+	let oldTask = item.task
 	let _task
-
-	console.log(_task)
 
 	const handleTaskEdit = (event) => {
 		event.preventDefault();
-
-		let _currTask = event.target.placeholder
-		let _edited = prompt("Enter Edited task below: ", _currTask) 
+		let newTask = _task.value
 			
-		if (_edited) {
-			props.updateTodo(item.id, _edited);
-			return console.log("Task EDITED!")
-		} 
-		console.log("EDIT Cancelled")
+		if (newTask == oldTask) {
+			return console.log("No Changes Submitted")
+		}
+			props.updateTodo(item.id, newTask);
+			alert("item edited!!")
+			return console.log("Task EDITED!", newTask)
 	}
 
 	const styleTask = {
@@ -47,7 +45,6 @@ const TodoItem = (props) => {
   return (
 
 		<Row  >
-
 	  	<Col className= "checkBox" sm= { 1 } >
 		  	<Checkbox
 					toggleTodo= { props.toggleTodo }   
@@ -80,24 +77,17 @@ const TodoItem = (props) => {
 				sm={ 6 } 
 				style= { styleTask } 
 			>
-			<input 
-				ref= { (input) => _task = input } 
-				type = "text"  
-				placeholder= { item.task } 
-				size={ 60 } 
-				onClick = { handleTaskEdit }
-			/> 
+			<Form onSubmit= { handleTaskEdit }>
+				<input 
+					ref= { (input) => _task = input } 
+					type = "text"  
+					defaultValue= { item.task } 
+					size={ 60 } 
+				/> 
+			</Form>
 
 			</Col>
 			
-			<Col className= "editButton" sm={ 1 } style={ centered } > 
-				<EditButton 
-					updateTodo= { props.updateTodo }   
-					id= { item.id } 
-					task= { item.task }
-				/>
-			</Col>
-
 			<Col className= "deleteBtn" sm={ 1 } style={ centered } >
 				<DeleteBtn 
 					removeTodo= { props.removeTodo }   
