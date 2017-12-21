@@ -19,11 +19,19 @@ const centered = {
 const TodoItem = (props) => {
 
 	let item = props.item;
-	let _task= "";
+	let _task
 
-	const testAlert = (event) => {
+	const handleTaskEdit = (event) => {
 		event.preventDefault();
-		alert(event.target._task);
+
+		let _currTask = event.target.placeholder
+		let _edited = prompt("Enter Edited task below: ", _currTask) 
+			
+		if (_edited) {
+			props.updateTodo(item.id, _edited);
+			return console.log("Task EDITED!")
+		} 
+		console.log("EDIT Cancelled")
 	}
 
 	const styleTask = {
@@ -40,26 +48,26 @@ const TodoItem = (props) => {
 	  	<Col className= "checkBox" sm= { 1 } >
 		  	<Checkbox
 					toggleTodo= { props.toggleTodo }   
-					id= {item.id}
+					id= { item.id }
 		  	/>
 	  	</Col >
 
 	  	<Col className= "priorityBtn" sm= { 1 } style={ centered } >
 		  	<PriorityBtn
 					updateRank= { props.updateRank }   
-					id= {item.id}
-					currRank = {item.rank}
+					id= { item.id }
+					currRank = { item.rank }
 		  	/>
 	  	</Col >
 
 	  	<Col 
 	  		className= "calendarBtn" 
 	  		sm= { 2 } 
-	  		style={{padding:0,fontSize:"0.75em"}} 
+	  		style={{ padding:0,fontSize:"0.75em" }} 
   		>
 				<CalendarBtn
 					updateDate= { props.updateDate }   
-					id= {item.id}
+					id= { item.id }
 					currDate = { item.date }
 				/>	  	
 	  	</Col >
@@ -74,6 +82,7 @@ const TodoItem = (props) => {
 				type = "text"  
 				placeholder= { item.task } 
 				size={ 60 } 
+				onClick = { handleTaskEdit }
 			/> 
 
 			</Col>
