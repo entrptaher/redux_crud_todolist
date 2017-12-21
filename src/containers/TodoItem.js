@@ -16,22 +16,37 @@ const centered = {
 	marginBottom: 5,	
 }
 
-
 const TodoItem = (props) => {
 
 	let item = props.item;
 	let oldTask = item.task
 	let _task
 
+// Code is WET
+	const onFocusStyle = (event) => {
+		event.preventDefault();
+		_task.style.backgroundColor = "yellow";
+		_task.style.color = "blue";
+	}
+
+	const onBlurStyle = (event) => {
+		event.preventDefault();
+		_task.style.backgroundColor = "white";
+		_task.style.color = "darkgrey";
+	}
+
 	const handleTaskEdit = (event) => {
 		event.preventDefault();
 		let newTask = _task.value
 			
 		if (newTask == oldTask) {
+			_task.style.backgroundColor = "white";
 			return console.log("No Changes Submitted")
+			
 		}
 			props.updateTodo(item.id, newTask);
 			alert("item edited!!")
+			_task.style.backgroundColor = "white";
 			return console.log("Task EDITED!", newTask)
 	}
 
@@ -77,8 +92,13 @@ const TodoItem = (props) => {
 				sm={ 6 } 
 				style= { styleTask } 
 			>
-			<Form onSubmit= { handleTaskEdit }>
+			<Form 
+			  onSubmit= { handleTaskEdit } 
+			  onFocus= { onFocusStyle } 
+			  onBlur= { onBlurStyle } 
+			  >
 				<input 
+					
 					ref= { (input) => _task = input } 
 					type = "text"  
 					defaultValue= { item.task } 
@@ -88,7 +108,7 @@ const TodoItem = (props) => {
 
 			</Col>
 			
-			<Col className= "deleteBtn" sm={ 1 } style={ centered } >
+			<Col className= "deleteBtn" sm={ 1 } focus={ centered } >
 				<DeleteBtn 
 					removeTodo= { props.removeTodo }   
 					id= { item.id } 
