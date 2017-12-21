@@ -74,7 +74,6 @@ const TodoItem = (props) => {
 				type = "text"  
 				placeholder= { item.task } 
 				size={ 60 } 
-				required
 			/> 
 
 			</Col>
