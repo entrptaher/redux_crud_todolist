@@ -6,8 +6,8 @@ import PropTypes from 'prop-types'
 import Checkbox from '../containers/Checkbox';
 import PriorityBtn from '../containers/PriorityBtn';
 import CalendarBtn from '../containers/CalendarBtn';
-import EditButton from '../containers/EditButton';
 import DeleteBtn from '../containers/DeleteBtn';
+// import EditButton from '../containers/EditButton';
     
 // ============== STYLING
 
@@ -47,7 +47,7 @@ const TodoItem = (props) => {
 		event.preventDefault();
 		let newTask = _task.value
 			
-	  if (newTask == oldTask) {
+	  if (newTask === oldTask) {
 			_task.style.backgroundColor = "white";
 			return console.log("No Changes Submitted")
 		} 
