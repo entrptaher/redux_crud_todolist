@@ -69,7 +69,7 @@ const TodoItem = (props) => {
 		} 
 
 		props.updateTodo(item.id, newTask);
-		alert("item edited!!")
+		// alert("item edited!!")
 		_task.style.backgroundColor = "white";
 		return console.log("Task EDITED! (not validated)", newTask)
 	}
@@ -126,7 +126,7 @@ const TodoItem = (props) => {
 				<Form 
 				  onClick= { validateEditable }
 				  onFocus= { onFocusStyle } 
-				  onSubmit= { handleTaskEdit } 
+				  onChange= { handleTaskEdit } 
 				  onBlur= { onBlurStyle } 
 			  >
 
