@@ -143,7 +143,7 @@ const TodoItem = (props) => {
 
 			</Col>
 
-			<Col sm= { 1 } >
+			<Col className= "spaceHolder" sm= { 1 } >
 			</Col>
 			
 			<Col 
