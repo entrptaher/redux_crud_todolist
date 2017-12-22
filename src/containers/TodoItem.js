@@ -126,8 +126,8 @@ const TodoItem = (props) => {
 
 				<Form 
 				  onClick= { validateEditable }
-				  onFocus= { onFocusStyle } 
 				  onChange= { handleTaskEdit } 
+				  onFocus= { onFocusStyle } 
 				  onBlur= { onBlurStyle } 
 			  >
 
