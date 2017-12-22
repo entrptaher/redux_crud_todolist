@@ -16,11 +16,15 @@ const centered = {
 	marginBottom: 5,	
 }
 
+// ================== The Component ==================
+
 const TodoItem = (props) => {
 
 	let item = props.item;
 	let oldTask = item.task
 	let _task
+
+// ================== Event Styling ==================
 
 	const styleTask = {
 		paddingBottom: 10,
@@ -29,7 +33,8 @@ const TodoItem = (props) => {
 		textDecoration: item.complete ? "line-through" : "none",
 	}
 
-// Code is WET
+	// Code is WET
+
 	const onFocusStyle = (event) => {
 		event.preventDefault();
 		_task.style.backgroundColor = "whitesmoke";
@@ -41,6 +46,17 @@ const TodoItem = (props) => {
 		event.preventDefault();
 		_task.style.backgroundColor = "white";
 		_task.style.color = "black";
+	}
+
+	// ================== Event Functions ==================
+
+	const validateEditable = (event) => {
+		event.preventDefault();
+
+		if(item.complete === true) {
+			 return alert("To Edit, uncheck task completed checkbox")
+		}
+		// return console.log("Would you like to edit this item")
 	}
 
 	const handleTaskEdit = (event) => {
@@ -55,7 +71,7 @@ const TodoItem = (props) => {
 		props.updateTodo(item.id, newTask);
 		alert("item edited!!")
 		_task.style.backgroundColor = "white";
-		return console.log("Task EDITED!", newTask)
+		return console.log("Task EDITED! (not validated)", newTask)
 	}
 
   return (
@@ -108,8 +124,9 @@ const TodoItem = (props) => {
 			>
 
 				<Form 
-				  onSubmit= { handleTaskEdit } 
+				  onClick= { validateEditable }
 				  onFocus= { onFocusStyle } 
+				  onSubmit= { handleTaskEdit } 
 				  onBlur= { onBlurStyle } 
 			  >
 
@@ -141,8 +158,6 @@ const TodoItem = (props) => {
 				/>
 
 			</Col>
-
-			
 
 		</Row>
   )
