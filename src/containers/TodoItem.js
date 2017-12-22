@@ -86,6 +86,7 @@ const TodoItem = (props) => {
 		  	<Checkbox
 					toggleTodo= { props.toggleTodo }   
 					id= { item.id }
+					complete= { item.complete }
 		  	/>
 
 	  	</Col >

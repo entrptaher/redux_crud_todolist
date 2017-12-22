@@ -11,22 +11,38 @@ const _Checkbox = (props) => {
 		console.log(event.target)
 	}
 	
-return (
-	<Form>
-		<Checkbox 
-		className= { "form-check-input" }
-			type="checkbox" 
-			onClick={ handleClick }
-		> 
-		</Checkbox>
-	</Form>
-	)
-};
+	if(props.complete) {
+		return( 
+			<Form >
+				<Checkbox 
+				className= { "form-check-input" }
+				type= "checkbox" 
+				onClick= { handleClick }
+				defaultChecked
+				> 
+				</Checkbox>
+			</Form>
+		)
+	} else {
+	
+		return (
+			<Form >
+					<Checkbox 
+					className= { "form-check-input" }
+					type= "checkbox" 
+					onClick= { handleClick }
+					> 
+					</Checkbox>
+			</Form>
+		)
+	} // end return
+
+}; // end component
 
 _Checkbox.propTypes = {
 	toggleTodo: PropTypes.func.isRequired,
 	id: PropTypes.string,
-	complete: PropTypes.bool,
+	complete: PropTypes.bool.isRequired,
 }
 
 _Checkbox.defaultProps = {
