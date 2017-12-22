@@ -1,11 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Form } from "react-bootstrap";
+import { Form, Checkbox } from "react-bootstrap";
 
-const Checkbox = (props) => {
+const _Checkbox = (props) => {
 
 	const handleClick = (event) => {
-		event.preventDefault();
+		// event.preventDefault();
 		props.toggleTodo(props.id);
 		console.log("Task COMPLETED!")
 		console.log(event.target)
@@ -13,24 +13,24 @@ const Checkbox = (props) => {
 	
 return (
 	<Form>
-		<input 
-		className= { "btn btn-default btn-xsm" }
+		<Checkbox 
+		className= { "form-check-input" }
 			type="checkbox" 
 			onClick={ handleClick }
 		> 
-		</input>
+		</Checkbox>
 	</Form>
 	)
 };
 
-Checkbox.propTypes = {
+_Checkbox.propTypes = {
 	toggleTodo: PropTypes.func.isRequired,
 	id: PropTypes.string,
 	complete: PropTypes.bool,
 }
 
-Checkbox.defaultProps = {
+_Checkbox.defaultProps = {
 	toggleTodo: f => f
 }
 
-export default Checkbox
+export default _Checkbox
