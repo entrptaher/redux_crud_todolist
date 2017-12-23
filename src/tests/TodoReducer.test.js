@@ -1,5 +1,5 @@
 // should split this into a reducer test suite
-import React from 'react';
+// import React from 'react';
 
 import deepFreeze from 'deep-freeze';
 import { expect } from 'chai'
