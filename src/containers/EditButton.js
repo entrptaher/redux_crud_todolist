@@ -13,7 +13,7 @@ const EditButton = (props) => {
 		let _edited = prompt("Enter Edited task below: ", props.task) 
 			
 		if (_edited) {
-			props.updateTodo( props.id, _edited,);
+			props.updateTodo(props.id, _edited);
 			return console.log("Task EDITED!")
 		} 
 		console.log( "EDIT Cancelled")
