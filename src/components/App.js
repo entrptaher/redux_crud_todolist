@@ -92,6 +92,7 @@ const mapDispatchToProps = (dispatch) => {
 App.propTypes = { 
 	addTodo:    PropTypes.func.isRequired,
 	removeTodo: PropTypes.func.isRequired,
+	todoArray: PropTypes.array.isRequired,
 	toggleTodo: PropTypes.func.isRequired,
 	updateDate: PropTypes.func.isRequired,
 	updateRank: PropTypes.func.isRequired,
