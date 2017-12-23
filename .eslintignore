@@ -5,3 +5,7 @@ build/*
 !build/index.js
 
 src/tests/*.test.js
+dist/assets
+/tests
+
+TodoReducer.test.js
