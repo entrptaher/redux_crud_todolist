@@ -95,6 +95,7 @@ const TodoItem = (props) => {
 	  		className= "priorityBtn" 
 	  		sm= { 1 } 
 	  		style={ centered } 
+
   		>
 
 		  	<PriorityBtn
@@ -135,7 +136,6 @@ const TodoItem = (props) => {
 						ref= { (input) => _task = input } 
 						type = "text"  
 						defaultValue= { item.task }
-						maxLength= { 50 } 
 						size= { 60 } 
 						style= { styleTask } 
 					/> 

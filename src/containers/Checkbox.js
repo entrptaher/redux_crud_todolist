@@ -40,9 +40,9 @@ const _Checkbox = (props) => {
 }; // end component
 
 _Checkbox.propTypes = {
-	toggleTodo: PropTypes.func.isRequired,
-	id: PropTypes.string,
 	complete: PropTypes.bool.isRequired,
+	id: PropTypes.string,
+	toggleTodo: PropTypes.func.isRequired,
 }
 
 _Checkbox.defaultProps = {
