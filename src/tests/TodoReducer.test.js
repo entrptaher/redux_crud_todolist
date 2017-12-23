@@ -7,9 +7,9 @@
 /*eslint no-undef: "error"*/
 
 import deepFreeze from 'deep-freeze';
-import { expect } from 'chai'
+import { expect } from 'chai';
 import store from '../store/store';
-import todos from '../reducers/todoReducer'
+import todos from '../reducers/todoReducer';
 
 import { 
 	addTodo, 
@@ -18,41 +18,45 @@ import {
 	toggleTodo,
 	updateRank, 
 	updateDate,
-} from '../actions/todoActions'
+} from '../actions/todoActions';
 
 // ====================================
 
 describe('The ADD_TODO function', () => { 
-	let listBefore = store.getState().todos
+	let listBefore = store.getState().todos;
 
 	it('...has an initial list of 3 items', () => {
 		expect(listBefore.length).to.equal(3);
-	})
+	});
 
 	it('...can ADD another task to that list', () => {
-		store.dispatch(addTodo('Mumby Corn Rocks!', 'HIGH'))
-		let listAfter = store.getState().todos
-			expect(listAfter).to.be.an('array');
-			expect(listAfter.length).to.equal(listBefore.length+1)
-			expect(listAfter[3].task).to.equal('Mumby Corn Rocks!')
-	})
+		store.dispatch(addTodo('Mumby Corn Rocks!', 'HIGH'));
+		let listAfter = store.getState().todos;
+			
+		expect(listAfter).to.be.an('array');
+		expect(listAfter.length).to.equal(listBefore.length+1);
+		expect(listAfter[3].task).to.equal('Mumby Corn Rocks!');
+	});
 });
 
 describe('The REMOVE_TODO function', () => { 
 
 	it('...can REMOVE an item from the list', () => {
-		let listBefore = store.getState().todos
-		deepFreeze (listBefore)
-			expect(listBefore.length).to.equal(4);
+		let listBefore = store.getState().todos;
+		deepFreeze (listBefore);
 		
-		let _id = listBefore[1].id
-			expect(_id).to.be.a('string');
+		expect(listBefore.length).to.equal(4);
+		
+		let _id = listBefore[1].id;
+		
+		expect(_id).to.be.a('string');
 		
 		store.dispatch(removeTodo(_id));
-		let listAfter = store.getState().todos
-			expect(listAfter).to.be.an('array');
-			expect(listAfter.length).to.equal(listBefore.length-1)
-	})
+		let listAfter = store.getState().todos;
+
+		expect(listAfter).to.be.an('array');
+		expect(listAfter.length).to.equal(listBefore.length-1);
+	});
 });
 
 describe('The TOGGLE_TODO function', () => {
