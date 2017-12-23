@@ -1,25 +1,16 @@
-import React from 'react'
+import React from 'react';
 import PropTypes from 'prop-types';
 
 //============================================================
 
-/*<select ref= { (input) => _rank = input }>
-				  <option value="High">High</option>
-				  <option value="Med" selected="selected">Med</option>
-				  <option value="low">Low</option>
-				</select>
-*/
-
 const PriorityBtn = (props) => {
-	let _rank
+	let _rank;
 
 	const handleChange = (event) => {
 		event.preventDefault();
 
 		props.updateRank(props.id, _rank.value);
-		console.log("The new rank is: ", _rank.value)
-		return console.log("Task Priority EDITED!")
-	}
+	};
 
 	return (
 		<form >
@@ -27,25 +18,27 @@ const PriorityBtn = (props) => {
 				onChange= { handleChange } 
 				ref= { (value) => _rank = value }
 			>
-			  <option value={props.currRank}>{props.currRank}</option>
-			  <option value="High">High</option>
-			  <option value="Med" >Med</option>
-			  <option value="Low">Low</option>
+				<option value={props.currRank}>{props.currRank}</option>
+				<option value='High'>High</option>
+				<option value='Med' >Med</option>
+				<option value='Low'>Low</option>
 			</select>
 		</form >
-	)
-} //end Container
+	);
+}; //end Container
 
 //============================================================
 
 PriorityBtn.propTypes = {
+	currRank: PropTypes.array.isRequired,
 	updateRank: PropTypes.func.isRequired,
 	id: PropTypes.string
-}
+};
 
 PriorityBtn.defaultProps = {
 	updateRank: f => f,
-}
+};
 
 //============================================================
-export default PriorityBtn
+
+export default PriorityBtn;
