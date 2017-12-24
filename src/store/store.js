@@ -12,7 +12,7 @@ const middleware = applyMiddleware(promise(),thunk, logger);
 // state management: start the app with the current state in localStr
 const persistedState = loadState();
 
-const store = createStore(rootReducer, persistedState, middleware)
+const store = createStore(rootReducer, persistedState, middleware);
 
 // save the state anytime we have a change in the store
 // add lodash #throttle to prevent overuse of expensive
@@ -22,8 +22,8 @@ store.subscribe(throttle(() => {
 		// pass specific object to limit scope of state saved
 		// e.g. not save state of a visibility filter
 		todos: store.getState().todos
-		});
+	});
 	// limits the store update to just 1x second
-}, 1000))
+}, 1000));
 
 export default store;
