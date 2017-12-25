@@ -27,7 +27,6 @@ describe('The Header Component w/ ReactDom', () => {
 describe('The Header Component', () => {
 
 	let _Header
-
 	beforeEach(() => {
 		 _Header = shallow(<Header/>);
 	});
@@ -36,6 +35,14 @@ describe('The Header Component', () => {
 		expect(
 			_Header
 				.find('div.header')
+				.length
+		).toBe(1);
+	});
+
+it('..renders the component class "header" ', () => {
+		expect(
+			_Header
+				.find('Header')
 				.length
 		).toBe(1);
 	});
