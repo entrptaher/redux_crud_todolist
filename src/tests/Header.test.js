@@ -26,8 +26,6 @@ describe('The Header Component w/ ReactDom', () => {
 
 describe('The Header Component', () => {
 
-// fix
-
 	let _Header
 
 	beforeEach(() => {
