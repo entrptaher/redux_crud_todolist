@@ -1,27 +1,47 @@
 import React from 'react';
-// import ReactDom from 'react-dom';
+import ReactDom from 'react-dom';
 
-import { shallow } from 'enzyme';
-// import Adapter from 'enzyme-adapter-react-15'
-// import { expect } from 'expect';
+import { shallow, mount, render } from 'enzyme';
 import Header from '../containers/Header';
 
-describe('The Header Component', () => {
+// ======== esllint
+/*global describe:true*/
+/*global it:true*/
+/*global xit:true*/
+/*global expect:true*/
+/*global render:true*/
+/*global mount:true*/
+/*eslint no-undef: "error"*/
 
-	xit('..renders the Header component', () => {
+describe('The Header Component w/ ReactDom', () => {
+
+	it('..renders the Header component w/ReactDom', () => {
 		const div = document.createElement('div');
 		ReactDom.render(
 			<Header/>,
 			div
-		)
-	})
+		);
+	});
+});
+
+describe('The Header Component', () => {
+
+	let _Header
+
+	beforeEach(() => {
+		 _Header = shallow(<Header/>);
+	});
 
 	it('..renders the component class "header" ', () => {
 		expect(
-			shallow(<Header/>)
+			_Header
 				.find('div.header')
 				.length
-			).toBe(2)
+		).toBe(1);
+	});
+
+	xit('..has a login link', () => {
+		expect();
 	});
 
 });
