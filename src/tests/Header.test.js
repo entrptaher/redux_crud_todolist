@@ -4,13 +4,14 @@ import ReactDom from 'react-dom';
 import { shallow, mount, render } from 'enzyme';
 import Header from '../containers/Header';
 
-// ======== esllint
+// ======== eslint
 /*global describe:true*/
 /*global it:true*/
 /*global xit:true*/
 /*global expect:true*/
 /*global render:true*/
 /*global mount:true*/
+/*global beforeEach:true*/
 /*eslint no-undef: "error"*/
 
 describe('The Header Component w/ ReactDom', () => {
@@ -26,9 +27,9 @@ describe('The Header Component w/ ReactDom', () => {
 
 describe('The Header Component', () => {
 
-	let _Header
+	let _Header;
 	beforeEach(() => {
-		 _Header = shallow(<Header/>);
+		_Header = shallow(<Header/>);
 	});
 
 	it('..renders the component class "header" ', () => {
@@ -39,7 +40,7 @@ describe('The Header Component', () => {
 		).toBe(1);
 	});
 
-it('..renders the component class "header" ', () => {
+	it('..renders the component class "header" ', () => {
 		expect(
 			_Header
 				.find('Header')

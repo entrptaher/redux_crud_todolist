@@ -6,4 +6,14 @@ import Adapter from 'enzyme-adapter-react-16';
 /*global *.* it:true*/
 /*eslint no-undef: "error"*/
 
+// ======== eslint
+/*global describe:true*/
+/*global it:true*/
+/*global xit:true*/
+/*global expect:true*/
+/*global render:true*/
+/*global mount:true*/
+/*global beforeEach:true*/
+/*eslint no-undef: "error"*/
+
 configure({ adapter: new Adapter() });
