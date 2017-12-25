@@ -6,7 +6,6 @@ const _Checkbox = (props) => {
 
 	const handleClick = (event) => {
 		// disable event.preventDefault() to allow aninmation
-		event.preventDefault();
 		props.toggleTodo(props.id);
 	};
 	
