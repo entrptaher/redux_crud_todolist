@@ -51,7 +51,7 @@ describe('The todos tasks', () => {
  
 	describe ('the Redux Store implementation', () => {
 
-		console.log ('**** This is the state of the store ****', store.getState());
+		// console.log ('**** This is the state of the store ****', store.getState());
 
 		it('can display props', () => {
 			// console.log(this.props)
