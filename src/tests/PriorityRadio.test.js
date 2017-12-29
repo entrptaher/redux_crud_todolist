@@ -10,3 +10,11 @@ it('renders without crashing', () => {
 });
 
 
+describe ('Changes a rank value', () => {
+
+
+});
+
+
+
+

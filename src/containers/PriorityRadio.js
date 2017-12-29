@@ -1,41 +1,108 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Row, Col, Form } from 'react-bootstrap';
+import { Row,  Col, Button, ButtonToolbar, Form, ToggleButton, ToggleButtonGroup } from 'react-bootstrap';
 
 //============================================================
 
-const PriorityRadio = (props) => {
-	let _rank;
+	class PriorityRadio extends Component {
 
-	const handleChange = (event) => {
-		event.preventDefault();
-		props.updateRank(props.id, _rank.value);
-	};
+ 		constructor(props) {
+ 			super(props);
+ 			this.state = {
+ 				// checked: true
+ 			}
+ 		}
 
-	return (
-			<Row>
-				<Form onChange= { handleChange } 
-					ref= { (value) => _rank = value }
-				>
-					<Col sm= {3}>
-							<input type= 'radio' name= 'rank' value='High'/>H
+	render() {
+	
+		const handleChange = (event) => {
+			event.preventDefault();
+			let value = event.target.value
+			this.props.updateRank(this.props.id, value);
+			console.log(value);
+			// this.setState{checked}
+		};
+
+		return (
+
+			<Form onClick= { handleChange } >
+				<Row>
+
+					<Col sm= {4}  >
+						<Button 
+							type= 'button' 
+							value= 'High' 
+							bsStyle='primary' 
+							bsSize='xsmall'
+						> 
+							H 
+						</Button>
 					</Col>
-
-					<Col sm= {3}>
-							<input type= 'radio' name= 'rank' value='Med' />M
+				
+					<Col sm= {4}  >
+						<Button 
+							type= 'button' 
+							value= 'Med' 
+							bsStyle='primary' 
+							bsSize='xsmall'
+						> 
+							M 
+						</Button>
 					</Col>
-
-					<Col sm= {3}>
-							<input type= 'radio' name= 'rank' value='Low'/>L
+				
+					<Col sm= {4}  >
+						<Button 
+							type= 'button' 
+							value= 'Low' 
+							bsStyle='primary' 
+							bsSize='xsmall'
+						> 
+							L 
+						</Button>
 					</Col>
-
-				</Form >
-
-			</Row>	
-	);
+				
+			</Row>
+			</Form>
+		);
+	}
 }; //end Container
 
 //============================================================
+
+/*
+<div>
+		<Form 
+		>
+
+			<ButtonToolbar
+			>
+
+				<ToggleButtonGroup 
+					type= 'radio' 
+					name = '_rank' 
+					defaultValue= "Med"
+					onClick= { handleChange } 
+				>
+						<ToggleButton 
+							value= 'Hi'
+						> H 
+						</ToggleButton>
+
+						<ToggleButton 
+							value={'Med'}
+						> M
+						</ToggleButton>
+
+				</ToggleButtonGroup>
+
+			</ButtonToolbar>	
+
+		</Form>
+
+		{_rank}
+
+		</div>
+*/
 
 
 PriorityRadio.propTypes = {
