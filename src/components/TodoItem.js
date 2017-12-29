@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 
 // ============ COMPONENTS ============ 
 import Checkbox from '../containers/Checkbox';
-import PriorityBtn from '../containers/PriorityBtn';
+import PriorityRadio from '../containers/PriorityRadio';
 import CalendarBtn from '../containers/CalendarBtn';
 import DeleteBtn from '../containers/DeleteBtn';
 // import EditButton from '../containers/EditButton';
@@ -89,13 +89,13 @@ const TodoItem = (props) => {
 			</Col >
 
 			<Col 
-				className= 'priorityBtn' 
+				className= 'priorityRadio' 
 				sm= { 1 } 
 				style={ centered } 
 			
 			>
 			
-				<PriorityBtn
+				<PriorityRadio
 					updateRank= { props.updateRank }   
 					id= { item.id }
 					currRank = { item.rank }
