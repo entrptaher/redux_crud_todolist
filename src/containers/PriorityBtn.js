@@ -30,13 +30,14 @@ const PriorityBtn = (props) => {
 //============================================================
 
 PriorityBtn.propTypes = {
-	currRank: PropTypes.array.isRequired,
+	currRank: PropTypes.string.isRequired,
 	updateRank: PropTypes.func.isRequired,
 	id: PropTypes.string
 };
 
 PriorityBtn.defaultProps = {
 	updateRank: f => f,
+	currRank: 'Med',
 };
 
 //============================================================

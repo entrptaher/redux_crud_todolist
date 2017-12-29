@@ -15,8 +15,8 @@ const persistedState = loadState();
 const store = createStore(rootReducer, persistedState, middleware);
 
 // save the state anytime we have a change in the store
-// add lodash #throttle to prevent overuse of expensive
-// JSON #stringify method in the saveState fn.
+// add lodash #throttle to prevent overuse of an expensive ...
+// ... JSON #stringify method in the saveState fn.
 store.subscribe(throttle(() => {
 	saveState({ 
 		// pass specific object to limit scope of state saved
