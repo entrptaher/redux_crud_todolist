@@ -1409,6 +1409,10 @@ pify@^3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/pify/-/pify-3.0.0.tgz#e5a4acd2c101fdf3d9a4d07f0dbc4db49dd28176"
 
+porthog@^0.0.8:
+  version "0.0.8"
+  resolved "https://registry.yarnpkg.com/porthog/-/porthog-0.0.8.tgz#a462c11918538abdbaf535e67d987c83f3e16fa6"
+
 prepend-http@^1.0.1:
   version "1.0.4"
   resolved "https://registry.yarnpkg.com/prepend-http/-/prepend-http-1.0.4.tgz#d4f4562b0ce3696e41ac52d0e002e57a635dc6dc"
