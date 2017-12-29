@@ -1,45 +1,54 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Row, Col, Form } from 'react-bootstrap';
 
 //============================================================
 
-const PriorityBtn = (props) => {
+const PriorityRadio = (props) => {
 	let _rank;
 
 	const handleChange = (event) => {
 		event.preventDefault();
-
 		props.updateRank(props.id, _rank.value);
 	};
 
 	return (
-		<form >
-			<select 
-				onChange= { handleChange } 
-				ref= { (value) => _rank = value }
-			>
-				<option value={props.currRank}>{props.currRank}</option>
-				<option value='High'>High</option>
-				<option value='Med' >Med</option>
-				<option value='Low'>Low</option>
-			</select>
-		</form >
+			<Row>
+				<Form onChange= { handleChange } 
+					ref= { (value) => _rank = value }
+				>
+					<Col sm= {3}>
+							<input type= 'radio' name= 'rank' value='High'/>H
+					</Col>
+
+					<Col sm= {3}>
+							<input type= 'radio' name= 'rank' value='Med' />M
+					</Col>
+
+					<Col sm= {3}>
+							<input type= 'radio' name= 'rank' value='Low'/>L
+					</Col>
+
+				</Form >
+
+			</Row>	
 	);
 }; //end Container
 
 //============================================================
 
-PriorityBtn.propTypes = {
+
+PriorityRadio.propTypes = {
 	currRank: PropTypes.string.isRequired,
 	updateRank: PropTypes.func.isRequired,
 	id: PropTypes.string
 };
 
-PriorityBtn.defaultProps = {
+PriorityRadio.defaultProps = {
 	updateRank: f => f,
 	currRank: 'Med',
 };
 
 //============================================================
 
-export default PriorityBtn;
+export default PriorityRadio;
