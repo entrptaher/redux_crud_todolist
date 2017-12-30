@@ -1,5 +1,6 @@
-require 
+const express = require('express');
+const app = express();
 
-
-
-console.log('Hello Walker')
+app.listen(3000, function() {
+	console.log('Accessing server.js file');
+});
