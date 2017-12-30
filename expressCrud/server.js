@@ -1,3 +1,5 @@
+/*eslint no-console: "error"*/
+
 const express = require('express');
 const app = express();
 
@@ -7,6 +9,9 @@ app.listen(3030, function() {
 
 // CRUD operations
 
-app.get('/', (req,res) => {
-	res.send('The GET path for READ...')
+app.get('/', (req, res, err) => {
+	res.send('The GET path for the READ...');
+	res.sendFile(__dirname + 'index.html');
 });
+
+
