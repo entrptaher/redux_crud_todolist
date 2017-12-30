@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/NeuTrix/redux_crud_todolist/issues"
   },
-  "homepage": "https://github.com/NeuTrix/redux_crud_todolist#readme"
+  "homepage": "https://github.com/NeuTrix/redux_crud_todolist#readme",
+  "dependencies": {
+    "express": "^4.16.2"
+  }
 }
