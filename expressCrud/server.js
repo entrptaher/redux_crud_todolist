@@ -10,8 +10,7 @@ app.listen(3030, function() {
 // CRUD operations
 
 app.get('/', (req, res, err) => {
-	res.send('The GET path for the READ...');
-	res.sendFile(__dirname + 'index.html');
+	res.sendFile(__dirname + '/index.html');
 });
 
 
