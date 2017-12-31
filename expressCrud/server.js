@@ -24,10 +24,14 @@ MongoClient.connect('mongodb://react-todo:services2015@ds135537.mlab.com:35537/r
 	});
 });
 
-// CRUD operations for todo items
+// =========================== CRUD operations for todo items
+
 
 //  READ
 app.get('/', (req, res, err) => {
+	db.collection('todos').find().toArray((err, results) => {
+		console.log(results);
+	});
 	res.sendFile(__dirname + '/index.html');
 });
 
