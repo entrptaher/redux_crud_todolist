@@ -5,16 +5,14 @@ let app = express();
 let mongoose = require('mongoose');
 let morgan = require('morgan');
 let bodyParser = require('body-parser');
-let port = 8000;
-let todo = require('./controllers/routes/todo.route');
+let todos = require('./controllers/routes/todo.route');
 let config = require('config'); // load db locales from json files
-
+const Port = 8000;
 
 // db connection
 mongoose.connect(config.DBHost);
 let db =  mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error: '));
-
 
 // do not show the log when it is test
 if(config.util.getEnv('NODE_ENV') !== 'test') {
@@ -22,20 +20,22 @@ if(config.util.getEnv('NODE_ENV') !== 'test') {
 	app.use(morgan('combined'));// outputs Apached style logs
 };
 
-// ===========================
+// =========================== Parsing
 
-// allows express to access form values
-app.use(bodyParser.urlencoded({extended: true}));
 //  allow express to utilize json
 app.use(bodyParser.json());
-
+// allows express to access form values
+app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.text());
+app.use(bodyParser.json({ type: 'application/json'}));
 
 // =========================== CRUD operations for todo items
 
 //  READ (Home)
-app.get('/', (req, res, err) => {
-	console.log("GET route")
-	res.send("Got the home page")
+app.get('/', (req, res) => {
+	res.json({ message: "Welcome to the Todo API"})
+	// console.log("GET route")
+	// res.send("Got the home page")
 	// res.sendFile(__dirname + '/index.html');
 });
 
@@ -43,6 +43,8 @@ app.get('/', (req, res, err) => {
 app.get('/todos', (req, res, err) => {
 	// show all photos
 	console.log("GET all todos route")
+
+	// mongodb:
 	/*db.collection('todos').find().toArray((err, results) => {
 		console.log(results);
 	});*/
@@ -92,6 +94,12 @@ app.delete('/todos/id', (req, res) => {
 	res.send("DELETE route")
 });
 
+app.listen(Port);
+console.log('Listening on port ' + Port);
 
+module.exports = app; // for testing
+
+// tutorials
+// https://scotch.io/tutorials/test-a-node-restful-api-with-mocha-and-chai
 // https://zellwk.com/blog/crud-express-and-mongodb-2/
 
