@@ -6,19 +6,20 @@ let mongoose = require('mongoose');
 let morgan = require('morgan');
 let bodyParser = require('body-parser');
 let todos = require('./controllers/routes/todo.route');
-let config = require('config'); // load db locales from json files
+// let config = require('config'); // load db locales from json files
 const Port = 8000;
 
 // db connection
-mongoose.connect(config.DBHost);
+mongoose.connect("mongodb://NeuTrix:services2015@ds239117.mlab.com:39117/test-todo");
 let db =  mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error: '));
+app.use(morgan('combined'));// outputs Apached style logs
 
 // do not show the log when it is test
-if(config.util.getEnv('NODE_ENV') !== 'test') {
-	// using morganto log at CLI
-	app.use(morgan('combined'));// outputs Apached style logs
-};
+// if(config.util.getEnv('NODE_ENV') !== 'test') {
+// 	// using morganto log at CLI
+// 	app.use(morgan('combined'));// outputs Apached style logs
+// };
 
 // =========================== Parsing
 
@@ -37,12 +38,12 @@ app.get('/', (req, res) => {
 });
 
 app.route('/todos')
-	.get(todos.getTodo) // show all todo 
-	.post(todos.postTodo); // create a new todo 
+	.get(todos.getTodos) // show all todo 
+	// .post(todos.postTodo); // create a new todo 
 
-app.route('/todos/:id')
-	.get(todos.getTodo) // show a specific todo item
-	.post(todos.updateTodo) // update a specific todo item
+// app.route('/todos/:id')
+// 	.get(todos.getTodo) // show a specific todo item
+// 	.post(todos.updateTodo) // update a specific todo item
 	// .delete(todos.deleteTodo); // destroys a specific todo item
 
 // app.route('/todos/:id/edit')
