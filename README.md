@@ -12,4 +12,4 @@ Application:
 - Data persists in localStorage
 - Deployed on Heroku: https://redux-crud-project.herokuapp.com/
 
-
+- Debuggin Mongoose and testing suit in alt branch
