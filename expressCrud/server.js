@@ -34,7 +34,8 @@ app.use(bodyParser.json({ type: 'application/json'}));
 
 app.get('/', (req, res) => {
 	// get the home page
-	res.json({ message: "Welcome to the Todo API"})
+	console.log("Welcome to the Todo API")
+	// res.json({ message: "Welcome to the Todo API"})
 });
 
 app.route('/todos')
