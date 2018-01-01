@@ -6,32 +6,45 @@ let mongoose = require('mongoose');
 let morgan = require('morgan');
 let bodyParser = require('body-parser');
 let port = 8000;
-let todo = 
+let todo = require('./app/routes/todo.route');
+let config = require('config'); // load db locales from json files
 
+// db options
+let options = {
+	server: { 
+		socketOptions: { 
+			keepAlive:1, 
+			connectTimeoutMS: 30000 
+		},
+		replset: { 
+			keepAlive:1, 
+			connectTimeoutMS: 30000 
+		} 
+	},
+}
+
+// db connection
+mongoose.connect(config.DBHost, options);
+let db =  mongoose.connection;
+db.on('error', console.error.bind(console, 'connection error: '));
+
+
+// do not show the log when it is test
+if(config.util.getEnv('NODE_ENV') !== 'test') {
+	// using morganto log at CLI
+	app.use(morgan('combined'));// outputs Apached style logs
+};
+
+// ===========================
 
 // allows express to access form values
 app.use(bodyParser.urlencoded({extended: true}));
 //  allow express to utilize json
 app.use(bodyParser.json());
 
-// connect mongo db client
-// let MongoClient = require('mongodb').MongoClient;
 
-mongoose.connect('mongodb://react-todo:services2015@ds135537.mlab.com:35537/react-redux-todo', (err, database) => {
 
-	if(err) return console.log(err);
-	// db = database.db('react-redux-todo');
 
-	// ... start the server
-	app.listen(3030, () => {
-		console.log('server listening on 3030');
-	});
-});
-
-var db = mongoose.connection;
-	db.on('error', console.error.bind(console, 'connection error:'));
-	db.once('open', () => {
-});
 
 // =========================== CRUD operations for todo items
 
