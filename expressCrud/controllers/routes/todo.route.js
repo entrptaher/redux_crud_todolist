@@ -1,6 +1,22 @@
+let  mongoose	= require('mongoose');
+let Todo = require('../models/todo.model')
+
+const getTodos = () => {
+	let query = Todo.find({});
+	query.exec((err, todos) => {
+		if(errr) res.send(err);
+		res.json(todos);
+	});
+};
 
 
-app.get('/todos', (req, res, err) => {
+module.exports = {
+ getTodos,
+
+}
+
+// Railsy routes
+/*app.get('/todos', (req, res, err) => {
 	// show all photos
 	console.log("GET all todos route")
 });
@@ -29,4 +45,4 @@ app.put('/todos/id/', (req, res) => {
 
 app.delete('/todos/id', (req, res) => {
 	// destroy a specific todo
-});
+});*/

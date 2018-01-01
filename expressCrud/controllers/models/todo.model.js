@@ -1,12 +1,12 @@
 let mongoose = require('mongoose');
 let Schema = mongoose.Schema;
 
-let TodoItemSchema = new Todo(
+let TodoItemSchema = new Schema(
 	{
 		id: String,
 		task: {
 			type: String,
-			required: {true, "Please add a Task"} // validation
+			required: true // validation
 		},
 
 		complete: Boolean,
