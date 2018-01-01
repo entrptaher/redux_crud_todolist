@@ -6,25 +6,12 @@ let mongoose = require('mongoose');
 let morgan = require('morgan');
 let bodyParser = require('body-parser');
 let port = 8000;
-let todo = require('./app/routes/todo.route');
+let todo = require('./controllers/routes/todo.route');
 let config = require('config'); // load db locales from json files
 
-// db options
-let options = {
-	server: { 
-		socketOptions: { 
-			keepAlive:1, 
-			connectTimeoutMS: 30000 
-		},
-		replset: { 
-			keepAlive:1, 
-			connectTimeoutMS: 30000 
-		} 
-	},
-}
 
 // db connection
-mongoose.connect(config.DBHost, options);
+mongoose.connect(config.DBHost);
 let db =  mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error: '));
 
@@ -41,9 +28,6 @@ if(config.util.getEnv('NODE_ENV') !== 'test') {
 app.use(bodyParser.urlencoded({extended: true}));
 //  allow express to utilize json
 app.use(bodyParser.json());
-
-
-
 
 
 // =========================== CRUD operations for todo items
