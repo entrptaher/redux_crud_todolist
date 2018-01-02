@@ -1,4 +1,4 @@
-// export NODE_ENV = 'test';
+ process.env.NODE_ENV = 'test';
 
 let mongoose	= require('mongoose');
 let Todo = require('../controllers/models/todo.model');
@@ -22,7 +22,7 @@ describe('Todos', () => {
 	// test GET route
 
 	describe('/GET todos', () => {
-		it('should get a list of all todos', (done) => {
+		it('should make a successful connection', (done) => {
 
 			chai.request(server)
 				.get('/todos')

@@ -7,21 +7,19 @@ let morgan = require('morgan');
 let bodyParser = require('body-parser');
 let todos = require('./controllers/routes/todo.route');
 // let config = require('config'); // load db locales from json files
-const Port = 8000;
+
+const Port = 3001;
 
 // db connection
 mongoose.connect('mongodb://react-test:services2015@ds135537.mlab.com:35537/react-redux-todo', 
 {
 });
 
-
 let db =  mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error: '));
 db.once('open', function() {
   // we're connected!
 });
-
-
 
 
 app.use(morgan('combined'));// outputs Apached style logs
@@ -46,7 +44,7 @@ app.use(bodyParser.json({ type: 'application/json'}));
 app.get('/', (req, res) => {
 	// get the home page
 	console.log("Welcome to the Todo API")
-	// res.json({ message: "Welcome to the Todo API"})
+	res.send("<h1> Welcome to the Todo API </h1>")
 });
 
 app.route('/todos')
