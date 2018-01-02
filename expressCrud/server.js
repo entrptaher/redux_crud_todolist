@@ -10,9 +10,20 @@ let todos = require('./controllers/routes/todo.route');
 const Port = 8000;
 
 // db connection
-mongoose.connect("mongodb://NeuTrix:services2015@ds239117.mlab.com:39117/test-todo");
+mongoose.connect('mongodb://react-test:services2015@ds135537.mlab.com:35537/react-redux-todo', 
+{
+});
+
+
 let db =  mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error: '));
+db.once('open', function() {
+  // we're connected!
+});
+
+
+
+
 app.use(morgan('combined'));// outputs Apached style logs
 
 // do not show the log when it is test
