@@ -8,13 +8,23 @@ var bodyParser = require('body-parser');
 var index = require('./routes/index');
 var users = require('./routes/users');
 
-var mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/test');
-mongoose.Promise = global.Promise;
+var mongoose = require('mongoose'); 
+
+mongoose.connect('mongodb://react-test:services2015@ds135537.mlab.com:35537/react-redux-todo', 
+{
+	useMongoClient: true
+});
+// mongoose.Promise = global.Promise;
 
 var db = mongoose.connection;
+db.on('error', console.error.bind(console, 'connection error:'));
+db.once('open', function() {
+  // we're connected!
+});
+
+/*var db = mongoose.connection;
 // bind connection to error event for notifications
-db.on('error', console.error.bind(console, 'MongoDB connection error: '));
+db.on('error', console.error.bind(console, 'MongoDB connection error: '));*/
 
 var app = express();
 
