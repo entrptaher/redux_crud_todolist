@@ -9,12 +9,12 @@ let bodyParser = require('body-parser');
 
 let index = require('./routes/index');
 let todos = require('./routes/todos.routes');
-let todo = require('./models/todo.model')
+let mongoose = require('mongoose');
 
 let app = express();
+let Todo = require('./models/todo')
 
 // =========================== Connect database
-let mongoose = require('mongoose');
 let mongoDB = 'mongodb://Tester:test2015@ds239117.mlab.com:39117/todo-test-db';
 
 // establish pending connection to db

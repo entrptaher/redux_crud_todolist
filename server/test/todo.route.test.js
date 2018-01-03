@@ -1,10 +1,14 @@
 /* eslint-env node, mocha */
 
 let server = require('../app');
+let mongoose = require('mongoose');
 
 let chaiHttp = require('chai-http');
 let chai = require('chai');
 let expect = chai.expect;
+
+let Todo = require('../models/todo')
+
 
 chai.use(chaiHttp);
 
@@ -13,7 +17,7 @@ describe('===> THE TODOS "/todos" GET ROUTE', () => {
 
 	let http;
 
-	beforeEach(() => {
+	beforeEach((done) => {
 		http = chai.request(server).get('/todos');
 		Todo.remove({}, (err) => {
 			done();
@@ -21,6 +25,7 @@ describe('===> THE TODOS "/todos" GET ROUTE', () => {
 	});
 
 	after(() => {
+		mongoose.connection.close();
 		http = '';
 	});
 
@@ -46,15 +51,14 @@ describe('===> THE TODOS "/todos" GET ROUTE', () => {
 	});
 
 
-	it('returns a list of all todos', () => {
+	it.only('returns a list of all todos', () => {
 
 		 //Query the DB and if no errors, send all the todos
-    let query = Todo.find({});
-    query.exec((err, todos) => {
-        if(err) res.send(err);
-        //If no errors, send them back to the client
-        res.json(todos);
-    });
+
+    http.end((err, res) => {
+
+    	expect(res.body).to.be.an('array')
+	  });
 
 	})
 
