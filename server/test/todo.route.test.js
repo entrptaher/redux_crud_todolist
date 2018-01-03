@@ -7,7 +7,7 @@ let chaiHttp = require('chai-http');
 let chai = require('chai');
 let expect = chai.expect;
 
-let Todo = require('../models/todo')
+// let Todo = require('../models/todo')
 
 
 chai.use(chaiHttp);
@@ -56,8 +56,8 @@ describe('===> THE TODOS "/todos" GET ROUTE', () => {
 		 //Query the DB and if no errors, send all the todos
 
     http.end((err, res) => {
-    	let bod = res.body
-    	expect(bod).to.be.an('object')
+    	let bod = res.body;
+    	expect(bod).to.be.an('object');
     	console.log(JSON.parse(bod));
 	  });
 
