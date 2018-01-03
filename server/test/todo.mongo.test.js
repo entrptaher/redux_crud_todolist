@@ -9,13 +9,13 @@ chai.use(chaiHttp);
 let mongoose = require('mongoose');
 let mongoDB = "mongodb://Tester:test2015@ds239117.mlab.com:39117/todo-test-db"
 
-describe('The mongoose db connection', () => {
+describe('===> THE MONGOOSE DB CONNECTION', () => {
 
 	 let db ;
 
 	beforeEach(() => {
 		// establish pending connection to db
-		mongoose.connect(mongoDB, { useMongoClient: true });
+		mongoose.connect(mongoDB);
 		// use the global Promise library
 		mongoose.Promise = global.Promise
 		// default connection
@@ -26,12 +26,12 @@ describe('The mongoose db connection', () => {
 		// alert on success or errors
 		db.on('error', console.error.bind(console, 'connection error:'));
 		db.once('open', function() {
-			console.log("we're connected!");
+			// console.log("we're connected!");
 		});
 	});
 
-	it('can create a todo item', () => {
-		console.log('build a test here!');
+	xit('can create a todo item', () => {
+		// console.log('build a test here!');
 	})
 
 
