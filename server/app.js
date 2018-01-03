@@ -1,3 +1,5 @@
+/* eslint-env node, es6, JSX */
+
 let express = require('express');
 let path = require('path');
 let favicon = require('serve-favicon');
@@ -12,15 +14,18 @@ let app = express();
 
 // =========================== Connect database
 let mongoose = require('mongoose');
-let mongoDB = "mongodb://Tester:test2015@ds239117.mlab.com:39117/todo-test-db"
+let mongoDB = 'mongodb://Tester:test2015@ds239117.mlab.com:39117/todo-test-db';
 
-	// establish pending connection to db
-	mongoose.connect(mongoDB);
-	// use the global Promise library
-	mongoose.Promise = global.Promise
-	// default connection
-	db = mongoose.connection;
-
+// establish pending connection to db
+mongoose.connect(mongoDB);
+// use the global Promise library
+mongoose.Promise = global.Promise;
+// default connection
+let db = mongoose.connection;
+db.on('error', console.error.bind(console, 'connection error:'));
+db.once('open', function() {
+// console.log("we're connected!");
+});
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
@@ -43,7 +48,7 @@ app.use(function(req, res, next) {
 
 // error handler
 app.use(function(err, req, res, next) {
-  // set locals, only providing error in development
+// set locals, only providing error in development
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
 

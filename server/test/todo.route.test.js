@@ -1,4 +1,5 @@
-// /* eslint-env node, mocha */
+/* eslint-env node, mocha */
+
 let app = require('../app');
 
 let chaiHttp = require('chai-http');
