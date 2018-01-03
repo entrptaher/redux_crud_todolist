@@ -17,7 +17,6 @@ describe('The todos "/todos" route', () => {
 
 	after(() => {
 		http = '';
-		console.log('http var cleared!')
 	});
 
 	it('Returns a response status of 200', (done) => {
@@ -30,7 +29,6 @@ describe('The todos "/todos" route', () => {
 	it('returns a string body', (done) => {
 		 http.end((err, res) => {
 		    expect(res.body,"*** test failure ***").to.be.a('string');
-		    console.log('The body is: ', res.body);
 		    done();
 		 });
 	})
