@@ -41,10 +41,11 @@ describe('===> THE TODOS "/todos" GET ROUTE', () => {
 			done();
 		});
 	});
+
 });
 
 // Return a FORM to CREATE a new todo item
-describe.only('===> THE TODOS "/todos/new" POST ROUTE', () => {
+describe('===> THE TODOS "/todos/new" GET ROUTE', () => {
 
 	let http;
 
@@ -62,6 +63,14 @@ describe.only('===> THE TODOS "/todos/new" POST ROUTE', () => {
 			done();
 		});
 	});
+
+	it('..returns a test string', (done) => {
+		http.end((err, res) => {
+			expect(res.body).to.equal('Hitting the Todos GET NEW route');
+			done();
+		});
+	});
+
 });
 
 // CREATE a new todo
@@ -83,15 +92,23 @@ describe('===> THE TODOS "/todos" POST ROUTE', () => {
 			done();
 		});
 	});
+
+	it('..returns a test string', (done) => {
+		http.end((err, res) => {
+			expect(res.body).to.equal('Hitting the "/todos" POST route');
+			done();
+		});
+	});
+
 });
 
 // READ a specific todo  
-xdescribe('===> THE TODOS "/todos/:id" GET ROUTE', () => {
+describe.only('===> THE TODOS "/todos/:id" GET ROUTE', () => {
 
 	let http;
 
 	beforeEach(() => {
-		http = chai.request(app).get('/todos/:id');
+		http = chai.request(app).get('/todos/1');
 	});
 
 	after(() => {
@@ -104,6 +121,15 @@ xdescribe('===> THE TODOS "/todos/:id" GET ROUTE', () => {
 			done();
 		});
 	});
+
+	it('..returns a test string', (done) => {
+		http.end((err, res) => {
+			expect(res.body).to.equal('Hitting the "/todos:id" GET route');
+			done();
+		});
+	});
+
+
 });
 
 // Return a FORM to EDIT a specific todo item
