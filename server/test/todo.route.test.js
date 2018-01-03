@@ -196,16 +196,18 @@ describe('===> THE TODOS "/todos/:id" PUT ROUTE', () => {
 });
 
 // DELETE a specific todo  
-xdescribe('===> THE TODOS "/todos/:id" DELETE ROUTE', () => {
+describe('===> THE TODOS "/todos/:id" DELETE ROUTE', () => {
 
 	let http;
+	let _id = "1jasmine"
 
 	beforeEach(() => {
-		http = chai.request(app).delete('/todos/:id');
+		http = chai.request(app).delete('/todos/'+ _id);
 	});
 
 	after(() => {
 		http = '';
+		_id = '';
 	});
 
 	it('...successfully connects to the "/todos/:id" DELETE route', (done) => {
@@ -214,5 +216,13 @@ xdescribe('===> THE TODOS "/todos/:id" DELETE ROUTE', () => {
 			done();
 		});
 	});
+
+	it('..returns a test string', (done) => {
+		http.end((err, res) => {
+			expect(res.body).to.equal('Hitting the "/todos/:id" DELETE route');
+			done();
+		});
+	});
+
 });
 

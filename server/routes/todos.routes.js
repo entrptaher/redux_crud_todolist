@@ -34,14 +34,9 @@ router.put('/:id',(req, res, next) => {
 	res.json('Hitting the "/todos/:id" PUT route')
 });
 
-// router.post('/',(req, res, next) => {
-// 	// Post a new todo item
-// 	res.send("The Todos POST route")
-// });
-
-// router.post('/',(req, res, next) => {
-// 	// Post a new todo item
-// 	res.send("The Todos POST route")
-// });
+router.delete('/:id',(req, res, next) => {
+	// Destroy an existing todo item
+	res.json('Hitting the "/todos/:id" DELETE route')
+});
 
 module.exports = router;
