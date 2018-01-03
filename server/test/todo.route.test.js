@@ -1,6 +1,6 @@
 /* eslint-env node, mocha */
 
-let app = require('../app');
+let server = require('../app');
 
 let chaiHttp = require('chai-http');
 let chai = require('chai');
@@ -14,7 +14,10 @@ describe('===> THE TODOS "/todos" GET ROUTE', () => {
 	let http;
 
 	beforeEach(() => {
-		http = chai.request(app).get('/todos');
+		http = chai.request(server).get('/todos');
+		Todo.remove({}, (err) => {
+			done();
+		});
 	});
 
 	after(() => {
@@ -42,6 +45,19 @@ describe('===> THE TODOS "/todos" GET ROUTE', () => {
 		});
 	});
 
+
+	it('returns a list of all todos', () => {
+
+		 //Query the DB and if no errors, send all the todos
+    let query = Todo.find({});
+    query.exec((err, todos) => {
+        if(err) res.send(err);
+        //If no errors, send them back to the client
+        res.json(todos);
+    });
+
+	})
+
 });
 
 // Return a FORM to CREATE a new todo item
@@ -50,7 +66,7 @@ describe('===> THE TODOS "/todos/new" GET ROUTE', () => {
 	let http;
 
 	beforeEach(() => {
-		http = chai.request(app).get('/todos/new');
+		http = chai.request(server).get('/todos/new');
 	});
 
 	after(() => {
@@ -79,7 +95,7 @@ describe('===> THE TODOS "/todos" POST ROUTE', () => {
 	let http;
 
 	beforeEach(() => {
-		http = chai.request(app).post('/todos');
+		http = chai.request(server).post('/todos');
 	});
 
 	after(() => {
@@ -109,7 +125,7 @@ describe('===> THE TODOS "/todos/:id" GET ROUTE', () => {
 	let _id = "1jasmine"
 
 	beforeEach(() => {
-		http = chai.request(app).get('/todos/'+_id);
+		http = chai.request(server).get('/todos/'+_id);
 	});
 
 	after(() => {
@@ -140,7 +156,7 @@ describe('===> THE TODOS "/todos/:id/edit" GET ROUTE', () => {
 	let _id = "1jasmine"
 
 	beforeEach(() => {
-		http = chai.request(app).get('/todos/'+ _id + '/edit');
+		http = chai.request(server).get('/todos/'+ _id + '/edit');
 	});
 
 	after(() => {
@@ -171,7 +187,7 @@ describe('===> THE TODOS "/todos/:id" PUT ROUTE', () => {
 	let _id = "1jasmine"
 
 	beforeEach(() => {
-		http = chai.request(app).put('/todos/'+ _id);
+		http = chai.request(server).put('/todos/'+ _id);
 	});
 
 	after(() => {
@@ -202,7 +218,7 @@ describe('===> THE TODOS "/todos/:id" DELETE ROUTE', () => {
 	let _id = "1jasmine"
 
 	beforeEach(() => {
-		http = chai.request(app).delete('/todos/'+ _id);
+		http = chai.request(server).delete('/todos/'+ _id);
 	});
 
 	after(() => {

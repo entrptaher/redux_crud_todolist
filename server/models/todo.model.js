@@ -1,16 +1,16 @@
 var mongoose = require('mongoose');
-
-// create a Schema
 var Schema = mongoose.Schema;
 
-var TodoItemSchema = new Todo({
+// create a Schema
+
+var todoSchema = new Schema({
 
 	id: String,
 	
 	// validation: using `required`
 	task: {
 		type: String,
-		required: {true, "Please add a Task"},
+		required: [true, "Please add a Task"]
 	},
 
 	complete: Boolean,
@@ -22,4 +22,4 @@ var TodoItemSchema = new Todo({
 
 // create a Model
 
-var TodoItem = mongoose.model('TodoItem', TodoItemSchema)
+module.exports = mongoose.model('Todo', todoSchema);
