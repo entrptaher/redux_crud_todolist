@@ -10,7 +10,17 @@ let todos = require('./routes/todos');
 
 let app = express();
 
+// =========================== Connect database
 let mongoose = require('mongoose');
+let mongoDB = "mongodb://Tester:test2015@ds239117.mlab.com:39117/todo-test-db"
+
+	// establish pending connection to db
+	mongoose.connect(mongoDB, { useMongoClient: true });
+	// use the global Promise library
+	mongoose.Promise = global.Promise
+	// default connection
+	db = mongoose.connection;
+
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));

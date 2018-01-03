@@ -7,7 +7,7 @@ let expect = chai.expect;
 
 chai.use(chaiHttp);
 
-describe('The todos "/todos" route', () => {
+describe.only('The todos "/todos" route', () => {
 
 	let http;
 
