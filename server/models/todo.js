@@ -22,4 +22,4 @@ var todoSchema = new Schema({
 
 // create a Model
 
-module.exports = mongoose.model('Todo', todoSchema);
+module.exports = mongoose.model('todo', todoSchema);

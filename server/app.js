@@ -16,7 +16,6 @@ let app = express();
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
-let Todo = require('./models/todo')
 
 // =========================== Connect database
 let mongoDB = 'mongodb://Tester:test2015@ds239117.mlab.com:39117/todo-test-db';

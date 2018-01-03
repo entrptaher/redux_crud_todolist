@@ -9,7 +9,6 @@ let expect = chai.expect;
 
 // let Todo = require('../models/todo')
 
-
 chai.use(chaiHttp);
 
 // READ an index of all current todos

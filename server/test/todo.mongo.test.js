@@ -8,8 +8,7 @@ let expect = chai.expect;
 
 chai.use(chaiHttp);
 
-
-describe('===> THE MONGOOSE DB CONNECTION', () => {
+xdescribe('===> THE MONGOOSE DB CONNECTION', () => {
 	
 	let db
 	beforeEach(() => {
@@ -37,10 +36,6 @@ describe('===> THE MONGOOSE DB CONNECTION', () => {
 	xit('can create a todo item', () => {
 		// console.log('build a test here!');
 	});
-
-
-
-
 
 });
 
