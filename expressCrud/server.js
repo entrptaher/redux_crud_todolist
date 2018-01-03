@@ -89,9 +89,7 @@ app.delete('/todos/id', (req, res) => {
 	res.send("DELETE route")
 });
 
-
 module.export = app
-
 
 // https://zellwk.com/blog/crud-express-and-mongodb-2/
 
