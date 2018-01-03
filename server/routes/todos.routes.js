@@ -29,10 +29,10 @@ router.get('/:id/edit',(req, res, next) => {
 	res.json('Hitting the "/todos:id/edit" GET route')
 });
 
-// router.post('/',(req, res, next) => {
-// 	// Post a new todo item
-// 	res.send("The Todos POST route")
-// });
+router.put('/:id',(req, res, next) => {
+	// Update an existing todo item
+	res.json('Hitting the "/todos/:id" PUT route')
+});
 
 // router.post('/',(req, res, next) => {
 // 	// Post a new todo item

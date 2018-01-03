@@ -10,7 +10,7 @@ chai.use(chaiHttp);
 let mongoose = require('mongoose');
 let mongoDB = 'mongodb://Tester:test2015@ds239117.mlab.com:39117/;todo-test-db';
 
-describe('===> THE MONGOOSE DB CONNECTION', () => {
+xdescribe('===> THE MONGOOSE DB CONNECTION', () => {
 
 	let db ;
 

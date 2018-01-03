@@ -165,16 +165,18 @@ describe('===> THE TODOS "/todos/:id/edit" GET ROUTE', () => {
 });
 
 // UPDATE a specific todo  
-xdescribe('===> THE TODOS "/todos/:id" PUT ROUTE', () => {
+describe('===> THE TODOS "/todos/:id" PUT ROUTE', () => {
 
 	let http;
+	let _id = "1jasmine"
 
 	beforeEach(() => {
-		http = chai.request(app).put('/todos/:id');
+		http = chai.request(app).put('/todos/'+ _id);
 	});
 
 	after(() => {
 		http = '';
+		_id = '';
 	});
 
 	it('...successfully connects to the "/todos/:id" PUT route', (done) => {
@@ -183,6 +185,14 @@ xdescribe('===> THE TODOS "/todos/:id" PUT ROUTE', () => {
 			done();
 		});
 	});
+
+	it('..returns a test string', (done) => {
+		http.end((err, res) => {
+			expect(res.body).to.equal('Hitting the "/todos/:id" PUT route');
+			done();
+		});
+	});
+
 });
 
 // DELETE a specific todo  
