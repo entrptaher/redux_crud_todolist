@@ -1,6 +1,5 @@
 /*eslint no-console: "error"*/
 
-// 
 
 const express = require('express');
 const app = express();
@@ -34,7 +33,7 @@ MongoClient.connect('mongodb://react-todo:services2015@ds135537.mlab.com:35537/r
 //  READ (Home)
 app.get('/', (req, res, err) => {
 	console.log("GET route")
-	res.sendFile(__dirname + '/index.html');*/
+	res.sendFile(__dirname + '/index.html');
 });
 
 //  READ (Todos- index)
@@ -91,6 +90,8 @@ app.delete('/todos/id', (req, res) => {
 });
 
 
+module.export = app
+
 
 // https://zellwk.com/blog/crud-express-and-mongodb-2/
 
@@ -110,3 +111,4 @@ app.delete('/todos/id', (req, res) => {
     res.send(result)
   })
 }) 
+*/
