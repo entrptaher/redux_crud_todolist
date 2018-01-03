@@ -1,8 +1,8 @@
 var express = require('express');
 var router = express.Router();
 
-/* GET todos listing. */
 router.get('/', function(req, res, next) {
+	// GET a list of all todos
   res.json('respond with a resource of All todos');
 });
 

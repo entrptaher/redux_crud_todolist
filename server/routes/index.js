@@ -4,7 +4,7 @@ var router = express.Router();
 /* GET home page. */
 router.get('/', function(req, res, next) {
   // res.render('index', { title: 'Express' });
-  res.json("Test page");
+  res.send("<h1>Todos API  ==> under construction</h1>");
 });
 
 module.exports = router;
