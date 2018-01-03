@@ -56,8 +56,9 @@ describe('===> THE TODOS "/todos" GET ROUTE', () => {
 		 //Query the DB and if no errors, send all the todos
 
     http.end((err, res) => {
-
-    	expect(res.body).to.be.an('array')
+    	let bod = res.body
+    	expect(bod).to.be.an('object')
+    	console.log(JSON.parse(bod));
 	  });
 
 	})
