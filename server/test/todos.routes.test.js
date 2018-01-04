@@ -7,6 +7,7 @@ let chaiHttp = require('chai-http');
 let chai = require('chai');
 let expect = chai.expect;
 
+let Todos = require('../models/todo.model')
 
 chai.use(chaiHttp);
 
@@ -17,7 +18,7 @@ describe('===> THE TODOS "/todos" GET ROUTE', () => {
 
 	beforeEach((done) => {
 		http = chai.request(server).get('/todos');
-		Todo.remove({}, (err) => {
+		Todos.remove({}, (err) => {
 			done();
 		});
 	});
