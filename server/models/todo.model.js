@@ -1,9 +1,9 @@
 var mongoose = require('mongoose');
-var Schema = mongoose.Schema;
 
+var Schema = mongoose.Schema;
 // create a Schema
 
-var todoSchema = new Schema({
+var TodoSchema = new Schema({
 
 	id: String,
 	
@@ -22,4 +22,4 @@ var todoSchema = new Schema({
 
 // create a Model
 
-module.exports = mongoose.model('todo', todoSchema);
+module.exports = mongoose.models.Todos || mongoose.model('Todos', TodoSchema);

@@ -9,7 +9,6 @@ let bodyParser = require('body-parser');
 
 let index = require('./routes/index');
 let todos = require('./routes/todos.routes');
-let mongoose = require('mongoose');
 
 let app = express();
 
@@ -18,18 +17,24 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 
 // =========================== Connect database
+let mongoose = require('mongoose');
+
 let mongoDB = 'mongodb://Tester:test2015@ds239117.mlab.com:39117/todo-test-db';
 
 // establish pending connection to db
-mongoose.connect(mongoDB);
+mongoose.connect(mongoDB, {
+	useMongoClient:true
+});
 // use the global Promise library
-// mongoose.Promise = global.Promise;
+mongoose.Promise = global.Promise;
 // default connection
 let db = mongoose.connection;
+
 db.on('error', console.error.bind(console, 'connection error:'));
-db.once('open', function() {
-console.log("we're connected!");
-});
+
+// db.once('open', function() {
+// console.log("we're connected!");
+// });
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));

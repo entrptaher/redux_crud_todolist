@@ -7,7 +7,6 @@ let chaiHttp = require('chai-http');
 let chai = require('chai');
 let expect = chai.expect;
 
-// let Todo = require('../models/todo')
 
 chai.use(chaiHttp);
 
