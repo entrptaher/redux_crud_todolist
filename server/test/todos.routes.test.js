@@ -28,7 +28,7 @@ describe('===> THE TODOS "/todos" GET ROUTE', () => {
 		http = '';
 	});
 
-	it('...successfully connects to the "/todos" GET route', (done) => {
+	it.only('...successfully connects to the "/todos" GET route', (done) => {
 		http.end((err, res) => {
 			expect(res.status,'*** route not connected ***').to.eql(200);
 			done();
@@ -42,7 +42,7 @@ describe('===> THE TODOS "/todos" GET ROUTE', () => {
 		});
 	});
 
-	xit('returns a list of ALL todos', (done) => {
+	it('returns a list of ALL todos', (done) => {
 		http.end((err, res) => {
 			expect(res.body).to.be.an('object');
 			done();

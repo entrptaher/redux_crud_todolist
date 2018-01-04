@@ -7,14 +7,13 @@ let router = express.Router();
 
 router.get('/', (req, res, next) => {
 	// GET a list of all todos
-	// res.json('READ an index of all current todos');
-
-	let query = Todos.find({});
-	  query.exec((err, todos) => {
-      if(err) res.send(err);
-      //If no errors, send them back to the client
-      res.json(queryw);
-  });
+	Todos.find((err, todos) => {
+		if(err){
+			res.status(500).send(err)
+		} else {
+			res.status(200).send(todos)
+		}
+	});
 
 });
 
