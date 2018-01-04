@@ -50,7 +50,7 @@ describe('===> THE TODOS "/todos" GET ROUTE', () => {
 	});
 
 
-	it.only('returns a list of all todos', () => {
+	it('returns a list of all todos', () => {
 
 		 //Query the DB and if no errors, send all the todos
 

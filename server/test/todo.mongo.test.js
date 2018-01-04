@@ -8,7 +8,7 @@ let expect = chai.expect;
 
 chai.use(chaiHttp);
 
-xdescribe('===> THE MONGOOSE DB CONNECTION', () => {
+describe('===> THE MONGOOSE DB CONNECTION', () => {
 	
 	let db
 	beforeEach(() => {
@@ -24,12 +24,13 @@ xdescribe('===> THE MONGOOSE DB CONNECTION', () => {
 
 	});
 
-	it('Connects successfully', () => {
+	it('Connects successfully', (done) => {
 	// alert on success or errors
 		db.on('error', console.error.bind(console, 'connection error:'));
 		db.once('open', function() {
-		// console.log(db)
 		console.log("The test db is connected!");
+		expect(db).to.be.an('object');
+		done();
 		});
 	});
 
