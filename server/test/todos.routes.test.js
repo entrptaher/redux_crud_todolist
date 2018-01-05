@@ -79,19 +79,15 @@ describe('===> THE TODOS "/todos/new" GET ROUTE', () => {
 });
 
 // =========== CREATE a new todo
-describe('===> THE TODOS "/todos" POST ROUTE', () => {
+describe.only('===> THE TODOS "/todos" POST ROUTE', () => {
 
-	let http;
-	let body = {
-		task: "Hitting that POST route, yo!",
-		owner: "Walker",
-		complete: true
-	}
+	let http; 
+	let body;
 
-	before(() => {
+	beforeEach(() => {
 		// start with a clear database
 		Todo.remove({},(err) => {
-			err ? console.error.bind(console) : console.log('DB cleared')
+			err ? console.error.bind(console) : console.log('DB cleared');
 		});
 
 		body = {
@@ -123,8 +119,8 @@ describe('===> THE TODOS "/todos" POST ROUTE', () => {
 
 	it('... creates a new todo item', (done) => {
 		http.end((err, res) => {
-			expect(res.body).to.be.an('object')
-			expect(res.body._id).to.exist
+			expect(res.body).to.be.an('object');
+			expect(res.body._id).to.exist;
 		done();
 		});
 	})
