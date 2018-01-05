@@ -4,8 +4,9 @@ let Todo = require('../models/todo.model')
 let express = require('express');
 let router = express.Router();
 
+
+// ========== * GET a list of all todos
 router.get('/', (req, res, next) => {
-	// GET a list of all todos
 	Todo.find((err, todos) => {
 		if(err){
 			res.status(500).send(err)
@@ -15,29 +16,42 @@ router.get('/', (req, res, next) => {
 	});
 });
 
+// ========== Get a form for a new todo
 router.get('/new',(req, res, next) => {
-	// Get a form for a new todo
 	res.json('Hitting the Todos GET NEW route')
 });
 
+// ========= * Post a new todo item
 router.post('/',(req, res, next) => {
-	// Post a new todo item
 	
 	let todo = new Todo(req.body);
 
 	todo.save((err, createdTodoObject) => {
 		if(err) {
-			res.status(500).send(err, "could not save new item");
+			res.status(500).send(err);
 		} else {
 			res.status(200).send(createdTodoObject)
 		}
 	});
 });
 
-router.get('/:id',(req, res, next) => {
-	// Get a specific todo
-	res.json('Hitting the "/todos:id" GET route')
+// ========= Get a specific todo item
+router.get('/id',(req, res, next) => {
+	let id = req.params.id;
+	res.send("******", id)
+	/*Todo.findById(id, (err, todo) => {
+		if(err) {
+			res.status(500).send(err)
+		} 
+		if(todo) {
+			res.status(200).send(todo)
+		} else {
+			res.status(404).send("No item found")
+		}*/
+	// });
+
 });
+
 
 router.get('/:id/edit',(req, res, next) => {
 	// return a pre-filled edit form

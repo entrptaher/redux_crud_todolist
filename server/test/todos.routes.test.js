@@ -9,6 +9,13 @@ let expect = chai.expect;
 
 let Todo = require('../models/todo.model')
 
+const _task = {
+			id: "2018",
+			task: "Hitting that POST route, yo!",
+			owner: "Walker",
+			complete: true
+		}
+
 chai.use(chaiHttp);
 
 // =========== READ an index of all current todos
@@ -34,7 +41,7 @@ xdescribe('===> THE TODOS "/todos" GET ROUTE', () => {
 
 	it('...successfully connects to the "/todos" GET route', (done) => {
 		http.end((err, res) => {
-			expect(res.status,'*** route not connected ***').to.eql(200);
+			expect(res.status, err).to.eql(200);
 			done();
 		});
 	});
@@ -53,7 +60,6 @@ xdescribe('===> THE TODOS "/todos" GET ROUTE', () => {
 	  });
 
 	})
-
 });
 
 // =========== Return a FORM to CREATE a new todo item
@@ -71,18 +77,17 @@ describe('===> THE TODOS "/todos/new" GET ROUTE', () => {
 
 	it('...successfully connects to the "/todos/new" GET route', (done) => {
 		http.end((err, res) => {
-			expect(res.status,'*** route not connected ***').to.eql(200);
+			expect(res.status, err).to.eql(200);
 			done();
 		});
 	});
-
 });
 
-// =========== CREATE a new todo
+// =========== CREATE a new todo item
 describe.only('===> THE TODOS "/todos" POST ROUTE', () => {
 
-	let http; 
-	let body;
+	let http
+	
 
 	beforeEach(() => {
 		// start with a clear database
@@ -90,19 +95,13 @@ describe.only('===> THE TODOS "/todos" POST ROUTE', () => {
 			err ? console.error.bind(console) : console.log('DB cleared');
 		});
 
-		body = {
-			task: "Hitting that POST route, yo!",
-			owner: "Walker",
-			complete: true
-		}
-
 		http = chai.request(server)
 			.post('/todos')
-			.send(body)
+			.send(_task)
 	});
 
-	after(() => {
-		// Cleat the database
+	afterEach(() => {
+		// Clear the database
 		http = '';
 		Todo.remove({},(err) => {
 			err ? console.error.bind(console) : console.log('DB cleared')
@@ -112,43 +111,172 @@ describe.only('===> THE TODOS "/todos" POST ROUTE', () => {
 	it('...successfully connects to the "/todos" POST route', (done) => {
 		http
 			.end((err, res) => {
-			expect(res.status,'*** route not connected ***').to.eql(200);
+			expect(res.status, err).to.eql(200);
 			done();
 		});
 	});
 
 	it('... creates a new todo item', (done) => {
 		http.end((err, res) => {
-			expect(res.body).to.be.an('object');
-			expect(res.body._id).to.exist;
+			let todo = 	res.body;
+			let id 	 = 	todo.id ;
+			expect(todo).to.be.an('object');
+			expect(id).to.exist;
+			expect(id).to.be.a('string');
 		done();
 		});
+	})
+});
+
+// =========== SETTING UP find a todo
+describe('===> SETTING UP the new find route', () => {
+
+	let http, body
+
+	// start with a clear database
+	before((done) => {
+		Todo.remove({},(err) => {
+			err ? console.error.bind(console) : console.log('DB cleared');
+		});
+
+		body = {
+			id: 2018,
+			task: "Hitting that POST route, yo!",
+			owner: "Walker",
+			complete: true
+		}
+
+		chai.request(server)
+			.post('/todos')
+			.send(body)
+			.end((err, res) => {
+				done()
+			});
+	});
+
+	after(() => {
+		// Clear the database
+		http = '';
+		Todo.remove({},(err) => {
+			err ? console.error.bind(console) : console.log('DB cleared')
+		});
+	});
+
+	describe('_ _ builds a new db item', () => {
+
+		it('.. test can construct the url', () => {
+			let id = body.id
+			expect(id).to.be.a('string');
+
+		})
+		it('successfully connects to the "/todos/id" GET route', (done) => {
+			chai.request(server)
+				.get('/todos/')
+
+				.end((err, res) => {
+				expect(res.status, err).to.eql(200);
+				done();
+			});
+		});
+
+		it('... creates a new todo item', (done) => {
+
+			http = chai.request(server)
+				.get('/todos')
+
+				.end((err, res) => {
+					let todos = res.body
+		    	expect(todos).to.be.an('array');
+		    	expect(todos.length).to.be.above(0);
+		    	expect(todos[0].owner).to.eql('Walker');
+					expect(res.status, err).to.eql(200);
+					done();
+						// expect(body).to.be.an('object');
+						// expect(body._id).to.exist;
+				})
+		})
+
+	});
+
+// ========= 
+	it('... configures ', () => {
+
+	})
+
+	it('... connects to the "/todos/:id" route', () => {
+
+		expect('/todos/' + body.id).to.eql('/todos/2018')
+		let httpFind = chai.request(server)
+			// .get('/todos/' + body.id)
+
 	})
 
 });
 
-// =========== READ a specific todo  
+
+
+// ========= ========= ========= ========= ========= 
+
+
+
+// ========= ========= ========= ========= ========= 
+
+
+
+// =========  READ a specific todo  
 describe('===> THE TODOS "/todos/:id" GET ROUTE', () => {
 
-	let http;
-	let _id = "1jasmine"
+	let http, body, todo, id 
 
 	beforeEach(() => {
-		http = chai.request(server).get('/todos/'+_id);
+		// start with a clear database
+		Todo.remove({},(err) => {
+			err ? console.error.bind(console) : console.log('DB cleared');
+		});
+
+		body = {
+			id: 2018,
+			task: "Hitting that POST route, yo!",
+			owner: "Walker",
+			complete: true
+		}
+
+		todo = new Todo(body);
+
+		chai.request(server)
+			.post('/todos/')
+			.send(body)
+			.end()
+
+		http = chai.request(server)
+			.get('/todos/'+ body.id)
 	});
 
-	after(() => {
+	/*after(() => {
+		// Clear the database
 		http = '';
-		_id = '';
-	});
+		Todo.remove({},(err) => {
+			err ? console.error.bind(console) : console.log('DB cleared')
+		});
+	});*/
+
+// ========= 
 
 	it('...successfully connects to the "/todos/:id" GET route', (done) => {
-		http.end((err, res) => {
-			expect(res.status,'*** route not connected ***').to.eql(200);
+			http.end((err, res) => {
+			expect(res.status, err).to.eql(200);
 			done();
 		});
 	});
 
+	it('...can find a specific item', (done) => {
+		http.end((err,res) => {
+			console.log(res.toArray())
+			expect(res).to.be.an("string")
+			done();
+		});
+
+	})
 });
 
 // =========== Return a FORM to EDIT a specific todo item
@@ -168,11 +296,10 @@ describe('===> THE TODOS "/todos/:id/edit" GET ROUTE', () => {
 
 	it('...successfully connects to the "/todos/:id/edit" GET route', (done) => {
 		http.end((err, res) => {
-			expect(res.status,'*** route not connected ***').to.eql(200);
+			expect(res.status, err).to.eql(200);
 			done();
 		});
 	});
-
 });
 
 // =========== UPDATE a specific todo  
@@ -192,11 +319,10 @@ describe('===> THE TODOS "/todos/:id" PUT ROUTE', () => {
 
 	it('...successfully connects to the "/todos/:id" PUT route', (done) => {
 		http.end((err, res) => {
-			expect(res.status,'*** route not connected ***').to.eql(200);
+			expect(res.status, err).to.eql(200);
 			done();
 		});
 	});
-
 });
 
 // =========== DELETE a specific todo  
@@ -216,10 +342,9 @@ describe('===> THE TODOS "/todos/:id" DELETE ROUTE', () => {
 
 	it('...successfully connects to the "/todos/:id" DELETE route', (done) => {
 		http.end((err, res) => {
-			expect(res.status,'*** route not connected ***').to.eql(200);
+			expect(res.status, err).to.eql(200);
 			done();
 		});
 	});
-
 });
 
