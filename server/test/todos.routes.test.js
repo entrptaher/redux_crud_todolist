@@ -84,10 +84,9 @@ describe('===> THE TODOS "/todos/new" GET ROUTE', () => {
 });
 
 // =========== CREATE a new todo item
-describe.only('===> THE TODOS "/todos" POST ROUTE', () => {
+xdescribe('===> THE TODOS "/todos" POST ROUTE', () => {
 
 	let http
-	
 
 	beforeEach(() => {
 		// start with a clear database
@@ -129,9 +128,9 @@ describe.only('===> THE TODOS "/todos" POST ROUTE', () => {
 });
 
 // =========== SETTING UP find a todo
-describe('===> SETTING UP the new find route', () => {
+describe.only('===> SETTING UP the new find route', () => {
 
-	let http, body
+	let http
 
 	// start with a clear database
 	before((done) => {
@@ -164,14 +163,18 @@ describe('===> SETTING UP the new find route', () => {
 
 	describe('_ _ builds a new db item', () => {
 
-		it('.. test can construct the url', () => {
-			let id = body.id
-			expect(id).to.be.a('string');
+		let id = _task.id
+		let testUrl = '/todos/' + id
 
+		it('..test can construct the url, "/todos/2018', () => {
+			expect(id).to.be.a('string');
+			// brittle..
+			expect(testUrl).to.eql('/todos/2018')
 		})
-		it('successfully connects to the "/todos/id" GET route', (done) => {
+
+		it.only('successfully connects to the "/todos/id" GET route', (done) => {
 			chai.request(server)
-				.get('/todos/')
+				.get('/todos/'+ id)
 
 				.end((err, res) => {
 				expect(res.status, err).to.eql(200);

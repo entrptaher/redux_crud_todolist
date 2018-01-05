@@ -37,8 +37,8 @@ router.post('/',(req, res, next) => {
 
 // ========= Get a specific todo item
 router.get('/id',(req, res, next) => {
-	let id = req.params.id;
-	res.send("******", id)
+	// let id = req.id;
+	console.log("******", req)
 	/*Todo.findById(id, (err, todo) => {
 		if(err) {
 			res.status(500).send(err)
