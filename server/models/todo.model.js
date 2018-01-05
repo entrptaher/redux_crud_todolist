@@ -12,7 +12,7 @@ var TodoSchema = new Schema({
 		type: String,
 		required: [true, "Please add a Task"]
 	},
-
+	description: String,
 	complete: Boolean,
 	rank: String,
 	date: Date,

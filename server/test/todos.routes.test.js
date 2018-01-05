@@ -11,7 +11,7 @@ let Todos = require('../models/todo.model')
 
 chai.use(chaiHttp);
 
-// READ an index of all current todos
+// =========== READ an index of all current todos
 describe('===> THE TODOS "/todos" GET ROUTE', () => {
 
 	let http;
@@ -21,6 +21,7 @@ describe('===> THE TODOS "/todos" GET ROUTE', () => {
 		Todos.remove({}, (err) => {
 			done();
 		});
+
 	});
 
 	after(() => {
@@ -28,43 +29,33 @@ describe('===> THE TODOS "/todos" GET ROUTE', () => {
 		http = '';
 	});
 
-	it.only('...successfully connects to the "/todos" GET route', (done) => {
+	it('...successfully connects to the "/todos" GET route', (done) => {
 		http.end((err, res) => {
 			expect(res.status,'*** route not connected ***').to.eql(200);
 			done();
 		});
 	});
 
-	it('..returns a test string', (done) => {
+	it('...returns an array', (done) => {
 		http.end((err, res) => {
-			expect(res.body).to.equal('READ an index of all current todos');
+			expect(res.body).to.be.an('array');
 			done();
 		});
 	});
-
-	it('returns a list of ALL todos', (done) => {
-		http.end((err, res) => {
-			expect(res.body).to.be.an('object');
-			done();
-		});
-	});
-
 
 	it('returns a list of all todos', () => {
 
 		 //Query the DB and if no errors, send all the todos
 
     http.end((err, res) => {
-    	let bod = res.body;
-    	expect(bod).to.be.an('object');
-    	console.log(JSON.parse(bod));
+    	expect(res.body).to.be.an('array');
 	  });
 
 	})
 
 });
 
-// Return a FORM to CREATE a new todo item
+// =========== Return a FORM to CREATE a new todo item
 describe('===> THE TODOS "/todos/new" GET ROUTE', () => {
 
 	let http;
@@ -84,16 +75,9 @@ describe('===> THE TODOS "/todos/new" GET ROUTE', () => {
 		});
 	});
 
-	it('..returns a test string', (done) => {
-		http.end((err, res) => {
-			expect(res.body).to.equal('Hitting the Todos GET NEW route');
-			done();
-		});
-	});
-
 });
 
-// CREATE a new todo
+// =========== CREATE a new todo
 describe('===> THE TODOS "/todos" POST ROUTE', () => {
 
 	let http;
@@ -113,16 +97,9 @@ describe('===> THE TODOS "/todos" POST ROUTE', () => {
 		});
 	});
 
-	it('..returns a test string', (done) => {
-		http.end((err, res) => {
-			expect(res.body).to.equal('Hitting the "/todos" POST route');
-			done();
-		});
-	});
-
 });
 
-// READ a specific todo  
+// =========== READ a specific todo  
 describe('===> THE TODOS "/todos/:id" GET ROUTE', () => {
 
 	let http;
@@ -144,16 +121,9 @@ describe('===> THE TODOS "/todos/:id" GET ROUTE', () => {
 		});
 	});
 
-	it('..returns a test string', (done) => {
-		http.end((err, res) => {
-			expect(res.body).to.equal('Hitting the "/todos:id" GET route');
-			done();
-		});
-	});
-
 });
 
-// Return a FORM to EDIT a specific todo item
+// =========== Return a FORM to EDIT a specific todo item
 describe('===> THE TODOS "/todos/:id/edit" GET ROUTE', () => {
 
 	let http;
@@ -175,16 +145,9 @@ describe('===> THE TODOS "/todos/:id/edit" GET ROUTE', () => {
 		});
 	});
 
-	it('..returns a test string', (done) => {
-		http.end((err, res) => {
-			expect(res.body).to.equal('Hitting the "/todos:id/edit" GET route');
-			done();
-		});
-	});
-
 });
 
-// UPDATE a specific todo  
+// =========== UPDATE a specific todo  
 describe('===> THE TODOS "/todos/:id" PUT ROUTE', () => {
 
 	let http;
@@ -206,16 +169,9 @@ describe('===> THE TODOS "/todos/:id" PUT ROUTE', () => {
 		});
 	});
 
-	it('..returns a test string', (done) => {
-		http.end((err, res) => {
-			expect(res.body).to.equal('Hitting the "/todos/:id" PUT route');
-			done();
-		});
-	});
-
 });
 
-// DELETE a specific todo  
+// =========== DELETE a specific todo  
 describe('===> THE TODOS "/todos/:id" DELETE ROUTE', () => {
 
 	let http;
@@ -233,13 +189,6 @@ describe('===> THE TODOS "/todos/:id" DELETE ROUTE', () => {
 	it('...successfully connects to the "/todos/:id" DELETE route', (done) => {
 		http.end((err, res) => {
 			expect(res.status,'*** route not connected ***').to.eql(200);
-			done();
-		});
-	});
-
-	it('..returns a test string', (done) => {
-		http.end((err, res) => {
-			expect(res.body).to.equal('Hitting the "/todos/:id" DELETE route');
 			done();
 		});
 	});

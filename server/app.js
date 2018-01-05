@@ -22,9 +22,7 @@ let mongoose = require('mongoose');
 let mongoDB = 'mongodb://Tester:test2015@ds239117.mlab.com:39117/todo-test-db';
 
 // establish pending connection to db
-mongoose.connect(mongoDB, {
-	useMongoClient:true
-});
+mongoose.connect(mongoDB);
 // use the global Promise library
 mongoose.Promise = global.Promise;
 // default connection
