@@ -7,20 +7,23 @@ let chaiHttp = require('chai-http');
 let chai = require('chai');
 let expect = chai.expect;
 
-let Todos = require('../models/todo.model')
+let Todo = require('../models/todo.model')
 
 chai.use(chaiHttp);
 
 // =========== READ an index of all current todos
-describe('===> THE TODOS "/todos" GET ROUTE', () => {
+xdescribe('===> THE TODOS "/todos" GET ROUTE', () => {
 
 	let http;
 
 	beforeEach((done) => {
-		http = chai.request(server).get('/todos');
-		Todos.remove({}, (err) => {
+
+		Todo.remove({}, (err) => {
 			done();
 		});
+
+		http = chai.request(server)
+			.get('/todos');
 
 	});
 
@@ -44,9 +47,7 @@ describe('===> THE TODOS "/todos" GET ROUTE', () => {
 	});
 
 	it('returns a list of all todos', () => {
-
 		 //Query the DB and if no errors, send all the todos
-
     http.end((err, res) => {
     	expect(res.body).to.be.an('array');
 	  });
@@ -81,21 +82,52 @@ describe('===> THE TODOS "/todos/new" GET ROUTE', () => {
 describe('===> THE TODOS "/todos" POST ROUTE', () => {
 
 	let http;
+	let body = {
+		task: "Hitting that POST route, yo!",
+		owner: "Walker",
+		complete: true
+	}
 
-	beforeEach(() => {
-		http = chai.request(server).post('/todos');
+	before(() => {
+		// start with a clear database
+		Todo.remove({},(err) => {
+			err ? console.error.bind(console) : console.log('DB cleared')
+		});
+
+		body = {
+			task: "Hitting that POST route, yo!",
+			owner: "Walker",
+			complete: true
+		}
+
+		http = chai.request(server)
+			.post('/todos')
+			.send(body)
 	});
 
 	after(() => {
+		// Cleat the database
 		http = '';
+		Todo.remove({},(err) => {
+			err ? console.error.bind(console) : console.log('DB cleared')
+		});
 	});
 
 	it('...successfully connects to the "/todos" POST route', (done) => {
-		http.end((err, res) => {
+		http
+			.end((err, res) => {
 			expect(res.status,'*** route not connected ***').to.eql(200);
 			done();
 		});
 	});
+
+	it('... creates a new todo item', (done) => {
+		http.end((err, res) => {
+			expect(res.body).to.be.an('object')
+			expect(res.body._id).to.exist
+		done();
+		});
+	})
 
 });
 

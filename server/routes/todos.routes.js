@@ -1,21 +1,18 @@
 /* eslint-env node, mocha */
-
-let Todos = require('../models/todo.model')
+let Todo = require('../models/todo.model')
 
 let express = require('express');
 let router = express.Router();
 
 router.get('/', (req, res, next) => {
 	// GET a list of all todos
-	Todos.find((err, todos) => {
+	Todo.find((err, todos) => {
 		if(err){
 			res.status(500).send(err)
 		} else {
-			res.status(200).json
-			(todos)
+			res.status(200).send(todos)
 		}
 	});
-
 });
 
 router.get('/new',(req, res, next) => {
@@ -25,7 +22,16 @@ router.get('/new',(req, res, next) => {
 
 router.post('/',(req, res, next) => {
 	// Post a new todo item
-	res.json('Hitting the "/todos" POST route');
+	
+	let todo = new Todo(req.body);
+
+	todo.save((err, createdTodoObject) => {
+		if(err) {
+			res.status(500).send(err, "could not save new item");
+		} else {
+			res.status(200).send(createdTodoObject)
+		}
+	});
 });
 
 router.get('/:id',(req, res, next) => {
