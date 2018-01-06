@@ -131,7 +131,7 @@ describe('===> THE TODOS "/todos" POST ROUTE', () => {
 
 
 // =========== SETTING UP find a todo
-describe.only('===> SETTING UP the new find route', () => {
+describe('=== The GET "/todos/:id" route===', () => {
 
 	let http
 
@@ -146,7 +146,7 @@ describe.only('===> SETTING UP the new find route', () => {
 
 	// ========= 
 
-	it.only('... can find a specific todo item', (done) => {
+	it('... can find a specific todo item', (done) => {
 
 		let todo = new Todo(_task)
 
@@ -154,18 +154,17 @@ describe.only('===> SETTING UP the new find route', () => {
 
 			chai.request(server)
 				.get('/todos/' + newTodo.id)
+				.send(newTodo)
 				.end((err, res) => {
-					expect(res.status).to.eql(900);
-
-				done();
-
-				});
-
-
-		});
-
-
-	}); // it
+					expect(res.status).to.eql(200);
+					expect(res.body).to.be.an('object');
+					expect(res.body).to.have.property('task');
+					expect(res.body).to.have.property('complete');
+					console.log('The id is: ', newTodo.id)
+					done();
+				}); 	
+		}); 
+	}); 
 	
 
 
