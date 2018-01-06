@@ -27,11 +27,11 @@ router.post('/',(req, res, next) => {
 	
 	let todo = new Todo(req.body);
 
-	todo.save((err, createdTodoObject) => {
+	todo.save((err, newTodo) => {
 		if(err) {
 			res.status(500).send(err);
 		} else {
-			res.status(200).send(createdTodoObject)
+			res.status(200).send(newTodo)
 		}
 	});
 });

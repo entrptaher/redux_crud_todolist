@@ -18,284 +18,82 @@ const _task = {
 
 chai.use(chaiHttp);
 
-// =========== READ an index of all current todos
-xdescribe('===> THE TODOS "/todos" GET ROUTE', () => {
-
-	let http;
+describe('Routes for /todos resources', () => {
 
 	beforeEach((done) => {
-
-		Todo.remove({}, (err) => {
-			done();
-		});
-
-		http = chai.request(server)
-			.get('/todos');
-
-	});
-
-	after(() => {
-		mongoose.connection.close();
-		http = '';
-	});
-
-	it('...successfully connects to the "/todos" GET route', (done) => {
-		http.end((err, res) => {
-			expect(res.status, err).to.eql(200);
-			done();
-		});
-	});
-
-	it('...returns an array', (done) => {
-		http.end((err, res) => {
-			expect(res.body).to.be.an('array');
-			done();
-		});
-	});
-
-	it('returns a list of all todos', () => {
-		 //Query the DB and if no errors, send all the todos
-    http.end((err, res) => {
-    	expect(res.body).to.be.an('array');
-	  });
-
-	})
-});
-
-// =========== Return a FORM to CREATE a new todo item
-describe('===> THE TODOS "/todos/new" GET ROUTE', () => {
-
-	let http;
-
-	beforeEach(() => {
-		http = chai.request(server).get('/todos/new');
-	});
-
-	after(() => {
-		http = '';
-	});
-
-	it('...successfully connects to the "/todos/new" GET route', (done) => {
-		http.end((err, res) => {
-			expect(res.status, err).to.eql(200);
-			done();
-		});
-	});
-});
-
-// =========== CREATE a new todo item
-describe('===> THE TODOS "/todos" POST ROUTE', () => {
-
-	let http
-
-	beforeEach(() => {
-		// start with a clear database
-		Todo.remove({},(err) => {
+		Todo.remove({ },(err) => {
 			err ? console.error.bind(console) : console.log('DB cleared');
-		});
-
-		http = chai.request(server)
-			.post('/todos')
-			.send(_task)
-	});
-
-	afterEach(() => {
-		// Clear the database
-		http = '';
-		Todo.remove({},(err) => {
-			err ? console.error.bind(console) : console.log('DB cleared')
-		});
-	});
-
-	it('...successfully connects to the "/todos" POST route', (done) => {
-		http
-			.end((err, res) => {
-			expect(res.status, err).to.eql(200);
 			done();
 		});
-	});
+	}); 
 
-	it('... creates a new todo item', (done) => {
-		http.end((err, res) => {
-			newTodo = 	res.body;
-			let id 	 = 	newTodo._id ;
-			expect(newTodo).to.be.an('object');
-			expect(id).to.exist;
-			expect(id).to.be.a('string');
-		done();
-		});
-	})
-});
-	
-// >>>> ========= ========= ========= ========= ========= 
+	// =========== READ an index of all current todos
+	describe('===> THE TODOS "/todos" GET ROUTE', () => {
 
-
-// =========== SETTING UP find a todo
-describe('=== The GET "/todos/:id" route===', () => {
-
-	let http
-
-	// start with a clear database
-	beforeEach((done) => {
-		Todo.remove({},(err) => {
-			err ? console.error.bind(console) : console.log('DB cleared');
-			done()
-		});
-
-	}); // before
-
-	// ========= 
-
-	it('... can find a specific todo item', (done) => {
-
-		let todo = new Todo(_task)
-
-		todo.save((err, newTodo) => {
+		it('... returns a list of all current todos', (done) => {
 
 			chai.request(server)
-				.get('/todos/' + newTodo.id)
-				.send(newTodo)
+				.get('/todos')
 				.end((err, res) => {
-					expect(res.status).to.eql(200);
-					expect(res.body).to.be.an('object');
-					expect(res.body).to.have.property('task');
-					expect(res.body).to.have.property('complete');
-					console.log('The id is: ', newTodo.id)
+						expect(res.status).to.eql(200);
+						expect(res.body).to.be.an('array');
+						expect(res.body.length).to.eql(0);
+					done()
+				});
+		});
+	});
+
+	// =========== CREATE a new todo item
+
+	describe('===> THE TODOS "/todos" POST ROUTE', () => {
+
+		it('...can create a new todo item', (done) => {
+
+			chai.request(server)
+				.post('/todos/')
+				.send(_task)
+				.end((err, res) => {
+						expect(res.status).to.eql(200);
+						expect(res.body).to.be.an('object');
+						expect(res.body).to.have.property('task');
+						expect(res.body).to.have.property('complete');
 					done();
 				}); 	
 		}); 
+	});
+		
+	// =========== FIND a specific todo item
+	describe('=== The GET "/todos/:id" route===', () => {
+
+		it('... can find a specific todo item', (done) => {
+			let todo = new Todo(_task)
+
+			todo.save((err, newTodo) => {
+				chai.request(server)
+					.get('/todos/' + newTodo.id)
+					.send(newTodo)
+					.end((err, res) => {
+							expect(res.status).to.eql(200);
+							expect(res.body).to.be.an('object');
+							expect(res.body).to.have.property('task');
+							expect(res.body).to.have.property('complete');
+						done();
+					}); 
+			}); 
+		}); 
+
 	}); 
-	
 
-
-}); // describe
-
-// <<<< ========= ========= ========= ========= ========= 
-
-
-
-// =========  READ a specific todo  
-describe('===> THE TODOS "/todos/:id" GET ROUTE', () => {
-
-	let http, body, todo, id 
-
-	beforeEach(() => {
-		// start with a clear database
-		Todo.remove({},(err) => {
-			err ? console.error.bind(console) : console.log('DB cleared');
-		});
-
-		body = {
-			id: 2018,
-			task: "Hitting that POST route, yo!",
-			owner: "Walker",
-			complete: true
-		}
-
-		todo = new Todo(body);
-
-		chai.request(server)
-			.post('/todos/')
-			.send(body)
-			.end()
-
-		http = chai.request(server)
-			.get('/todos/'+ body.id)
+	// =========== UPDATE a specific todo  
+	describe.only('===> THE TODOS "/todos/:id" PUT ROUTE', () => {
+		console.log('test needed EDIT');
 	});
 
-	/*after(() => {
-		// Clear the database
-		http = '';
-		Todo.remove({},(err) => {
-			err ? console.error.bind(console) : console.log('DB cleared')
-		});
-	});*/
-
-// ========= 
-
-	it('...successfully connects to the "/todos/:id" GET route', (done) => {
-			http.end((err, res) => {
-			expect(res.status, err).to.eql(200);
-			done();
-		});
+	// =========== DELETE a specific todo  
+	xdescribe('===> THE TODOS "/todos/:id" DELETE ROUTE', () => {
+		console.log('test needed DELETE');
 	});
 
-	it('...can find a specific item', (done) => {
-		http.end((err,res) => {
-			console.log(res.toArray())
-			expect(res).to.be.an("string")
-			done();
-		});
-
-	})
 });
 
-// =========== Return a FORM to EDIT a specific todo item
-describe('===> THE TODOS "/todos/:id/edit" GET ROUTE', () => {
-
-	let http;
-	let _id = "1jasmine"
-
-	beforeEach(() => {
-		http = chai.request(server).get('/todos/'+ _id + '/edit');
-	});
-
-	after(() => {
-		http = '';
-		_id = '';
-	});
-
-	it('...successfully connects to the "/todos/:id/edit" GET route', (done) => {
-		http.end((err, res) => {
-			expect(res.status, err).to.eql(200);
-			done();
-		});
-	});
-});
-
-// =========== UPDATE a specific todo  
-describe('===> THE TODOS "/todos/:id" PUT ROUTE', () => {
-
-	let http;
-	let _id = "1jasmine"
-
-	beforeEach(() => {
-		http = chai.request(server).put('/todos/'+ _id);
-	});
-
-	after(() => {
-		http = '';
-		_id = '';
-	});
-
-	it('...successfully connects to the "/todos/:id" PUT route', (done) => {
-		http.end((err, res) => {
-			expect(res.status, err).to.eql(200);
-			done();
-		});
-	});
-});
-
-// =========== DELETE a specific todo  
-describe('===> THE TODOS "/todos/:id" DELETE ROUTE', () => {
-
-	let http;
-	let _id = "1jasmine"
-
-	beforeEach(() => {
-		http = chai.request(server).delete('/todos/'+ _id);
-	});
-
-	after(() => {
-		http = '';
-		_id = '';
-	});
-
-	it('...successfully connects to the "/todos/:id" DELETE route', (done) => {
-		http.end((err, res) => {
-			expect(res.status, err).to.eql(200);
-			done();
-		});
-	});
-});
 
