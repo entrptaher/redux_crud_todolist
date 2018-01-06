@@ -6,16 +6,15 @@ let mongoose = require('mongoose');
 let chaiHttp = require('chai-http');
 let chai = require('chai');
 let expect = chai.expect;
+let should = chai.should()
 
 let Todo = require('../models/todo.model')
 
 const _task = {
-			task: "Hitting that POST route, yo!",
+			task: "Hitting that Get  route, yo!",
 			owner: "Walker",
 			complete: true
 		}
-
-let newTodo
 
 chai.use(chaiHttp);
 
@@ -120,7 +119,6 @@ describe('===> THE TODOS "/todos" POST ROUTE', () => {
 		http.end((err, res) => {
 			newTodo = 	res.body;
 			let id 	 = 	newTodo._id ;
-			console.log(id);
 			expect(newTodo).to.be.an('object');
 			expect(id).to.exist;
 			expect(id).to.be.a('string');
@@ -129,7 +127,7 @@ describe('===> THE TODOS "/todos" POST ROUTE', () => {
 	})
 });
 	
-// ========= ========= ========= ========= ========= 
+// >>>> ========= ========= ========= ========= ========= 
 
 
 // =========== SETTING UP find a todo
@@ -138,72 +136,42 @@ describe.only('===> SETTING UP the new find route', () => {
 	let http
 
 	// start with a clear database
-	before((done) => {
-		// Todo.remove({},(err) => {
-		// 	err ? console.error.bind(console) : console.log('DB cleared');
-		// });
+	beforeEach((done) => {
+		Todo.remove({},(err) => {
+			err ? console.error.bind(console) : console.log('DB cleared');
+			done()
+		});
 
-		body = {
-			task: "Make an item for the '/todos/:id route!",
-			owner: "Walker",
-			complete: true
-		}
-
-		let todo1 = new Todo(body)
-		todo1.save
-
-
-	mongoose.connect('mongodb://localhost/basingCOM', (err) => {
-    if (err) 
-      throw err;
-
-    console.log("Successfully connected to MongoDB");
-
-		Todo.find({"owner":"Walker"},(err, todo) => {
-
-			if(err) {
-				return err
-			}
-		console.log("I found one",todo[0]);
-
-		})// find
-	}); //mongoose
-
-
-		let id = todo1.id
-
-		 console.log("The id is: ", id);
-
-		http = chai.request(server)
-			// .get('/todos'+ id)
-			.get('/todos/5a51156e28fdf22be53e4254')
-			.send(body)
-
-		done()
-	)};
-
-	// after(() => {
-	// 	// Clear the database
-	// 	http = '';
-	// 	Todo.remove({},(err) => {
-	// 		err ? console.error.bind(console) : console.log('DB cleared')
-	// 	});
-	// });
+	}); // before
 
 	// ========= 
 
-	it('... can find a specific todo item', (done) => {
+	it.only('... can find a specific todo item', (done) => {
 
-		http.end((err, res) => {
-			expect(res.status, err).to.eql(200);
-			expect(res).to.be.an('object');
-			done();
+		let todo = new Todo(_task)
+
+		todo.save((err, newTodo) => {
+
+			chai.request(server)
+				.get('/todos/' + newTodo.id)
+				.end((err, res) => {
+					expect(res.status).to.eql(900);
+
+				done();
+				
+				});
+
+
 		});
-	})
-	
-});
 
-// ========= ========= ========= ========= ========= 
+
+	}); // it
+	
+
+
+}); // describe
+
+// <<<< ========= ========= ========= ========= ========= 
 
 
 

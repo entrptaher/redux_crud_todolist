@@ -41,6 +41,7 @@ router.get('/:id',(req, res, next) => {
 
 	// res.send(req.params.id)
 	let id = req.params.id;
+	
 	Todo.findById({"_id":id}, (err, todo) => {
 		if(err) {
 			res.status(500).send(err)
