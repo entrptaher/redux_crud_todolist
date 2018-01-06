@@ -10,11 +10,12 @@ let expect = chai.expect;
 let Todo = require('../models/todo.model')
 
 const _task = {
-			id: "2018",
 			task: "Hitting that POST route, yo!",
 			owner: "Walker",
 			complete: true
 		}
+
+let newTodo
 
 chai.use(chaiHttp);
 
@@ -84,7 +85,7 @@ describe('===> THE TODOS "/todos/new" GET ROUTE', () => {
 });
 
 // =========== CREATE a new todo item
-xdescribe('===> THE TODOS "/todos" POST ROUTE', () => {
+describe('===> THE TODOS "/todos" POST ROUTE', () => {
 
 	let http
 
@@ -117,15 +118,19 @@ xdescribe('===> THE TODOS "/todos" POST ROUTE', () => {
 
 	it('... creates a new todo item', (done) => {
 		http.end((err, res) => {
-			let todo = 	res.body;
-			let id 	 = 	todo.id ;
-			expect(todo).to.be.an('object');
+			newTodo = 	res.body;
+			let id 	 = 	newTodo._id ;
+			console.log(id);
+			expect(newTodo).to.be.an('object');
 			expect(id).to.exist;
 			expect(id).to.be.a('string');
 		done();
 		});
 	})
 });
+	
+// ========= ========= ========= ========= ========= 
+
 
 // =========== SETTING UP find a todo
 describe.only('===> SETTING UP the new find route', () => {
@@ -134,93 +139,69 @@ describe.only('===> SETTING UP the new find route', () => {
 
 	// start with a clear database
 	before((done) => {
-		Todo.remove({},(err) => {
-			err ? console.error.bind(console) : console.log('DB cleared');
-		});
+		// Todo.remove({},(err) => {
+		// 	err ? console.error.bind(console) : console.log('DB cleared');
+		// });
 
 		body = {
-			id: 2018,
-			task: "Hitting that POST route, yo!",
+			task: "Make an item for the '/todos/:id route!",
 			owner: "Walker",
 			complete: true
 		}
 
-		chai.request(server)
-			.post('/todos')
+		let todo1 = new Todo(body)
+		todo1.save
+
+
+	mongoose.connect('mongodb://localhost/basingCOM', (err) => {
+    if (err) 
+      throw err;
+
+    console.log("Successfully connected to MongoDB");
+
+		Todo.find({"owner":"Walker"},(err, todo) => {
+
+			if(err) {
+				return err
+			}
+		console.log("I found one",todo[0]);
+
+		})// find
+	}); //mongoose
+
+
+		let id = todo1.id
+
+		 console.log("The id is: ", id);
+
+		http = chai.request(server)
+			// .get('/todos'+ id)
+			.get('/todos/5a51156e28fdf22be53e4254')
 			.send(body)
-			.end((err, res) => {
-				done()
-			});
-	});
 
-	after(() => {
-		// Clear the database
-		http = '';
-		Todo.remove({},(err) => {
-			err ? console.error.bind(console) : console.log('DB cleared')
+		done()
+	)};
+
+	// after(() => {
+	// 	// Clear the database
+	// 	http = '';
+	// 	Todo.remove({},(err) => {
+	// 		err ? console.error.bind(console) : console.log('DB cleared')
+	// 	});
+	// });
+
+	// ========= 
+
+	it('... can find a specific todo item', (done) => {
+
+		http.end((err, res) => {
+			expect(res.status, err).to.eql(200);
+			expect(res).to.be.an('object');
+			done();
 		});
-	});
-
-	describe('_ _ builds a new db item', () => {
-
-		let id = _task.id
-		let testUrl = '/todos/' + id
-
-		it('..test can construct the url, "/todos/2018', () => {
-			expect(id).to.be.a('string');
-			// brittle..
-			expect(testUrl).to.eql('/todos/2018')
-		})
-
-		it.only('successfully connects to the "/todos/id" GET route', (done) => {
-			chai.request(server)
-				.get('/todos/'+ id)
-
-				.end((err, res) => {
-				expect(res.status, err).to.eql(200);
-				done();
-			});
-		});
-
-		it('... creates a new todo item', (done) => {
-
-			http = chai.request(server)
-				.get('/todos')
-
-				.end((err, res) => {
-					let todos = res.body
-		    	expect(todos).to.be.an('array');
-		    	expect(todos.length).to.be.above(0);
-		    	expect(todos[0].owner).to.eql('Walker');
-					expect(res.status, err).to.eql(200);
-					done();
-						// expect(body).to.be.an('object');
-						// expect(body._id).to.exist;
-				})
-		})
-
-	});
-
-// ========= 
-	it('... configures ', () => {
-
 	})
-
-	it('... connects to the "/todos/:id" route', () => {
-
-		expect('/todos/' + body.id).to.eql('/todos/2018')
-		let httpFind = chai.request(server)
-			// .get('/todos/' + body.id)
-
-	})
-
+	
 });
-
-
-
-// ========= ========= ========= ========= ========= 
-
-
 
 // ========= ========= ========= ========= ========= 
 

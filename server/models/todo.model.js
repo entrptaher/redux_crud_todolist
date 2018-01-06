@@ -5,8 +5,6 @@ var Schema = mongoose.Schema;
 
 var TodoSchema = new Schema({
 
-	id: String,
-	
 	// validation: using `required`
 	task: {
 		type: String,

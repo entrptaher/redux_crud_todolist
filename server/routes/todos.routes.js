@@ -7,7 +7,8 @@ let router = express.Router();
 
 // ========== * GET a list of all todos
 router.get('/', (req, res, next) => {
-	Todo.find((err, todos) => {
+ // res.send('the GET/ rte');
+	Todo.find({},(err, todos) => {
 		if(err){
 			res.status(500).send(err)
 		} else {
@@ -36,10 +37,11 @@ router.post('/',(req, res, next) => {
 });
 
 // ========= Get a specific todo item
-router.get('/id',(req, res, next) => {
-	// let id = req.id;
-	console.log("******", req)
-	/*Todo.findById(id, (err, todo) => {
+router.get('/:id',(req, res, next) => {
+
+	// res.send(req.params.id)
+	let id = req.params.id;
+	Todo.findById({"_id":id}, (err, todo) => {
 		if(err) {
 			res.status(500).send(err)
 		} 
@@ -47,8 +49,8 @@ router.get('/id',(req, res, next) => {
 			res.status(200).send(todo)
 		} else {
 			res.status(404).send("No item found")
-		}*/
-	// });
+		}
+	});
 
 });
 
