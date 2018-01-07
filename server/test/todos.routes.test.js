@@ -27,8 +27,8 @@ describe('Routes for /todos resources', () => {
 		});
 	}); 
 
-	// =========== READ an index of all current todos
-	describe('===> THE TODOS "/todos" GET ROUTE', () => {
+	// =========== READ an index of all todos
+	describe('*** READ index of all todos: "/todos" route', () => {
 
 		it('... returns a list of all current todos', (done) => {
 
@@ -44,7 +44,7 @@ describe('Routes for /todos resources', () => {
 	});
 
 	// =========== CREATE a new todo item
-	describe('===> THE TODOS "/todos" POST ROUTE', () => {
+	describe('*** CREATE a new todo item: "/todos" route', () => {
 
 		it('...can create a new todo item', (done) => {
 
@@ -64,7 +64,7 @@ describe('Routes for /todos resources', () => {
 	});
 		
 	// =========== FIND a specific todo item
-	describe('=== The GET "/todos/:id" route===', () => {
+	describe('*** READ a specific todo item: "/todos/:id" route', () => {
 		it('... can find a specific todo item', (done) => {
 			let todo = new Todo(_task);
 
@@ -76,7 +76,7 @@ describe('Routes for /todos resources', () => {
 						expect(res.status).to.eql(200);
 						expect(res.body).to.be.an('object');
 						expect(res.body).to.have.property('task');
-						expect(res.body).to.have.property('complete');
+						expect(res.body).to.have.property('comp');
 						done();
 					}); 
 			}); 
@@ -84,16 +84,12 @@ describe('Routes for /todos resources', () => {
 	}); 
 
 	// =========== UPDATE a specific todo  
-	describe('===> THE TODOS "/todos/:id" PUT ROUTE', () => {
+	describe('*** UPDATE a specific todo: "/todos/:id" route', () => {
 
 		it('... can update an item', (done) => {
 
 			let todo = new Todo(_task);
 			let oldId = todo._id.toString();
-
-			/*console.log('cur id', todo._id)
-			console.log('todo', todo);
-			console.log('oldId',oldId)*/
 
 			todo.save((err, newtodo) => {
 
@@ -105,7 +101,6 @@ describe('Routes for /todos resources', () => {
 						comp: "false"
 					})
 					.end((err, res) => {
-						console.log(res.body)
 						expect(res.status).to.eql(200);
 						expect(res.body).to.have.property('_id');
 						expect(res.body._id).to.equal(oldId);
@@ -124,7 +119,7 @@ describe('Routes for /todos resources', () => {
 	});
 
 	// =========== DELETE a specific todo  
-	describe.only('===> THE TODOS "/todos/:id" DELETE ROUTE', () => {
+	describe('*** DELETE a specific todo: "/todos/:id" route', () => {
 
 		it(' can delete an item', (done) => {
 			
