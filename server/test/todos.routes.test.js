@@ -138,10 +138,8 @@ describe('Routes for /todos resources', () => {
 						expect(res.status).to.eql(200);
 						expect(res.body).to.be.a('object');
 						console.log(res.body);
-						expect(res.body).to.have.property('message').eql("Successfully deleted todo item with id: " + todo.id )
 						expect(res.body.message).to.exist
-						expect(res.body.message).to.have.property('ok').eql(1);
-						expect(res.body.message).to.have.property('n').eql(1);
+						expect(res.body).to.have.property('message').eql("Successfully deleted todo item with id: " + todo.id )
 					done()
 				});
 			});
