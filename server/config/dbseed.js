@@ -1,4 +1,4 @@
-let Todo = require('../models/todo.model');
+let Todos = require('../models/todos.model');
 let _ = require('lodash');
 let Promise = require('bluebird');
 let faker = require('faker');
@@ -22,7 +22,7 @@ const Close = () => {
 }
 
 const Clear =() => {
-	Todo.remove({ },(err) => {
+	Todos.remove({ },(err) => {
 			err ? console.error.bind(console) : console.log('DB cleared');
 		});
 	console.log("********** db Cleared ******")
@@ -42,7 +42,7 @@ _.times(count,() => {
 		comp: faker.random.boolean()
 	};
 
-	let todo = new Todo(_task)
+	let todo = new Todos(_task)
 
 	todo.save((err, todo) => {
 		console.log(todo)

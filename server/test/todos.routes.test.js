@@ -8,7 +8,7 @@ let chai = require('chai');
 let expect = chai.expect;
 let should = chai.should();
 
-let Todo = require('../models/todo.model');
+let Todos = require('../models/Todos.model');
 
 const _task = {
 	task: 'Hitting that route, yo!',
@@ -21,7 +21,7 @@ chai.use(chaiHttp);
 describe('Routes for /todos resources', () => {
 
 	beforeEach((done) => {
-		Todo.remove({ },(err) => {
+		Todos.remove({ },(err) => {
 			err ? console.error.bind(console) : console.log('DB cleared');
 			done();
 		});
@@ -66,12 +66,12 @@ describe('Routes for /todos resources', () => {
 	// =========== FIND a specific todo item
 	describe('*** READ a specific todo item: "/todos/:id" route', () => {
 		it('... can find a specific todo item', (done) => {
-			let todo = new Todo(_task);
+			let _todo = new Todos(_task);
 
-			todo.save((err, newTodo) => {
+			_todo.save((err, todo) => {
 				chai.request(server)
-					.get('/todos/' + newTodo.id)
-					.send(newTodo)
+					.get('/todos/' + todo.id)
+					.send(todo)
 					.end((err, res) => {
 						expect(res.status).to.eql(200);
 						expect(res.body).to.be.an('object');
@@ -88,13 +88,13 @@ describe('Routes for /todos resources', () => {
 
 		it('... can update an item', (done) => {
 
-			let todo = new Todo(_task);
-			let oldId = todo._id.toString();
+			let _todo = new Todos(_task);
+			let oldId = _todo._id.toString();
 
-			todo.save((err, newtodo) => {
+			_todo.save((err, todo) => {
 
 				chai.request(server)
-					.put('/todos/' + newtodo.id)
+					.put('/todos/' + todo.id)
 					.send({
 						task: 'Hitting ANOTHER',
 						owner: 'Johara',
@@ -123,9 +123,9 @@ describe('Routes for /todos resources', () => {
 
 		it(' can delete an item', (done) => {
 			
-			let newTodo = new Todo(_task);
+			let _todo = new Todos(_task);
 
-			newTodo.save((err, todo) => {
+			_todo.save((err, todo) => {
 
 				chai.request(server)
 				.delete('/todos/' + todo.id)

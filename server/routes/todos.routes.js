@@ -1,5 +1,5 @@
 /* eslint-env node, mocha */
-let Todo = require('../models/todo.model');
+let Todos = require('../models/Todos.model');
 
 let express = require('express');
 let router = express.Router();
@@ -7,7 +7,7 @@ let router = express.Router();
 // ========== * READ a list of all todos
 router.get('/', (req, res,) => {
 	// res.send('the GET/ rte');
-	Todo.find({},(err, todos) => {
+	Todos.find({},(err, todos) => {
 		if(err){
 			res.status(500).send(err);
 		} else {
@@ -19,13 +19,13 @@ router.get('/', (req, res,) => {
 // ========= * CREATE a new todo item
 router.post('/',(req, res,) => {
 	
-	let todo = new Todo(req.body);
+	let _todo = new Todos(req.body);
 
-	todo.save((err, newTodo) => {
+	_todo.save((err, todo) => {
 		if(err) {
 			res.status(500).send(err);
 		} else {
-			res.status(201).send(newTodo);
+			res.status(201).send(todo);
 		}
 	});
 });
@@ -35,7 +35,7 @@ router.get('/:id',(req, res,) => {
 
 	let id = req.params.id;
 
-	Todo.findById({ "_id": id }, (err, todo) => {
+	Todos.findById({ "_id": id }, (err, todo) => {
 		if(err) {
 			res.status(500).send(err);
 		} else {
@@ -50,7 +50,7 @@ router.put('/:id',(req, res,) => {
 
 	let id = req.params.id;
 
-	Todo.findById({"_id":id}, (err, todo) => {
+	Todos.findById({"_id":id}, (err, todo) => {
 
 		if(err) {
 			res.status(500).send(err);
@@ -63,12 +63,12 @@ router.put('/:id',(req, res,) => {
 			todo.date 	 = req.body.date		|| todo.date;
 			todo.owner 	 = req.body.owner	 	|| todo.owner;
 
-			todo.save((err, todo) => {
+			todo.save((err, _todo) => {
 
 				if(err) {
 					res.status(500).send(err);
 				} 
-					res.status(200).send(todo);
+					res.status(200).send(_todo);
 			});
 		}
 	});
@@ -79,7 +79,7 @@ router.delete('/:id',(req, res,) => {
 
 	let id = req.params.id;
 
-	Todo.remove({ "_id": id }, (err, todo) => {
+	Todos.remove({ "_id": id }, (err, todo) => {
 
 		if(err) {
 			res.status(500).send(err);
