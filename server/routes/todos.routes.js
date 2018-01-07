@@ -4,7 +4,6 @@ let Todo = require('../models/todo.model');
 let express = require('express');
 let router = express.Router();
 
-
 // ========== * GET a list of all todos
 router.get('/', (req, res,) => {
 	// res.send('the GET/ rte');

@@ -89,28 +89,29 @@ describe('Routes for /todos resources', () => {
 		it('... can update an item', (done) => {
 
 			let todo = new Todo(_task);
+			let oldId = todo._id.toString();
 
-			todo.save((err, todo) => {
+			todo.save((err, newtodo) => {
 
 				chai.request(server)
-					.put('/todos/' + todo.id)
+					.put('/todos/' + newtodo.id)
 					.send({
 						task: 'Hitting ANOTHER',
 						owner: 'Johara',
 						comp: "false"
 					})
 					.end((err, res) => {
-						console.log(res.body)
+						expect(res.body).to.have.property('_id');
+						expect(res.body._id).to.equal(oldId);
 						expect(res.status).to.eql(200);
 						expect(res.body).to.have.property('task');
+						expect(res.body.task).to.eql('Hitting ANOTHER');
 						expect(res.body).to.have.property('owner');
 						expect(res.body.owner).to.eql('Johara');
-						expect(res.body.task).to.eql('Hitting ANOTHER');
-						expect(res.body).to.be.an('object');
 						expect(res.body).to.have.property('comp');
-						// expect(res.body.comp).to.eql(true);
+						expect(res.body.comp).to.eql(false);
+						expect(res.body).to.be.an('object');
 
-						expect(res.body.id).to.eql(10);
 						done();		
 					});
 			});

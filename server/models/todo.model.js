@@ -14,8 +14,7 @@ var TodoSchema = new Schema({
 	comp: Boolean,
 	rank: String,
 	date: Date,
-	owner: String,
-
+	owner: String
 });
 
 // create a Model
