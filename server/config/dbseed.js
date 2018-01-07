@@ -1,4 +1,4 @@
-let Todos = require('../models/todos.model');
+let Todos = require('../models/Todos.model');
 let _ = require('lodash');
 let Promise = require('bluebird');
 let faker = require('faker');
@@ -42,9 +42,9 @@ _.times(count,() => {
 		comp: faker.random.boolean()
 	};
 
-	let todo = new Todos(_task)
+	let _todo = new Todos(_task)
 
-	todo.save((err, todo) => {
+	_todo.save((err, todo) => {
 		console.log(todo)
 	})
 })
