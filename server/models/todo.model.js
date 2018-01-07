@@ -6,15 +6,15 @@ var Schema = mongoose.Schema;
 var TodoSchema = new Schema({
 
 	// validation: using `required`
+	owner: String,
 	task: {
 		type: String,
 		required: [true, "Please add a Task"]
 	},
 	details: String,
-	comp: Boolean,
 	rank: String,
 	date: Date,
-	owner: String
+	comp: Boolean,
 });
 
 // create a Model
