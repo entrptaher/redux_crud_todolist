@@ -46,7 +46,7 @@ describe('Routes for /todos resources', () => {
 	// =========== CREATE a new todo item
 	describe('===> THE TODOS "/todos" POST ROUTE', () => {
 
-		it.only('...can create a new todo item', (done) => {
+		it('...can create a new todo item', (done) => {
 
 			chai.request(server)
 				.post('/todos/')
@@ -65,7 +65,6 @@ describe('Routes for /todos resources', () => {
 		
 	// =========== FIND a specific todo item
 	describe('=== The GET "/todos/:id" route===', () => {
-
 		it('... can find a specific todo item', (done) => {
 			let todo = new Todo(_task);
 
@@ -125,8 +124,28 @@ describe('Routes for /todos resources', () => {
 	});
 
 	// =========== DELETE a specific todo  
-	describe('===> THE TODOS "/todos/:id" DELETE ROUTE', () => {
-		console.log('test needed DELETE');
+	describe.only('===> THE TODOS "/todos/:id" DELETE ROUTE', () => {
+
+		it(' can delete an item', (done) => {
+			
+			let newTodo = new Todo(_task);
+
+			newTodo.save((err, todo) => {
+
+				chai.request(server)
+				.delete('/todos/' + todo.id)
+				.end((err, res) => {
+						expect(res.status).to.eql(200);
+						expect(res.body).to.be.a('object');
+						console.log(res.body);
+						expect(res.body).to.have.property('message').eql("Successfully deleted todo item with id: " + todo.id )
+						expect(res.body.message).to.exist
+						expect(res.body.message).to.have.property('ok').eql(1);
+						expect(res.body.message).to.have.property('n').eql(1);
+					done()
+				});
+			});
+		});
 	});
 
 });

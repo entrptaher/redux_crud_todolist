@@ -4,7 +4,7 @@ let Todo = require('../models/todo.model');
 let express = require('express');
 let router = express.Router();
 
-// ========== * GET a list of all todos
+// ========== * READ a list of all todos
 router.get('/', (req, res,) => {
 	// res.send('the GET/ rte');
 	Todo.find({},(err, todos) => {
@@ -16,7 +16,7 @@ router.get('/', (req, res,) => {
 	});
 });
 
-// ========= * Post a new todo item
+// ========= * CREATE a new todo item
 router.post('/',(req, res,) => {
 	
 	let todo = new Todo(req.body);
@@ -30,7 +30,7 @@ router.post('/',(req, res,) => {
 	});
 });
 
-// ========= Get a specific todo item
+// ========= * READ a specific todo item
 router.get('/:id',(req, res,) => {
 
 	let id = req.params.id;
@@ -44,7 +44,7 @@ router.get('/:id',(req, res,) => {
 	});
 });
 
-
+// ========= * UPDATE a specific ite
 router.put('/:id',(req, res,) => {
 	// Update an existing todo item
 
@@ -53,9 +53,7 @@ router.put('/:id',(req, res,) => {
 	Todo.findById({"_id":id}, (err, todo) => {
 
 		if(err) {
-
 			res.status(500).send(err);
-
 		} else {
 
 			todo.comp 	 = req.body.comp		|| todo.comp;
@@ -76,9 +74,23 @@ router.put('/:id',(req, res,) => {
 	});
 }); 
 
+// ========= DELETE an existing todo item
 router.delete('/:id',(req, res,) => {
-	// Destroy an existing todo item
-	res.json('Hitting the "/todos/:id" DELETE route');
+
+	let id = req.params.id;
+
+	Todo.remove({ "_id": id }, (err, todo) => {
+
+		if(err) {
+			res.status(500).send(err);
+		} else {
+			let response = {
+				message: "Successfully deleted todo item with id: " + id
+			}
+			res.status(200).send(response);
+		}
+	})
+
 });
 
 module.exports = router;
