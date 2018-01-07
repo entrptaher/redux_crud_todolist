@@ -6,15 +6,15 @@ let mongoose = require('mongoose');
 let chaiHttp = require('chai-http');
 let chai = require('chai');
 let expect = chai.expect;
-let should = chai.should()
+let should = chai.should();
 
-let Todo = require('../models/todo.model')
+let Todo = require('../models/todo.model');
 
 const _task = {
-			task: "Hitting that Get  route, yo!",
-			owner: "Walker",
-			complete: true
-		}
+	task: 'Hitting that route, yo!',
+	owner: 'Walker',
+	complete: true
+};
 
 chai.use(chaiHttp);
 
@@ -35,16 +35,15 @@ describe('Routes for /todos resources', () => {
 			chai.request(server)
 				.get('/todos')
 				.end((err, res) => {
-						expect(res.status).to.eql(200);
-						expect(res.body).to.be.an('array');
-						expect(res.body.length).to.eql(0);
-					done()
+					expect(res.status).to.eql(200);
+					expect(res.body).to.be.an('array');
+					expect(res.body.length).to.eql(0);
+					done();
 				});
 		});
 	});
 
 	// =========== CREATE a new todo item
-
 	describe('===> THE TODOS "/todos" POST ROUTE', () => {
 
 		it('...can create a new todo item', (done) => {
@@ -53,44 +52,69 @@ describe('Routes for /todos resources', () => {
 				.post('/todos/')
 				.send(_task)
 				.end((err, res) => {
-						expect(res.status).to.eql(200);
-						expect(res.body).to.be.an('object');
-						expect(res.body).to.have.property('task');
-						expect(res.body).to.have.property('complete');
+					expect(res.status).to.eql(200);
+					expect(res.body).to.be.an('object');
+					expect(res.body).to.have.property('task');
+					expect(res.body).to.have.property('complete');
 					done();
 				}); 	
 		}); 
 	});
 		
 	// =========== FIND a specific todo item
-	describe('=== The GET "/todos/:id" route===', () => {
+	describe.only('=== The GET "/todos/:id" route===', () => {
 
 		it('... can find a specific todo item', (done) => {
-			let todo = new Todo(_task)
+			let todo = new Todo(_task);
 
 			todo.save((err, newTodo) => {
 				chai.request(server)
 					.get('/todos/' + newTodo.id)
 					.send(newTodo)
 					.end((err, res) => {
-							expect(res.status).to.eql(200);
-							expect(res.body).to.be.an('object');
-							expect(res.body).to.have.property('task');
-							expect(res.body).to.have.property('complete');
+						expect(res.status).to.eql(200);
+						expect(res.body).to.be.an('object');
+						expect(res.body).to.have.property('task');
+						expect(res.body).to.have.property('complete');
 						done();
 					}); 
 			}); 
 		}); 
-
 	}); 
 
 	// =========== UPDATE a specific todo  
-	describe.only('===> THE TODOS "/todos/:id" PUT ROUTE', () => {
+	describe('===> THE TODOS "/todos/:id" PUT ROUTE', () => {
 		console.log('test needed EDIT');
+
+		it('... can update an item', (done) => {
+
+			let todo = new Todo(_task);
+
+			todo.save((err, todo) => {
+
+				chai.request(server)
+					.put('/todos' + todo.id)
+					.send({
+						task: 'Hitting that route, yo!',
+						owner: 'Johara',
+						complete: false
+					})
+					.end((err, res) => {
+						expect(res.status).to.eql(200);
+						expect(res.body).to.be.an('array');
+						expect(res.body).to.have.property('own');
+						expect(res.body).to.have.property('comp');
+						expect(res.body.owner).to.eql('Johara');
+						expect(res.body.complete).to.eql(true);
+
+						done();		
+					});
+			});
+		});
 	});
 
 	// =========== DELETE a specific todo  
-	xdescribe('===> THE TODOS "/todos/:id" DELETE ROUTE', () => {
+	describe('===> THE TODOS "/todos/:id" DELETE ROUTE', () => {
 		console.log('test needed DELETE');
 	});
 
