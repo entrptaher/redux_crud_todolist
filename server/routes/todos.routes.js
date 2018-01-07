@@ -46,36 +46,36 @@ router.get('/:id',(req, res,) => {
 });
 
 
-/*router.put('/:id',(req, res,) => {
+router.put('/:id',(req, res,) => {
 	// Update an existing todo item
 
 	let id = req.params.id;
 
-	Todo.findById({'_id':id}, (err, todo) => {
+	Todo.findById({"_id":id}, (err, todo) => {
+
 		if(err) {
+
 			res.status(500).send(err);
+
 		} else {
+
+			todo.comp 	 = req.body.comp		|| todo.comp;
 			todo.task		 = req.body.task 	 	|| todo.task;
 			todo.details = req.body.details	|| todo.details;
-			todo.done 	 = req.body.done		|| todo.done;
 			todo.rank 	 = req.body.rank		|| todo.rank;
 			todo.date 	 = req.body.date		|| todo.date;
 			todo.owner 	 = req.body.owner	 	|| todo.owner;
 
 			todo.save((err, todo) => {
+
 				if(err) {
-					res.status(500).send('No item found');
-				} else {
+					res.status(500).send(err);
+				} 
 					res.status(200).send(todo);
-				}
 			});
 		}
 	});
-
-	});
-
-	res.json('Hitting the "/todos/:id" PUT route');
-});*/
+}); 
 
 router.delete('/:id',(req, res,) => {
 	// Destroy an existing todo item

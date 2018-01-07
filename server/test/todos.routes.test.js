@@ -13,7 +13,7 @@ let Todo = require('../models/todo.model');
 const _task = {
 	task: 'Hitting that route, yo!',
 	owner: 'Walker',
-	complete: true
+	comp: true
 };
 
 chai.use(chaiHttp);
@@ -62,7 +62,7 @@ describe('Routes for /todos resources', () => {
 	});
 		
 	// =========== FIND a specific todo item
-	describe.only('=== The GET "/todos/:id" route===', () => {
+	describe('=== The GET "/todos/:id" route===', () => {
 
 		it('... can find a specific todo item', (done) => {
 			let todo = new Todo(_task);
@@ -83,7 +83,7 @@ describe('Routes for /todos resources', () => {
 	}); 
 
 	// =========== UPDATE a specific todo  
-	describe('===> THE TODOS "/todos/:id" PUT ROUTE', () => {
+	describe.only('===> THE TODOS "/todos/:id" PUT ROUTE', () => {
 		console.log('test needed EDIT');
 
 		it('... can update an item', (done) => {
@@ -93,20 +93,24 @@ describe('Routes for /todos resources', () => {
 			todo.save((err, todo) => {
 
 				chai.request(server)
-					.put('/todos' + todo.id)
+					.put('/todos/' + todo.id)
 					.send({
-						task: 'Hitting that route, yo!',
+						task: 'Hitting ANOTHER',
 						owner: 'Johara',
-						complete: false
+						comp: "false"
 					})
 					.end((err, res) => {
+						console.log(res.body)
 						expect(res.status).to.eql(200);
-						expect(res.body).to.be.an('array');
-						expect(res.body).to.have.property('own');
-						expect(res.body).to.have.property('comp');
+						expect(res.body).to.have.property('task');
+						expect(res.body).to.have.property('owner');
 						expect(res.body.owner).to.eql('Johara');
-						expect(res.body.complete).to.eql(true);
+						expect(res.body.task).to.eql('Hitting ANOTHER');
+						expect(res.body).to.be.an('object');
+						expect(res.body).to.have.property('comp');
+						// expect(res.body.comp).to.eql(true);
 
+						expect(res.body.id).to.eql(10);
 						done();		
 					});
 			});
