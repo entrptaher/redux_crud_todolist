@@ -46,16 +46,18 @@ describe('Routes for /todos resources', () => {
 	// =========== CREATE a new todo item
 	describe('===> THE TODOS "/todos" POST ROUTE', () => {
 
-		it('...can create a new todo item', (done) => {
+		it.only('...can create a new todo item', (done) => {
 
 			chai.request(server)
 				.post('/todos/')
 				.send(_task)
 				.end((err, res) => {
-					expect(res.status).to.eql(200);
+					expect(res.status).to.eql(201);
 					expect(res.body).to.be.an('object');
 					expect(res.body).to.have.property('task');
-					expect(res.body).to.have.property('complete');
+					expect(res.body).to.have.property('comp');
+					expect(res.body).to.have.property('_id');
+					expect(res.body._id).to.be.a('string')
 					done();
 				}); 	
 		}); 
@@ -83,13 +85,16 @@ describe('Routes for /todos resources', () => {
 	}); 
 
 	// =========== UPDATE a specific todo  
-	describe.only('===> THE TODOS "/todos/:id" PUT ROUTE', () => {
-		console.log('test needed EDIT');
+	describe('===> THE TODOS "/todos/:id" PUT ROUTE', () => {
 
 		it('... can update an item', (done) => {
 
 			let todo = new Todo(_task);
 			let oldId = todo._id.toString();
+
+			/*console.log('cur id', todo._id)
+			console.log('todo', todo);
+			console.log('oldId',oldId)*/
 
 			todo.save((err, newtodo) => {
 
@@ -101,9 +106,10 @@ describe('Routes for /todos resources', () => {
 						comp: "false"
 					})
 					.end((err, res) => {
+						console.log(res.body)
+						expect(res.status).to.eql(200);
 						expect(res.body).to.have.property('_id');
 						expect(res.body._id).to.equal(oldId);
-						expect(res.status).to.eql(200);
 						expect(res.body).to.have.property('task');
 						expect(res.body.task).to.eql('Hitting ANOTHER');
 						expect(res.body).to.have.property('owner');
