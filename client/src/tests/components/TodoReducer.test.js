@@ -8,8 +8,8 @@
 
 import deepFreeze from 'deep-freeze';
 import { expect } from 'chai';
-import store from '../store/store';
-import todos from '../reducers/todoReducer';
+import store from '../../store/store';
+import todos from '../../reducers/todoReducer';
 
 import { 
 	addTodo, 
@@ -18,7 +18,7 @@ import {
 	toggleTodo,
 	updateRank, 
 	updateDate,
-} from '../actions/todoActions';
+} from '../../actions/todoActions';
 
 // ====================================
 

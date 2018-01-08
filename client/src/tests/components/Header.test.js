@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDom from 'react-dom';
 
 import { shallow, mount, render } from 'enzyme';
-import Header from '../containers/Header';
+import Header from '../../containers/Header';
 
 // ======== eslint
 /*global describe:true*/
@@ -30,7 +30,7 @@ describe('The Header Component', () => {
 	let _Header;
 	beforeEach(() => {
 		_Header = shallow(<Header/>);
-		jest.mock('../containers/Login');
+		jest.mock('../../containers/Login');
 	});
 
 	it('..renders the component class "header" ', () => {

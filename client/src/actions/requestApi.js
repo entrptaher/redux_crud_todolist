@@ -1,8 +1,7 @@
 import axios from 'axios';
-import FecthRequest as mod from "./FecthRequest";
-import FecthSuccess as mod from "./FecthSuccess";
-import FecthFailure as mod from "./FecthFailure";
-
+import FecthRequest from "./FecthRequest";
+import FecthSuccess from "./FecthSuccess";
+import FecthFailure from "./FecthFailure";
 
 const RequestApi() {
 	return (dispatch) => {
