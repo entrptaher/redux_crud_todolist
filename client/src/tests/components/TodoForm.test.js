@@ -4,13 +4,13 @@ import ReactDOM from 'react-dom';
 // Testing...
 import { expect } from 'chai'
 
-import todoReducer from '../reducers/todoReducer'
-import TodoList from '../containers/TodoList';
+import todoReducer from '../../reducers/todoReducer'
+import TodoList from '../../containers/TodoList';
 import { 
 	addTodo, 
 	removeTodo, 
 	toggleTodo 
-} from '../actions/todoActions'
+} from '../../actions/todoActions'
 
 // ====================================
 
