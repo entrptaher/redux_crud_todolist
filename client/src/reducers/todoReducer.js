@@ -7,10 +7,11 @@ let initialState = [
 	{id:'0.3HxYz', date: 	'2020-01-01', complete: false, task:'Celebrate life!', rank: 'Low'},
 ];
 
-	/*axios.get('http://localhost:3003/api/todos')
+	axios.get('http://localhost:3003/api/todos')
 		.then((res) => {
-			initialState = res
-		});*/
+			// initialState = res
+			console.log("9999999999999",res)
+		});
 
 
 
