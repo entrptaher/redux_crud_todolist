@@ -44,7 +44,8 @@ _Checkbox.propTypes = {
 };
 
 _Checkbox.defaultProps = {
-	toggleTodo: f => f
+	toggleTodo: f => f,
+	complete: false
 };
 
 export default _Checkbox;
