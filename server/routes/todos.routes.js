@@ -1,8 +1,9 @@
 /* eslint-env node, mocha */
-let Todos = require('../models/Todos.model');
-
 let express = require('express');
 let router = express.Router();
+
+let Todos = require('../models/Todos.model');
+
 
 // ========== * READ a list of all todos
 router.get('/', (req, res,) => {
@@ -92,5 +93,8 @@ router.delete('/:id',(req, res,) => {
 		}
 	})
 });
+
+
+
 
 module.exports = router;

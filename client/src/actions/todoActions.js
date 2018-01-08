@@ -4,10 +4,12 @@ export const addTodo = (_task, _rank, _date) => {
 	return {
 		type: 'ADD_TODO',
 		payload: {
-			id: shortid.generate(),
+			// mongo will generate the id
+			// id: shortid.generate(),
 			task: _task,
 			rank: _rank,
 			date: _date,
+			// ensurse model aligns
 			complete: false
 		}
 	};

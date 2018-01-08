@@ -1,8 +1,18 @@
-let initialState = [
+
+// replace with an API call
+/*let initialState = [
 	{id:'0.1HxYz', date: 	'2020-01-01', complete: false, task:'Get some Milk', rank: 'High'},
 	{id:'0.2HxYz', date: 	'2020-01-01', complete: false, task:'Kiss my daughter', rank: 'Med'},
 	{id:'0.3HxYz', date: 	'2020-01-01', complete: false, task:'Celebrate life!', rank: 'Low'},
-];
+];*/
+
+
+const initialState ={
+	status: "",
+	todos: [],
+	error:""
+}
+
 
 const TodoReducer = (state=initialState, action) => {
 

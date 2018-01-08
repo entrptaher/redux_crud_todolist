@@ -33,7 +33,7 @@ describe('Routes for /todos resources', () => {
 		it('... returns a list of all current todos', (done) => {
 
 			chai.request(server)
-				.get('/todos')
+				.get('/api/todos')
 				.end((err, res) => {
 					expect(res.status).to.eql(200);
 					expect(res.body).to.be.an('array');
@@ -49,7 +49,7 @@ describe('Routes for /todos resources', () => {
 		it('...can create a new todo item', (done) => {
 
 			chai.request(server)
-				.post('/todos/')
+				.post('/api/todos/')
 				.send(_task)
 				.end((err, res) => {
 					expect(res.status).to.eql(201);
@@ -70,7 +70,7 @@ describe('Routes for /todos resources', () => {
 
 			_todo.save((err, todo) => {
 				chai.request(server)
-					.get('/todos/' + todo.id)
+					.get('/api/todos/' + todo.id)
 					.send(todo)
 					.end((err, res) => {
 						expect(res.status).to.eql(200);
@@ -94,7 +94,7 @@ describe('Routes for /todos resources', () => {
 			_todo.save((err, todo) => {
 
 				chai.request(server)
-					.put('/todos/' + todo.id)
+					.put('/api/todos/' + todo.id)
 					.send({
 						task: 'Hitting ANOTHER',
 						owner: 'Johara',
@@ -128,7 +128,7 @@ describe('Routes for /todos resources', () => {
 			_todo.save((err, todo) => {
 
 				chai.request(server)
-				.delete('/todos/' + todo.id)
+				.delete('/api/todos/' + todo.id)
 				.end((err, res) => {
 						expect(res.status).to.eql(200);
 						expect(res.body).to.be.a('object');
