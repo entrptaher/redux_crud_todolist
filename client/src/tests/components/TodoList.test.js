@@ -4,13 +4,13 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import deepFreeze from 'deep-freeze';
 import { expect } from 'chai';
-import todos from '../reducers/todoReducer';
-import TodoList from '../containers/TodoList';
-import store from '../store/store';
+import todos from '../../reducers/todoReducer';
+import TodoList from '../../containers/TodoList';
+import store from '../../store/store';
 
 import { 
 	addTodo, 
-} from '../actions/todoActions';
+} from '../../actions/todoActions';
 
 // ======== esllint
 /*global TodoList describe:true*/
