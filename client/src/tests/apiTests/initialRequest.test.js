@@ -5,6 +5,7 @@
 
 import { expect } from 'chai';
 import axios from 'axios';
+import seed from '../../../../server/config/dbseed';
 
 // ========= 
 
@@ -32,7 +33,6 @@ describe('The initialRequest actions', () => {
 		expect(todos.length).to.be.above(0);
 			console.log(_task);
 	});
-
 
 		it('_ _ has a "completed" property', () => {
 			expect(_task).to.have.property('completed');
