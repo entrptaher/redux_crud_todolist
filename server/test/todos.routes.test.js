@@ -93,13 +93,14 @@ describe('Routes for /todos resources', () => {
 	// =========== UPDATE a specific todo  
 	describe.only('*** UPDATE a specific todo: "/todos/:id" route', () => {
 
+		it('... can update an item', (done) => {
 
 			let _todo = new Todos(_task);
 			let oldId = _todo._id.toString();
 
 			_todo.save((err, todo) => {
 
-			let http = chai.request(server)
+			chai.request(server)
 					.put('/api/todos/' + todo.id)
 					.send({
 						task: 'Hitting ANOTHER',
@@ -107,9 +108,7 @@ describe('Routes for /todos resources', () => {
 						owner: 'Johara Bell',
 					})
 
-		it('... can update an item', (done) => {
-
-					http.end((err, res) => {
+					.end((err, res) => {
 						console.log("********",res.body)
 						console.log("********",res.body.test)
 						expect(res.body.completed).to.eql(true);
