@@ -3,7 +3,6 @@ let express = require('express');
 let router = express.Router();
 let Todos = require('../models/Todos.model');
 
-
 // ========== * READ a list of all todos
 router.get('/', (req, res) => {
 	// res.send('the GET/ rte');
@@ -31,7 +30,6 @@ router.post('/', (req, res) => {
 			res.status(201).send(todo);
 		}
 	});
-	
 });
 
 // ========= * READ a specific todo item
@@ -74,7 +72,6 @@ router.put('/:id', (req, res) => {
 			});
 		}
 	});
-
 }); 
 
 // ========= DELETE an existing todo item
@@ -95,6 +92,5 @@ router.delete('/:id', (req, res) => {
 		}
 	})
 });
-
 
 module.exports = router;
