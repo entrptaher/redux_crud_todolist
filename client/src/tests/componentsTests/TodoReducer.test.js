@@ -2,7 +2,7 @@
 // import React from 'react';
 
 // ======== esllint
-/*global TodoReducer describe:true*/
+/*global TodoReducer xdescribe:true*/
 /*global TodoReducer it:true*/
 /*eslint no-undef: "error"*/
 
@@ -22,7 +22,7 @@ import {
 
 // ====================================
 
-describe.only('The ADD_TODO function', () => { 
+/*xdescribe.only('The ADD_TODO function', () => { 
 	let listBefore = store.getState().todos;
 	let task
 	it('...has an initial list of 3 items', () => {
@@ -44,11 +44,9 @@ describe.only('The ADD_TODO function', () => {
 		expect(task).to.have.property('id')
 		console.log(task.id)
 	})
+});*/
 
-
-});
-
-describe('The REMOVE_TODO function', () => { 
+xdescribe('The REMOVE_TODO function', () => { 
 
 	it('...can REMOVE an item from the list', () => {
 		let listBefore = store.getState().todos;
@@ -68,7 +66,7 @@ describe('The REMOVE_TODO function', () => {
 	});
 });
 
-describe('The TOGGLE_TODO function', () => {
+xdescribe('The TOGGLE_TODO function', () => {
 
 	it('changes the todo complete status', () => {
 		let listB4 = store.getState().todos;
@@ -91,7 +89,7 @@ describe('The TOGGLE_TODO function', () => {
 	});
 });
 
-describe('The UPDATE_TODO function', () => {
+xdescribe('The UPDATE_TODO function', () => {
 	it('changes the todo content', () => {
 		let listB5 = store.getState().todos;
 		expect(listB5).to.be.an('array');
@@ -109,7 +107,7 @@ describe('The UPDATE_TODO function', () => {
 	});
 });
 
-describe('The UPDATE_RANK function', () => {
+xdescribe('The UPDATE_RANK function', () => {
 	it('changes the rank content', () => {
 		let listB5 = store.getState().todos;
 		expect(listB5).to.be.an('array');
@@ -128,7 +126,7 @@ describe('The UPDATE_RANK function', () => {
 	});
 });
 
-describe('The UPDATE_DATE function', () => {
+xdescribe('The UPDATE_DATE function', () => {
 	it('changes the DATE content', () => {
 		let listB5 = store.getState().todos;
 		expect(listB5).to.be.an('array');

@@ -7,11 +7,15 @@ let initialState = [
 	{id:'0.3HxYz', date: 	'2020-01-01', completed: false, task:'Celebrate life!', rank: 'Low'},
 ];
 
-	axios.get('http://localhost:3003/api/todos')
-		.then((res) => {
-			// initialState = res
-			// console.log("axios route",res.data)
-		});
+// ========= 
+
+axios.get('http://localhost:3003/api/todos')
+	.then((res) => {
+		// initialState = res.data
+		console.log("axios route",res.data)
+	});
+
+// ========= 	
 
 const TodoReducer = (state=initialState, action) => {
 
