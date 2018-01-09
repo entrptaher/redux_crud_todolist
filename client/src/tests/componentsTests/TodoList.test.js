@@ -53,11 +53,13 @@ describe('The todos tasks', () => {
 
 		// console.log ('**** This is the state of the store ****', store.getState());
 
+		
+
 		it('can display props', () => {
 			// console.log(this.props)
 		});
 
-		it('can use ADD_TODO to add a todo to the array', () => {
+		it.only('can use ADD_TODO to add a todo to the array', () => {
 			store.dispatch(addTodo('PicklePop,Inc', 'High', '2020-12-31'));
 			let todoList = (store.getState().todos);
 			// let todoList = (store.getState().todo)
