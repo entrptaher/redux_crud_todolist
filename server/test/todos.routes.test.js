@@ -13,7 +13,7 @@ let Todos = require('../models/Todos.model');
 const _task = {
 	task: 'Hitting that route, yo!',
 	owner: 'Walker',
-	comp: true
+	completed: false
 };
 
 chai.use(chaiHttp);
@@ -55,7 +55,7 @@ describe('Routes for /todos resources', () => {
 					expect(res.status).to.eql(201);
 					expect(res.body).to.be.an('object');
 					expect(res.body).to.have.property('task');
-					expect(res.body).to.have.property('comp');
+					expect(res.body).to.have.property('completed');
 					expect(res.body).to.have.property('_id');
 					expect(res.body._id).to.be.a('string')
 					done();
@@ -67,6 +67,7 @@ describe('Routes for /todos resources', () => {
 	describe('*** READ a specific todo item: "/todos/:id" route', () => {
 		it('... can find a specific todo item', (done) => {
 			let _todo = new Todos(_task);
+			let testTask
 
 			_todo.save((err, todo) => {
 				chai.request(server)
@@ -76,40 +77,51 @@ describe('Routes for /todos resources', () => {
 						expect(res.status).to.eql(200);
 						expect(res.body).to.be.an('object');
 						expect(res.body).to.have.property('task');
-						expect(res.body).to.have.property('comp');
+						expect(res.body).to.have.property('completed');
+						expect(res.body).to.have.property('completed');
 						done();
 					}); 
 			}); 
 		}); 
+
+		xit('has a testTask', () => {
+			expect(testTask).to.exist;
+			expect(testTask.owner).to.eql("Billy")
+		})
 	}); 
 
 	// =========== UPDATE a specific todo  
-	describe('*** UPDATE a specific todo: "/todos/:id" route', () => {
+	describe.only('*** UPDATE a specific todo: "/todos/:id" route', () => {
 
-		it('... can update an item', (done) => {
 
 			let _todo = new Todos(_task);
 			let oldId = _todo._id.toString();
 
 			_todo.save((err, todo) => {
 
-				chai.request(server)
+			let http = chai.request(server)
 					.put('/api/todos/' + todo.id)
 					.send({
 						task: 'Hitting ANOTHER',
-						owner: 'Johara',
-						comp: "false"
+						completed: true,
+						owner: 'Johara Bell',
 					})
-					.end((err, res) => {
+
+		it('... can update an item', (done) => {
+
+					http.end((err, res) => {
+						console.log("********",res.body)
+						console.log("********",res.body.test)
+						expect(res.body.completed).to.eql(true);
 						expect(res.status).to.eql(200);
 						expect(res.body).to.have.property('_id');
 						expect(res.body._id).to.equal(oldId);
 						expect(res.body).to.have.property('task');
 						expect(res.body.task).to.eql('Hitting ANOTHER');
 						expect(res.body).to.have.property('owner');
-						expect(res.body.owner).to.eql('Johara');
-						expect(res.body).to.have.property('comp');
-						expect(res.body.comp).to.eql(false);
+						expect(res.body.owner).to.eql('Johara Bell');
+						expect(res.body).to.have.property('completed');
+						// expect(res.body.test).to.eql(false);
 						expect(res.body).to.be.an('object');
 
 						done();		

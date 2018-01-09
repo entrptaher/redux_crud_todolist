@@ -22,9 +22,9 @@ import {
 
 // ====================================
 
-describe('The ADD_TODO function', () => { 
+describe.only('The ADD_TODO function', () => { 
 	let listBefore = store.getState().todos;
-
+	let task
 	it('...has an initial list of 3 items', () => {
 		expect(listBefore.length).to.equal(3);
 	});
@@ -33,10 +33,19 @@ describe('The ADD_TODO function', () => {
 		store.dispatch(addTodo('Mumby Corn Rocks!', 'HIGH'));
 		let listAfter = store.getState().todos;
 			
+		task = listAfter[0]
+		console.log(task)
 		expect(listAfter).to.be.an('array');
 		expect(listAfter.length).to.equal(listBefore.length+1);
-		expect(listAfter[3].task).to.equal('Mumby Corn Rocks!');
+		expect(listAfter[3].owner).to.equal('Mumby Corn Rocks!');
 	});
+
+	it('..it has an id', () => {
+		expect(task).to.have.property('id')
+		console.log(task.id)
+	})
+
+
 });
 
 describe('The REMOVE_TODO function', () => { 
@@ -119,7 +128,7 @@ describe('The UPDATE_RANK function', () => {
 	});
 });
 
-describe.only('The UPDATE_DATE function', () => {
+describe('The UPDATE_DATE function', () => {
 	it('changes the DATE content', () => {
 		let listB5 = store.getState().todos;
 		expect(listB5).to.be.an('array');

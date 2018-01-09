@@ -1,25 +1,29 @@
 /* eslint-env node, mocha */
 let express = require('express');
 let router = express.Router();
-
 let Todos = require('../models/Todos.model');
 
 
 // ========== * READ a list of all todos
-router.get('/', (req, res,) => {
+router.get('/', (req, res) => {
 	// res.send('the GET/ rte');
-	Todos.find({},(err, todos) => {
-		if(err){
+	Todos.find({ },(err, todos) => {
+		if(err) {
 			res.status(500).send(err);
+
 		} else {
+
 			res.status(200).send(todos);
 		}
+
 	});
 });
 
 // ========= * CREATE a new todo item
-router.post('/',(req, res,) => {
-	
+router.post('/', (req, res) => {
+
+	console.log(req);
+
 	let _todo = new Todos(req.body);
 
 	_todo.save((err, todo) => {
@@ -32,7 +36,7 @@ router.post('/',(req, res,) => {
 });
 
 // ========= * READ a specific todo item
-router.get('/:id',(req, res,) => {
+router.get('/:id', (req, res) => {
 
 	let id = req.params.id;
 
@@ -45,27 +49,25 @@ router.get('/:id',(req, res,) => {
 	});
 });
 
-// ========= * UPDATE a specific ite
-router.put('/:id',(req, res,) => {
-	// Update an existing todo item
+// ========= * UPDATE a specific item
+router.put('/:id', (req, res) => {
 
 	let id = req.params.id;
 
-	Todos.findById({"_id":id}, (err, todo) => {
+	Todos.findById({ "_id": id }, (err, todo) => {
 
 		if(err) {
 			res.status(500).send(err);
-		} else {
 
-			todo.comp 	 = req.body.comp		|| todo.comp;
+		} else {
+			todo.owner 	 = req.body.owner	 	|| todo.owner;
 			todo.task		 = req.body.task 	 	|| todo.task;
 			todo.details = req.body.details	|| todo.details;
 			todo.rank 	 = req.body.rank		|| todo.rank;
 			todo.date 	 = req.body.date		|| todo.date;
-			todo.owner 	 = req.body.owner	 	|| todo.owner;
+			todo.completed 	= req.body.completed || todo.completed;
 
 			todo.save((err, _todo) => {
-
 				if(err) {
 					res.status(500).send(err);
 				} 
@@ -73,10 +75,11 @@ router.put('/:id',(req, res,) => {
 			});
 		}
 	});
+
 }); 
 
 // ========= DELETE an existing todo item
-router.delete('/:id',(req, res,) => {
+router.delete('/:id', (req, res) => {
 
 	let id = req.params.id;
 
@@ -93,8 +96,6 @@ router.delete('/:id',(req, res,) => {
 		}
 	})
 });
-
-
 
 
 module.exports = router;

@@ -1,11 +1,11 @@
 var mongoose = require('mongoose');
-
 var Schema = mongoose.Schema;
-// create a Schema
 
+// create a Schema
 var TodoSchema = new Schema({
 
 	// validation: using `required`
+
 	owner: String,
 	task: {
 		type: String,
@@ -14,9 +14,12 @@ var TodoSchema = new Schema({
 	details: String,
 	rank: String,
 	date: Date,
-	comp: Boolean,
+	completed: {
+		type: Boolean,
+		default: false
+	}
+
 });
 
 // create a Model
-
 module.exports = mongoose.models.Todos || mongoose.model('Todos', TodoSchema);

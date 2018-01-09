@@ -2,18 +2,16 @@ import axios from 'axios';
 
 // replace with an API call
 let initialState = [
-	{id:'0.1HxYz', date: 	'2020-01-01', complete: false, task:'Get some Milk', rank: 'High'},
-	{id:'0.2HxYz', date: 	'2020-01-01', complete: false, task:'Kiss my daughter', rank: 'Med'},
-	{id:'0.3HxYz', date: 	'2020-01-01', complete: false, task:'Celebrate life!', rank: 'Low'},
+	{id:'0.1HxYz', date: 	'2020-01-01', completed: false, task:'Get some Milk', rank: 'High'},
+	{id:'0.2HxYz', date: 	'2020-01-01', completed: false, task:'Kiss my daughter', rank: 'Med'},
+	{id:'0.3HxYz', date: 	'2020-01-01', completed: false, task:'Celebrate life!', rank: 'Low'},
 ];
 
 	axios.get('http://localhost:3003/api/todos')
 		.then((res) => {
 			// initialState = res
-			console.log("9999999999999",res)
+			console.log("9999999999999",res.data)
 		});
-
-
 
 const TodoReducer = (state=initialState, action) => {
 
@@ -56,7 +54,7 @@ const TodoReducer = (state=initialState, action) => {
 				return Object.assign(
 					{}, 
 					task, 
-					{complete:!task.complete}
+					{completed:!task.completed}
 				);
 			});
 
