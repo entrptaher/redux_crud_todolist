@@ -22,8 +22,6 @@ router.get('/', (req, res) => {
 // ========= * CREATE a new todo item
 router.post('/', (req, res) => {
 
-	console.log(req);
-
 	let _todo = new Todos(req.body);
 
 	_todo.save((err, todo) => {
@@ -33,6 +31,7 @@ router.post('/', (req, res) => {
 			res.status(201).send(todo);
 		}
 	});
+	
 });
 
 // ========= * READ a specific todo item

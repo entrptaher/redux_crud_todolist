@@ -44,7 +44,7 @@ describe('Routes for /todos resources', () => {
 	});
 
 	// =========== CREATE a new todo item
-	describe('*** CREATE a new todo item: "/todos" route', () => {
+	describe.only('*** CREATE a new todo item: "/todos" route', () => {
 
 		it('...can create a new todo item', (done) => {
 
@@ -91,7 +91,7 @@ describe('Routes for /todos resources', () => {
 	}); 
 
 	// =========== UPDATE a specific todo  
-	describe.only('*** UPDATE a specific todo: "/todos/:id" route', () => {
+	xdescribe('*** UPDATE a specific todo: "/todos/:id" route', () => {
 
 		it('... can update an item', (done) => {
 
