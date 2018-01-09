@@ -44,7 +44,7 @@ describe('Routes for /todos resources', () => {
 	});
 
 	// =========== CREATE a new todo item
-	describe.only('*** CREATE a new todo item: "/todos" route', () => {
+	describe('*** CREATE a new todo item: "/todos" route', () => {
 
 		it('...can create a new todo item', (done) => {
 
@@ -91,8 +91,7 @@ describe('Routes for /todos resources', () => {
 	}); 
 
 	// =========== UPDATE a specific todo  
-	xdescribe('*** UPDATE a specific todo: "/todos/:id" route', () => {
-
+	describe.only('*** UPDATE a specific todo: "/todos/:id" route', () => {
 		it('... can update an item', (done) => {
 
 			let _todo = new Todos(_task);
@@ -109,8 +108,6 @@ describe('Routes for /todos resources', () => {
 					})
 
 					.end((err, res) => {
-						console.log("********",res.body)
-						console.log("********",res.body.test)
 						expect(res.body.completed).to.eql(true);
 						expect(res.status).to.eql(200);
 						expect(res.body).to.have.property('_id');
