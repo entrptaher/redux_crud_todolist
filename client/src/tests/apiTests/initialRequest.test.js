@@ -10,25 +10,29 @@ import axios from 'axios';
 
 describe('The initialRequest actions', () => {
 
-	let todos; 
+	let todos;
 	let _task;
+	let _last
 
 	beforeAll((done) => {
 		axios.get('http://localhost:3003/api/todos')
 			.then((res) => {
 				todos = res.data;
-				_task = todos[0];
+		 		_last = todos.length - 1
+				_task = todos[_last];
 				done();
 			});
+
 	});
+	describe('the todo properties', () => {
 
 	it('..returns an array of objects', () => {
 		expect(todos).to.be.an('array');
 		expect(_task).to.be.an('object');
 		expect(todos.length).to.be.above(0);
+			console.log(_task);
 	});
 
-	describe('the todo properties', () => {
 
 		it('_ _ has a "completed" property', () => {
 			expect(_task).to.have.property('completed');

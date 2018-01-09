@@ -10,15 +10,15 @@ let should = chai.should();
 
 let Todos = require('../models/Todos.model');
 
-const _task = {
-	task: 'Hitting that route, yo!',
-	owner: 'Walker',
-	completed: false
-};
-
 chai.use(chaiHttp);
 
 describe('Routes for /todos resources', () => {
+
+	const _task = {
+		task: 'Hitting that route, yo!',
+		owner: 'Walker',
+		completed: false
+	};
 
 	beforeEach((done) => {
 		Todos.remove({ },(err) => {
@@ -26,6 +26,13 @@ describe('Routes for /todos resources', () => {
 			done();
 		});
 	}); 
+
+	after((done) => {
+		Todos.remove({ },(err) => {
+			err ? console.error.bind(console) : console.log('DB cleared');
+			done();
+		});
+	});
 
 	// =========== READ an index of all todos
 	describe('*** READ index of all todos: "/todos" route', () => {
@@ -84,14 +91,10 @@ describe('Routes for /todos resources', () => {
 			}); 
 		}); 
 
-		xit('has a testTask', () => {
-			expect(testTask).to.exist;
-			expect(testTask.owner).to.eql("Billy")
-		})
 	}); 
 
 	// =========== UPDATE a specific todo  
-	describe.only('*** UPDATE a specific todo: "/todos/:id" route', () => {
+	describe('*** UPDATE a specific todo: "/todos/:id" route', () => {
 		it('... can update an item', (done) => {
 
 			let _todo = new Todos(_task);
