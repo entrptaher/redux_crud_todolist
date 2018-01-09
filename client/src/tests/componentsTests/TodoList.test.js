@@ -53,14 +53,21 @@ describe('The todos tasks', () => {
 
 		// console.log ('**** This is the state of the store ****', store.getState());
 
-		
+		const sampleTodo ={
+			completed:  false,
+			date: Date.now(),
+			details: "Fake Line of details. Lots of text",
+			owner: "Kahl Drogo",
+			rank: "High",
+			task: "Make it so"
+		}
 
 		it('can display props', () => {
 			// console.log(this.props)
 		});
 
 		it.only('can use ADD_TODO to add a todo to the array', () => {
-			store.dispatch(addTodo('PicklePop,Inc', 'High', '2020-12-31'));
+			store.dispatch(addTodo(sampleTodo));
 			let todoList = (store.getState().todos);
 			// let todoList = (store.getState().todo)
 			expect(todoList.length).to.equal(4);

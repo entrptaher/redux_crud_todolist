@@ -10,7 +10,7 @@ let initialState = [
 	axios.get('http://localhost:3003/api/todos')
 		.then((res) => {
 			// initialState = res
-			console.log("9999999999999",res.data)
+			// console.log("axios route",res.data)
 		});
 
 const TodoReducer = (state=initialState, action) => {

@@ -12,7 +12,7 @@ export const addTodo = (
 		type: 'ADD_TODO',
 		payload: {
 			// mongo will generate the id
-			completed: false
+			completed: false,
 			date: _date,
 			details: _details,
 			owner: _owner,
