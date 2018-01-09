@@ -1,3 +1,5 @@
+/* eslint-env node, mocha */
+
 // should split this into a reducer test suite
 
 import React from 'react';
@@ -53,26 +55,64 @@ describe('The todos tasks', () => {
 
 		// console.log ('**** This is the state of the store ****', store.getState());
 
-		const sampleTodo ={
+		const _mock ={
 			completed:  false,
 			date: Date.now(),
-			details: "Fake Line of details. Lots of text",
-			owner: "Kahl Drogo",
-			rank: "High",
-			task: "Make it so"
-		}
+			details: 'Fake Line of details. Lots of text',
+			owner: 'Kahl Drogo',
+			rank: 'High',
+			task: 'Make it so'
+		};
+			
+		let _task, afterList;
+		let beforeList = (store.getState().todos);
 
-		it('can display props', () => {
-			// console.log(this.props)
+		beforeAll(() => {
+			store.dispatch(addTodo(_mock));
+			afterList = (store.getState().todos);
+			let _size = afterList.length;
+			_task = afterList[ _size - 1 ];
 		});
 
-		it.only('can use ADD_TODO to add a todo to the array', () => {
-			store.dispatch(addTodo(sampleTodo));
-			let todoList = (store.getState().todos);
-			// let todoList = (store.getState().todo)
-			expect(todoList.length).to.equal(4);
-			expect(todoList[3].task).to.equal('PicklePop,Inc');
+		afterAll(() => {
+			afterList.pop();
 		});
+
+		it('can use ADD_TODO to add a todo to the array', () => {
+			expect(_task).to.be.an('object');
+			expect(afterList.length).to.be.above(beforeList.length);
+		});
+
+		it('has a "completed" property', () => {
+			expect(_task).to.have.property('completed')
+				.to.eql(_mock.completed);
+		});
+		
+		it('has a "date" property', () => {
+			expect(_task).to.have.property('date')
+				.to.eql(_mock.date);
+		});
+		
+		it('has a "details" property', () => {
+			expect(_task).to.have.property('details')
+				.to.eql(_mock.details);
+		});
+		
+		it('has a "owner" property', () => {
+			expect(_task).to.have.property('owner')
+				.to.eql(_mock.owner);
+		});
+		
+		it('has a "rank" property', () => {
+			expect(_task).to.have.property('rank')
+				.to.eql(_mock.rank);
+		});
+		
+		it('has a "task" property', () => {
+			expect(_task).to.have.property('task')
+				.to.eql(_mock.task);
+		});
+
 	});
 
 	describe('The ADD_TODO action ', () => {

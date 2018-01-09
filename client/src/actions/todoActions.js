@@ -1,23 +1,15 @@
 import shortid from 'shortid';
 
-export const addTodo = (
-								_completed,
-								_date, 
-								_details,
-								_owner,
-								_rank, 
-								_task, 
-							) => {
+export const addTodo = (_todo) => {
 	return {
 		type: 'ADD_TODO',
 		payload: {
-			// mongo will generate the id
-			completed: false,
-			date: _date,
-			details: _details,
-			owner: _owner,
-			rank: _rank,
-			task: _task,
+			date: _todo.date,
+			completed: _todo.completed,
+			details: _todo.details,
+			owner: _todo.owner,
+			rank: _todo.rank,
+			task: _todo.task,
 		}
 	};
 };
