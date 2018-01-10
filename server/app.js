@@ -20,7 +20,11 @@ app.set('view engine', 'jade');
 // =========================== Connect database
 let mongoose = require('mongoose');
 
-let mongoDB = 'mongodb://Tester:test2015@ds239117.mlab.com:39117/todo-test-db';
+// ========= test db
+// let mongoDB = 'mongodb://Tester:test2015@ds239117.mlab.com:39117/todo-test-db';
+
+// ========= default db
+let mongoDB = 'mongodb://Tester:test2015@ds135537.mlab.com:35537/react-redux-todo';
 
 // establish pending connection to db
 mongoose.connect(mongoDB);

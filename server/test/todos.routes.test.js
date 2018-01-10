@@ -12,7 +12,7 @@ let Todos = require('../models/Todos.model');
 
 chai.use(chaiHttp);
 
-describe('Routes for /todos resources', () => {
+xdescribe('Routes for /todos resources', () => {
 
 	const _task = {
 		task: 'Hitting that route, yo!',
@@ -20,19 +20,19 @@ describe('Routes for /todos resources', () => {
 		completed: false
 	};
 
-	beforeEach((done) => {
+	/*beforeEach((done) => {
 		Todos.remove({ },(err) => {
 			err ? console.error.bind(console) : console.log('DB cleared');
 			done();
 		});
-	}); 
+	}); */
 
-	after((done) => {
+	/*after((done) => {
 		Todos.remove({ },(err) => {
 			err ? console.error.bind(console) : console.log('DB cleared');
 			done();
 		});
-	});
+	});*/
 
 	// =========== READ an index of all todos
 	describe('*** READ index of all todos: "/todos" route', () => {

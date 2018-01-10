@@ -82,7 +82,7 @@ const TodoItem = (props) => {
 			
 				<Checkbox
 					toggleTodo= { props.toggleTodo }   
-					id= { item.id }
+					id= { item._id }
 					complete= { item.complete }
 				/>
 			
@@ -97,7 +97,7 @@ const TodoItem = (props) => {
 			
 				<PriorityRadio
 					updateRank= { props.updateRank }   
-					id= { item.id }
+					id= { item._id }
 					currRank = { item.rank }
 				/>
 			
@@ -111,7 +111,7 @@ const TodoItem = (props) => {
 			
 				<CalendarBtn
 					updateDate= { props.updateDate }   
-					id= { item.id }
+					id= { item._id }
 					currDate = { item.date }
 				/>	
 			
@@ -152,7 +152,7 @@ const TodoItem = (props) => {
 
 				<DeleteBtn 
 					removeTodo= { props.removeTodo }   
-					id= { item.id } 
+					id= { item._id } 
 				/>
 
 			</Col>
@@ -175,8 +175,10 @@ TodoItem.propTypes = {
 TodoItem.defaultProps ={
 	item: { 
 		id: '0.3HxYz',
-		date: '2020-01-01',
 		complete: false,
+		details: "needed",
+		date: '2020-01-01',
+		owner: 'Bhudah',
 		task: 'Celebrate life!',
 		rank: 'Low', 
 	},

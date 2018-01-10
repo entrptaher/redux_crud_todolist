@@ -23,7 +23,7 @@ describe('The todos tasks', () => {
 		};
 			
 		let prevState = (store.getState().todos);
-			deepFreeze (prevState);
+		deepFreeze (prevState);
 		let _task, nextState;
 
 		// ========= 
@@ -31,8 +31,8 @@ describe('The todos tasks', () => {
 		beforeAll(() => {
 			store.dispatch(addTodo(_mock));
 			nextState = (store.getState().todos);
-				let _size = nextState.length;
-				_task = nextState[ _size - 1 ];
+			let _size = nextState.length;
+			_task = nextState[ _size - 1 ];
 		});
 
 		afterAll(() => {

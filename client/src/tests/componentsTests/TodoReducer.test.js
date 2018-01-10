@@ -1,3 +1,5 @@
+/* eslint-env mocha, chai */
+
 // should split this into a reducer test suite
 // import React from 'react';
 

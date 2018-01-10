@@ -12,13 +12,13 @@ describe('The initialRequest actions', () => {
 
 	let todos;
 	let _task;
-	let _last
+	let _last;
 
 	beforeAll((done) => {
 		axios.get('http://localhost:3003/api/todos')
 			.then((res) => {
 				todos = res.data;
-		 		_last = todos.length - 1
+		 		_last = todos.length - 1;
 				_task = todos[_last];
 				done();
 			});
@@ -26,14 +26,14 @@ describe('The initialRequest actions', () => {
 
 	describe('the retrieved todo items ', () => {
 
-		it('_ _ are an array of objects', () => {
-			console.log(_task);
+		it.only('_ _ are an array of objects', () => {
+			console.log('===================>>>>',_task);
+			expect(todos.length).to.be.above(0);
 			expect(todos).to.be.an('array');
 			expect(_task).to.be.an('object');
-			expect(todos.length).to.be.above(0);
 		});
 
-		it('_ _ have a "completed" property', () => {
+		it.only('_ _ have a "completed" property', () => {
 			expect(_task).to.have.property('completed');
 		});
 				

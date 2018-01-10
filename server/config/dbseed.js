@@ -5,7 +5,11 @@ let faker = require('faker');
 
 let mongoose = require('mongoose');
 
-let mongoDB = 'mongodb://Tester:test2015@ds239117.mlab.com:39117/todo-test-db';
+// ========= test db
+// let mongoDB = 'mongodb://Tester:test2015@ds239117.mlab.com:39117/todo-test-db';
+// ========= default db
+let mongoDB = 'mongodb://Tester:test2015@ds135537.mlab.com:35537/react-redux-todo';
+
 
 // establish pending connection to db
 mongoose.connect(mongoDB);
@@ -21,12 +25,12 @@ const Close = () => {
 	console.log("********** Connection Closed ******")
 }
 
-const Clear =() => {
+/*const Clear =() => {
 	Todos.remove({ },(err) => {
 			err ? console.error.bind(console) : console.log('DB cleared');
 		});
 	console.log("********** db Cleared ******")
-}
+}*/
 
 // ========= The Seed Module
 
@@ -52,7 +56,11 @@ _.times(count,() => {
 }
 
 
-module.exports = { Seed, Close, Clear };
+module.exports = { 
+	Seed, 
+	Close, 
+	// Clear
+};
 
 
 
